@@ -10,6 +10,6 @@ import com.itwillbs.yata.vo.MemberVO;
 
 public interface MemberMapper {
 	
-	public MemberVO selectUser(@Param("user_email") String user_eamil,@Param("user_passwd") String user_passwd);
+	public MemberVO selectUser(@Param("member_email") String member_email,@Param("member_passwd") String member_passwd);
 	
 }

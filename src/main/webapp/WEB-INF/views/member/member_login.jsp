@@ -15,17 +15,16 @@
       <div class="container">
         <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
           <div class="col-lg-8 ftco-animate">
-          	<div class="text w-100 text-center mb-md-5 pb-md-5">
-			    
+          	<div class="text w-100 text-center mb-md-5 pb-md-5">	    
 			    <div >
 			        <h1 class="h3 mb-3 fw-normal text-dark">로그인</h1>
 			        <label for="inputEmail" class="visually-hidden">Email address</label>
 			        <div class="d-flex justify-content-center">
-			        	<input type="email" id="user_email" name="user_email" class="justify-content-center w-50 form-control" placeholder="Email address" required autofocus>
+			        	<input type="email" id="member_email" name="member_email" class="justify-content-center w-50 form-control" placeholder="Email address" required autofocus>
 			        </div>
 			        <label for="inputPassword" class="visually-hidden">Password</label>
 			        <div class="d-flex justify-content-center">
-			        	<input type="password" id="user_passwd" name="user_passwd" class="w-50 form-control" placeholder="Password" required>
+			        	<input type="password" id="member_passwd" name="member_passwd" class="w-50 form-control" placeholder="Password" required>
 			        </div>
 			        <br>
 			        <button class="w-50 btn btn-lg btn-primary" style="width: 350px;" type="submit" >로그인</button>

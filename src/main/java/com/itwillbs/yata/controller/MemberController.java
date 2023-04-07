@@ -23,15 +23,15 @@ public class MemberController {
 	}
 	
 	@PostMapping("loginPro")
-	public String loginPro(@RequestParam String user_email, String user_passwd, HttpSession session, Model model) {
-		System.out.println(user_email + " " + user_passwd);
+	public String loginPro(@RequestParam String member_email, String member_passwd, HttpSession session, Model model) {
+		System.out.println(member_email + " " + member_passwd);
 		
-		MemberVO member = memberService.checkUser(user_email, user_passwd);
+		MemberVO member = memberService.checkUser(member_email, member_passwd);
 		if(member == null) {
 			model.addAttribute("msg","로그인 실패!");
 			return "fail_back";
 		}	
-		session.setAttribute("sId", member.getUser_email());
+		session.setAttribute("sId", member.getMember_email());
 		return "redirect:/";
 	}
 	

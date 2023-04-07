@@ -6,9 +6,9 @@
   <mapper namespace="com.itwillbs.yata.mapper.MemberMapper">
   	<select id="selectUser" resultType="com.itwillbs.yata.vo.MemberVO">
 		select * 
-			from user
+			from member
 			where 
-				user_email = #{user_email} 
-				and user_passwd = #{user_passwd}
+				member_email = #{member_email} 
+				and member_passwd = #{member_passwd}
 	</select>
   </mapper>
