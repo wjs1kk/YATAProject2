@@ -17,4 +17,9 @@ public class MemberService {
 		
 		return mapper.selectUser(member_email, member_passwd) != null ? mapper.selectUser(member_email, member_passwd) :null ;
 	}
+	
+	public int insertUser(MemberVO member) {
+		return mapper.insertUser(member);
+	}
+	
 }

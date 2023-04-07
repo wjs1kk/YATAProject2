@@ -45,6 +45,15 @@ public class MemberController {
 	public String join() {
 		return "member/member_join";
 	}
+	@PostMapping("joinPro")
+	public String joinPro(MemberVO member) {
+		
+		if(memberService.insertUser(member) == 0) {
+			return "join";
+		}
+		return "redirect:/login";
+	}
+	
 	@GetMapping("mypage")
 	public String mypage() {
 		return "member/member_mypage";

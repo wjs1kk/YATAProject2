@@ -11,4 +11,15 @@
 				member_email = #{member_email} 
 				and member_passwd = #{member_passwd}
 	</select>
+	<insert id="insertUser">
+		insert into member (
+			member_email, member_passwd, 
+			member_name, member_birth, 
+			member_gender, member_phone, member_date
+			) 
+			value(
+			#{member_email}, #{member_passwd},
+			#{member_name}, #{member_birth},
+			#{member_gender}, #{member_phone}, now())
+	</insert>
   </mapper>
