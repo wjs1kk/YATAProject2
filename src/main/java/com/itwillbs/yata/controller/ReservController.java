@@ -1,12 +1,20 @@
 package com.itwillbs.yata.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.itwillbs.yata.service.CarService;
 
 @Controller
 public class ReservController {
+	@Autowired
+	private CarService carService;
 	@GetMapping("rent1")
-	public String rent1() {
+	public String rent1(Model model) {
+		model.addAttribute("carList",carService.selectCar());
+		
 		return "rent/rent";
 	}
 	@GetMapping("rent2")
