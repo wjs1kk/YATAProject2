@@ -1030,9 +1030,10 @@
 									</div>
 									
 <!-- 									차 카드표시  -->
+
 									<c:forEach var="carList" items="${carList }">
-									<div class="bg-white mb-3 js-vsl-container-search-list-item click-no-effect"
-										id="vsl_item_car_list_short_1" >
+									<form action="rent2">
+									<div class="bg-white mb-3 js-vsl-container-search-list-item click-no-effect" id="vsl_item_car_list_short_1" onclick="window.location.href='rent2'">
 										<div class="row car-list no-gutters">
 											<div class="col-12 col-lg-5">
 												<div class="pt-3 pb-2 px-1 p-lg-3">
@@ -1128,6 +1129,7 @@
 										</div>
 										
 									</div>
+									</form>
 									</c:forEach>
 									
 								</div>
