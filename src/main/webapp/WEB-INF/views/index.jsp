@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -294,7 +295,8 @@
 				</section>
 			</div>
 
-			<!-- 				리뷰 영역 데이터 받아와서 foreach 해야함.-->
+			<!-- 리뷰 영역 데이터 받아와서 foreach 해야함.-->
+
 			<div class="is-only-none-member">
 				<section
 					class="bg-color-very-very-light-blue index-section-padding is-only-none-member opacity-0 animated-fadein"
@@ -333,18 +335,17 @@
 												</div>
 												<div class="mt-3">
 													<div class="text-16 text-left">
-														<span class="index-txt-review-highlighter">카모아의
-															편리함도, 업체의 대응이나 친절도</span><span>도 마음에 들었습니다. 차량 상태도
-															좋았고요,&nbsp;</span><span class="index-txt-review-highlighter">사후
-															문제 대응도 탁월</span><span>하다는 생각이 들었습니다.<br>다음에도 또 같은
-															곳에서 빌리고 싶다는 생각이 들었어요!
+														<span class="index-txt-review-highlighter"> 
+															<c:foreach var="reviewVO" item="${review }">
+																<p><c:out value="${board_content }" /></p>
+															</c:foreach>
 														</span>
 													</div>
 												</div>
 												<div class="index-box-review-bottom-box text-left">
 													<div class="index-txt-review-bottom-box-top text-14">제주에서
 														1일 렌트하신</div>
-													<div class="text-16-b text-white">${review_regdate }</div>
+													<div class="text-16-b text-white">${review_writer }</div>
 												</div>
 											</div>
 										</div>
@@ -426,7 +427,7 @@
 	</main>
 	<!-- 	footer -->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
-	
+
 	<!-- modal 띄우기 -->
 	<script src="${pageContext.request.contextPath }/resources/js/kakao.js"></script>
 
@@ -434,6 +435,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
 		integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
 		crossorigin="anonymous">
+		
 	</script>
 </body>
 </html>
