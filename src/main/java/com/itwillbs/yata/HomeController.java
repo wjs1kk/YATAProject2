@@ -34,9 +34,12 @@ public class HomeController {
 		return "customer/customer_service";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("kakao")
 	public String kakaomap() {
 		return "inc/kakao";
 	}
+=======
+>>>>>>> f6c42f8cef595b3967ed0b8cd0c2c6e8c79bfda0
 	
 }
