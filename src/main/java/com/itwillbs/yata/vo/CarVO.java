@@ -10,7 +10,7 @@ public class CarVO {
 	private String car_available;
 	private int car_seater;
 	private String car_fuel;
-	private byte[] car_image;
+	
 	public CarVO() {}
 	public CarVO(int car_id, String car_manufacturer, String car_model, String car_type, int car_year, int car_price,
 			String car_available, int car_seater, String car_fuel, byte[] car_image) {
@@ -23,7 +23,6 @@ public class CarVO {
 		this.car_available = car_available;
 		this.car_seater = car_seater;
 		this.car_fuel = car_fuel;
-		this.car_image = car_image;
 	}
 	public int getCar_id() {
 		return car_id;
@@ -79,12 +78,7 @@ public class CarVO {
 	public void setCar_fuel(String car_fuel) {
 		this.car_fuel = car_fuel;
 	}
-	public byte[] getCar_image() {
-		return car_image;
-	}
-	public void setCar_image(byte[] car_image) {
-		this.car_image = car_image;
-	}
+
 	
 	
 }

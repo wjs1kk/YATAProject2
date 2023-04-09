@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -163,219 +164,7 @@
 						</div>
 
 					</div>
-					<div class="min fixed-top dc-lg-none"
-						id="container_search_list_top_info" style="">
-
-						<div class="wrap-inner p-2" id="js_search_list_top">
-
-							<div
-								class="js-container-search-list-area-min container-search-list-area-min dc-none position-relative bg-white click-effect-press"
-								style="z-index: 2; display: none;">
-								<div class="dc-flex">
-									<div class="box-round-gray box-round-6 px-25 py-2 flex-1">
-										<div class="js-container-search-list-area-all">
-											<div
-												class="dc-flex click-effect-press header-mobile__left area-wrapper">
-												<img class="mr-1"
-													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTVzNS01Ljk0NiA1LTguODEyQzEzIDMuMzIzIDEwLjc2MSAxIDggMVMzIDMuMzIzIDMgNi4xODhDMyA5LjA1NCA4IDE1IDggMTV6bTAtN2MxLjEwNSAwIDItLjg5NSAyLTJzLS44OTUtMi0yLTItMiAuODk1LTIgMiAuODk1IDIgMiAyeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=">
-												<div
-													class="js-vsl-txt-select-area mb-0 text-14 font-weight-bold color-grey-2 ellipsis">여수엑스포역</div>
-												<div
-													class="js-vsl-txt-select-area-short dc-none ml-1 text-14 color-grey-3 ellipsis flex-1"
-													style="display: none;"></div>
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</div>
-							<div class="position-relative" id="js_container_search_list">
-								<div
-									class="box-round-gray box-round-6 js-vsl-btn-rent-date click-effect-press position-relative"
-									id="js_container_search_list_rent_date_view"
-									style="z-index: 1;">
-									<div
-										class="table-rent-info-group dc-flex justify-content-between box-round-gray box-round-8-no-shadow">
-										<div class="td-left flex-grow-1 dc-flex align-items-center">
-											<div class="dc-flex flex-grow-1 justify-content-start">
-												<div class="date-wrapper">
-													<img class="js-time-icon mr-1"
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE3Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTQuNzc4YzMuNjgyIDAgNi42NjctMi45ODUgNi42NjctNi42NjdTMTEuNjgyIDEuNDQ0IDggMS40NDQgMS4zMzMgNC40MyAxLjMzMyA4LjExMSA0LjMxOCAxNC43NzggOCAxNC43Nzh6bS44NjYtOS40NDhjMC0uMzY4LS4yOTktLjY2Ny0uNjY3LS42NjctLjM2OCAwLS42NjcuMjk5LS42NjcuNjY3djIuODY2bC0xLjY3NS0uOTMzYy0uMzIyLS4xOC0uNzI4LS4wNjQtLjkwNy4yNTgtLjE4LjMyMi0uMDY0LjcyOC4yNTguOTA3bDIuNjY3IDEuNDg0Yy4yMDYuMTE1LjQ1OC4xMTIuNjYyLS4wMDcuMjAzLS4xMi4zMjktLjMzOS4zMjktLjU3NXYtNHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"><img
-														class="js-start-date-error-icon mr-1 dc-none"
-														src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="
-														style="display: none;"><span
-														class="txt-rent-start-date text-14 font-weight-bold color-grey-3 mr-1"
-														style="display: block;">4.6(목)</span><span
-														class="txt-rent-start-time text-14 color-grey-3"
-														style="display: block;">10:00</span>
-												</div>
-												<div class="date-wrapper dc-flex align-items-center">
-													<img class="mx-2"
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEwIDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM0OTQ5NDkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMTI0IDQuNjdjLjE4Mi0uMjA3LjQ5Ny0uMjI4LjcwNS0uMDQ2bDQgMy41Yy4xMDkuMDk1LjE3MS4yMzIuMTcxLjM3NnMtLjA2Mi4yODEtLjE3LjM3NmwtNCAzLjVjLS4yMDkuMTgyLS41MjQuMTYxLS43MDYtLjA0Ny0uMTgyLS4yMDgtLjE2MS0uNTIzLjA0Ny0uNzA1TDYuNzQgOC41IDMuMTcgNS4zNzZjLS4yMDgtLjE4Mi0uMjMtLjQ5Ny0uMDQ3LS43MDV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==">
-												</div>
-												<div class="date-wrapper">
-													<img class="js-end-date-error-icon mr-1 dc-none"
-														src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="
-														style="display: none;"><span
-														class="txt-rent-end-date text-14 font-weight-bold color-grey-3 mr-1"
-														style="display: block;">4.7(금)</span><span
-														class="txt-rent-end-time text-14 color-grey-3"
-														style="display: block;">10:00</span>
-												</div>
-											</div>
-										</div>
-										<div class="td-right dc-flex align-items-center">
-											<p class="mb-0 text-12 color-grey-3">
-												<span class="txt-rent-period" style="display: block;">24시간</span><span
-													class="txt-select-time dc-none" style="display: none;">날짜와
-													시간을 선택해주세요!</span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="js-container-search-list-filter-age"
-									id="js_container_search_list_filter_age" style="display: none;">
-									<div
-										class="dc-flex align-itesm-center click-effect-press box-round-gray px-25 py-2 h-100 text-14 color-grey-3">
-										<img class="mr-1"
-											src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCNzc2w3N3l5N3VhKSIgZmlsbD0iI0FBQjRDNiI+CiAgICAgICAgPHJlY3QgeD0iMSIgeT0iOSIgd2lkdGg9IjE0IiBoZWlnaHQ9IjYiIHJ4PSIxIi8+CiAgICAgICAgPHBhdGggZD0iTTMgNmExIDEgMCAwIDEgMS0xaDhhMSAxIDAgMCAxIDEgMXYySDNWNnoiLz4KICAgICAgICA8cmVjdCB4PSI1IiB5PSIyIiB3aWR0aD0iMSIgaGVpZ2h0PSI0IiByeD0iLjUiLz4KICAgICAgICA8cmVjdCB4PSI3LjUiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjUiIHJ4PSIuNSIvPgogICAgICAgIDxyZWN0IHg9IjEwIiB5PSIyIiB3aWR0aD0iMSIgaGVpZ2h0PSI0IiByeD0iLjUiLz4KICAgIDwvZz4KICAgIDxkZWZzPgogICAgICAgIDxjbGlwUGF0aCBpZD0ic3NsNzd5eTd1YSI+CiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMTZ2MTZIMHoiLz4KICAgICAgICA8L2NsaXBQYXRoPgogICAgPC9kZWZzPgo8L3N2Zz4K"><select
-											class="js-vsl-select-filter-age w-100 custom-select-grey color-grey-3 font-weight-bold click-no-effect border-none"><option
-												value="18">만 18세</option>
-											<option value="19">만 19세</option>
-											<option value="20">만 20세</option>
-											<option value="21">만 21세</option>
-											<option value="22">만 22세</option>
-											<option value="23">만 23세</option>
-											<option value="24">만 24세</option>
-											<option value="25">만 25세</option>
-											<option value="26">만 26세</option>
-											<option value="27">만 27세</option>
-											<option value="28">만 28세</option>
-											<option value="29">만 29세</option>
-											<option value="30">만 30 ~ 65세</option>
-											<option value="66">만 66세</option>
-											<option value="67">만 67세</option>
-											<option value="68">만 68세</option>
-											<option value="69">만 69세</option>
-											<option value="70">만 70세</option>
-											<option value="71">만 71세</option>
-											<option value="72">만 72세</option>
-											<option value="73">만 73세</option>
-											<option value="74">만 74세</option>
-											<option value="75">만 75세</option>
-											<option value="76">만 76세</option>
-											<option value="77">만 77세</option>
-											<option value="78">만 78세</option>
-											<option value="79">만 79세</option>
-											<option value="80">만 80세</option>
-											<option value="81">만 81세</option>
-											<option value="82">만 82세</option>
-											<option value="83">만 83세</option>
-											<option value="84">만 84세</option>
-											<option value="85">만 85세</option>
-											<option value="86">만 86세</option>
-											<option value="87">만 87세</option>
-											<option value="88">만 88세</option>
-											<option value="89">만 89세</option>
-											<option value="90">만 90세</option>
-											<option value="91">만 91세</option>
-											<option value="92">만 92세</option>
-											<option value="93">만 93세</option>
-											<option value="94">만 94세</option>
-											<option value="95">만 95세</option>
-											<option value="96">만 96세</option>
-											<option value="97">만 97세</option>
-											<option value="98">만 98세</option>
-											<option value="99">만 99세</option></select>
-									</div>
-								</div>
-								<div class="position-relative js-no-data-hide-elmt"
-									id="js_container_search_list_filter"
-									style="z-index: 0; display: block;">
-									<div class="dc-flex justify-content-between">
-										<div class="dc-flex flex-1 mr-2">
-											<div class="mr-2">
-												<button
-													class="btn btn-sm btn-white px-10px box-round-6 dc-flex align-items-center"
-													id="js_vsl_btn_car_type">
-													<span class="js-vsl-txt-car-type color-grey-4">수입</span><img
-														src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMyAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Im05LjUgNC0zIDMtMy0zIiBzdHJva2U9IiM5OTkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K">
-												</button>
-											</div>
-											<div class="flex-1">
-												<div
-													class="btn btn-sm btn-filter px-10px box-round-6 dc-flex align-items-center mw-100 w-fit-content btn-primary"
-													id="js_vsl_btn_filter">
-													<img class="icon-16 mr-1" id="js_vsl_icon_filter"
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEzIDEzIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjg4IDEuOTI0SDUuMDIzQzQuNzk4IDEuMTcgNC4xLjYyIDMuMjcyLjYycy0xLjUyNi41NS0xLjc1IDEuMzA0SC45MjNjLS4yODggMC0uNTIyLjIzNC0uNTIyLjUyMiAwIC4yODguMjM0LjUyMi41MjIuNTIyaC41OTdjLjIyNS43NTQuOTI0IDEuMzA0IDEuNzUgMS4zMDQuODI4IDAgMS41MjctLjU1IDEuNzUxLTEuMzA0aDYuODU5Yy4yODggMCAuNTIxLS4yMzQuNTIxLS41MjIgMC0uMjg4LS4yMzMtLjUyMi0uNTIxLS41MjJ6bS03LjgyNS41MjJjMCAuNDMyLS4zNS43ODMtLjc4My43ODMtLjQzMiAwLS43ODMtLjM1LS43ODMtLjc4MyAwLS40MzIuMzUtLjc4Mi43ODMtLjc4Mi40MzIgMCAuNzgzLjM1Ljc4My43ODJ6bTUuNDc4IDYuNTIyYy0uODI3IDAtMS41MjYuNTUtMS43NSAxLjMwNEguOTIzYy0uMjg4IDAtLjUyMi4yMzQtLjUyMi41MjIgMCAuMjg4LjIzNC41MjIuNTIyLjUyMmg2Ljg1OGMuMjI1Ljc1NC45MjQgMS4zMDQgMS43NSAxLjMwNC44MjggMCAxLjUyNy0uNTUgMS43NTEtMS4zMDRoLjU5OGMuMjg4IDAgLjUyMS0uMjM0LjUyMS0uNTIyIDAtLjI4OC0uMjMzLS41MjItLjUyMS0uNTIyaC0uNTk4Yy0uMjI0LS43NTQtLjkyMy0xLjMwNC0xLjc1LTEuMzA0em0uNzgyIDEuODI2YzAgLjQzMi0uMzUuNzgzLS43ODIuNzgzLS40MzIgMC0uNzgzLS4zNS0uNzgzLS43ODMgMC0uNDMyLjM1LS43ODMuNzgzLS43ODMuNDMyIDAgLjc4Mi4zNS43ODIuNzgzek00LjY1MiA2LjA5OGMuMjI0LS43NTQuOTIzLTEuMzA0IDEuNzUtMS4zMDQuODI4IDAgMS41MjYuNTUgMS43NSAxLjMwNGgzLjcyOWMuMjg4IDAgLjUyMS4yMzQuNTIxLjUyMiAwIC4yODgtLjIzMy41MjItLjUyMS41MjJIOC4xNTNjLS4yMjUuNzU0LS45MjMgMS4zMDQtMS43NSAxLjMwNC0uODI4IDAtMS41MjctLjU1LTEuNzUxLTEuMzA0SC45MjRjLS4yODggMC0uNTIyLS4yMzQtLjUyMi0uNTIyIDAtLjI4OC4yMzQtLjUyMi41MjItLjUyMmgzLjcyOHptMS43NSAxLjMwNWMuNDMzIDAgLjc4My0uMzUuNzgzLS43ODMgMC0uNDMyLS4zNS0uNzgzLS43ODMtLjc4My0uNDMyIDAtLjc4Mi4zNS0uNzgyLjc4MyAwIC40MzIuMzUuNzgzLjc4Mi43ODN6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg=="><span
-														class="ellipsis" id="js_vsl_txt_filter_list">수입</span>
-												</div>
-											</div>
-										</div>
-										<button
-											class="btn btn-sm btn-white px-10px box-round-6 dc-flex align-items-center"
-											id="js_btn_carlist_sort">
-											<span class="js-vsl-txt-sort color-grey-4">차종순</span><img
-												src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMyAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Im05LjUgNC0zIDMtMy0zIiBzdHJva2U9IiM5OTkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K">
-										</button>
-									</div>
-									<div class="js-search-container-filter-insu-type dc-none mt-2"
-										style="display: none;">
-										<div class="dc-flex d-lg-none btn-group">
-											<button
-												class="js-tab-insu-type-m w-25 btn btn-sm btn-white box-round-6"
-												type="button" data-t="all">
-												<div
-													class="d-flex justify-content-center align-items-center">
-													<span class="text-14">전체</span>
-												</div>
-											</button>
-											<button
-												class="js-tab-insu-type-m w-25 btn btn-sm btn-white box-round-6"
-												type="button" data-t="1">
-												<div
-													class="d-flex justify-content-center align-items-center">
-													<img
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEyIDEzIj4KICAgIDxwYXRoIGZpbGw9IiM2NjYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwLjE4MyA4LjM5MmMtLjc0NCAxLjYzLTIuMTAyIDIuODc1LTQuMDEzIDMuNTc3LS4xMTIuMDQxLS4yMzQuMDQxLS4zNDUgMC0xLjkwNy0uNzAzLTMuMjY0LTEuOTQ3LTQuMDA4LTMuNTc4LS4yNzgtLjYxLS40NzctMS4zNjItLjYxLTIuMjI1LS4xODEtMS4xNjQtLjIyNy0yLjM3NS0uMi0zLjQxbC4wMDctLjE5MmMuMDEzLS4yNjcuMjMzLS40NzYuNS0uNDc2IDEuMTYxIDAgMi4yMDgtLjE5NCAzLjEyMi0uNTE2LjMxNy0uMTExLjU5NC0uMjMuODI4LS4zNDkuMTM2LS4wNjguMjI1LS4xMTkuMjYzLS4xNDQuMTY1LS4xMDUuMzc1LS4xMDUuNTQgMCAuMDM5LjAyNS4xMjguMDc2LjI2NC4xNDQuMjM1LjExOC41MTMuMjM3LjgzLjM1LjkxNi4zMjEgMS45NjQuNTE1IDMuMTI2LjUxNS4yNjYgMCAuNDg2LjIxLjQ5OS40NzZsLjAwNy4xOTFjLjAyNyAxLjAzNi0uMDE5IDIuMjQ3LS4yIDMuNDEtLjEzMy44NjQtLjMzMiAxLjYxNS0uNjEgMi4yMjd6bS03Ljk4OS0yLjM4Yy4xMjEuNzgxLjI5OCAxLjQ0OS41MzIgMS45NjUuNjEgMS4zMzYgMS43MDYgMi4zNjggMy4yNzIgMi45ODggMS41Ny0uNjIgMi42NjUtMS42NSAzLjI3NS0yLjk4OC4yMzUtLjUxNi40MTItMS4xODQuNTMzLTEuOTY1LjE1My0uOTg2LjIwMy0yLjAyMi4xOTMtMi45MzUtMS4wODgtLjA0Ny0yLjA4Mi0uMjUtMi45Ny0uNTYxLS40MzMtLjE1My0uNzgtLjMwNy0xLjAzMS0uNDQtLjI1Mi4xMzMtLjU5Ny4yODctMS4wMy40NC0uODg2LjMxMS0xLjg4LjUxNC0yLjk2Ny41NjEtLjAxLjkxMy4wNCAxLjk1LjE5MyAyLjkzNXoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgogICAgPHBhdGggZmlsbD0iI0NCQ0JDQiIgZD0iTTYuNTMgNi4wMmgxLjQ2NWMuNjczIDAgLjY3MyAxLjAxIDAgMS4wMUg2LjUzdjEuNDY1YzAgLjI3OS0uMjI3LjUwNS0uNTA1LjUwNS0uMjggMC0uNTA1LS4yMjYtLjUwNS0uNTA1VjcuMDNINC4wMDVjLS42NzMgMC0uNjczLTEuMDEgMC0xLjAxSDUuNTJWNC41MDVjMC0uMjc5LjIyNi0uNTA1LjUwNS0uNTA1LjI3OCAwIC41MDUuMjI2LjUwNS41MDVWNi4wMnoiLz4KPC9zdmc+Cg=="><span
-														class="text-14 ml-1">일반자차</span>
-												</div>
-											</button>
-											<button
-												class="js-tab-insu-type-m w-25 btn btn-sm btn-white box-round-6"
-												type="button" data-t="2">
-												<div
-													class="d-flex justify-content-center align-items-center">
-													<img
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEyIDEzIj4KICAgIDxwYXRoIGZpbGw9IiM0OTQ5NDkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwLjE4MyA4LjM5MmMtLjc0NCAxLjYzLTIuMTAyIDIuODc1LTQuMDEzIDMuNTc3LS4xMTIuMDQxLS4yMzQuMDQxLS4zNDUgMC0xLjkwNy0uNzAzLTMuMjY0LTEuOTQ3LTQuMDA4LTMuNTc4LS4yNzgtLjYxLS40NzctMS4zNjItLjYxLTIuMjI1LS4xODEtMS4xNjQtLjIyNy0yLjM3NS0uMi0zLjQxbC4wMDctLjE5MmMuMDEzLS4yNjcuMjMzLS40NzYuNS0uNDc2IDEuMTYxIDAgMi4yMDgtLjE5NCAzLjEyMi0uNTE2LjMxNy0uMTExLjU5NC0uMjMuODI4LS4zNDkuMTM2LS4wNjguMjI1LS4xMTkuMjYzLS4xNDQuMTY1LS4xMDUuMzc1LS4xMDUuNTQgMCAuMDM5LjAyNS4xMjguMDc2LjI2NC4xNDQuMjM1LjExOC41MTMuMjM3LjgzLjM1LjkxNi4zMjEgMS45NjQuNTE1IDMuMTI2LjUxNS4yNjYgMCAuNDg2LjIxLjQ5OS40NzZsLjAwNy4xOTFjLjAyNyAxLjAzNi0uMDE5IDIuMjQ3LS4yIDMuNDEtLjEzMy44NjQtLjMzMiAxLjYxNS0uNjEgMi4yMjd6bS03Ljk4OS0yLjM4Yy4xMjEuNzgxLjI5OCAxLjQ0OS41MzIgMS45NjUuNjEgMS4zMzYgMS43MDYgMi4zNjggMy4yNzIgMi45ODggMS41Ny0uNjIgMi42NjUtMS42NSAzLjI3NS0yLjk4OC4yMzUtLjUxNi40MTItMS4xODQuNTMzLTEuOTY1LjE1My0uOTg2LjIwMy0yLjAyMi4xOTMtMi45MzUtMS4wODgtLjA0Ny0yLjA4Mi0uMjUtMi45Ny0uNTYxLS40MzMtLjE1My0uNzgtLjMwNy0xLjAzMS0uNDQtLjI1Mi4xMzMtLjU5Ny4yODctMS4wMy40NC0uODg2LjMxMS0xLjg4LjUxNC0yLjk2Ny41NjEtLjAxLjkxMy4wNCAxLjk1LjE5MyAyLjkzNXoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgogICAgPHBhdGggZmlsbD0iI0ZGQ0QxQiIgZD0iTTYuNTMgNi4wMmgxLjQ2NWMuNjczIDAgLjY3MyAxLjAxIDAgMS4wMUg2LjUzdjEuNDY1YzAgLjI3OS0uMjI3LjUwNS0uNTA1LjUwNS0uMjggMC0uNTA1LS4yMjYtLjUwNS0uNTA1VjcuMDNINC4wMDVjLS42NzMgMC0uNjczLTEuMDEgMC0xLjAxSDUuNTJWNC41MDVjMC0uMjc5LjIyNi0uNTA1LjUwNS0uNTA1LjI3OCAwIC41MDUuMjI2LjUwNS41MDVWNi4wMnoiLz4KPC9zdmc+Cg=="><span
-														class="text-14 ml-1">완전자차</span>
-												</div>
-											</button>
-											<button
-												class="js-tab-insu-type-m w-25 btn btn-sm btn-white box-round-6"
-												type="button" data-t="3">
-												<div
-													class="d-flex justify-content-center align-items-center">
-													<img
-														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEyIDEzIj4KICAgIDxwYXRoIGZpbGw9IiMwRDZGRkMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwLjE4MyA4LjM5MmMtLjc0NCAxLjYzLTIuMTAyIDIuODc1LTQuMDEzIDMuNTc3LS4xMTIuMDQxLS4yMzQuMDQxLS4zNDUgMC0xLjkwNy0uNzAzLTMuMjY0LTEuOTQ3LTQuMDA4LTMuNTc4LS4yNzgtLjYxLS40NzctMS4zNjItLjYxLTIuMjI1LS4xODEtMS4xNjQtLjIyNy0yLjM3NS0uMi0zLjQxbC4wMDctLjE5MmMuMDEzLS4yNjcuMjMzLS40NzYuNS0uNDc2IDEuMTYxIDAgMi4yMDgtLjE5NCAzLjEyMi0uNTE2LjMxNy0uMTExLjU5NC0uMjMuODI4LS4zNDkuMTM2LS4wNjguMjI1LS4xMTkuMjYzLS4xNDQuMTY1LS4xMDUuMzc1LS4xMDUuNTQgMCAuMDM5LjAyNS4xMjguMDc2LjI2NC4xNDQuMjM1LjExOC41MTMuMjM3LjgzLjM1LjkxNi4zMjEgMS45NjQuNTE1IDMuMTI2LjUxNS4yNjYgMCAuNDg2LjIxLjQ5OS40NzZsLjAwNy4xOTFjLjAyNyAxLjAzNi0uMDE5IDIuMjQ3LS4yIDMuNDEtLjEzMy44NjQtLjMzMiAxLjYxNS0uNjEgMi4yMjd6bS03Ljk4OS0yLjM4Yy4xMjEuNzgxLjI5OCAxLjQ0OS41MzIgMS45NjUuNjEgMS4zMzYgMS43MDYgMi4zNjggMy4yNzIgMi45ODggMS41Ny0uNjIgMi42NjUtMS42NSAzLjI3NS0yLjk4OC4yMzUtLjUxNi40MTItMS4xODQuNTMzLTEuOTY1LjE1My0uOTg2LjIwMy0yLjAyMi4xOTMtMi45MzUtMS4wODgtLjA0Ny0yLjA4Mi0uMjUtMi45Ny0uNTYxLS40MzMtLjE1My0uNzgtLjMwNy0xLjAzMS0uNDQtLjI1Mi4xMzMtLjU5Ny4yODctMS4wMy40NC0uODg2LjMxMS0xLjg4LjUxNC0yLjk2Ny41NjEtLjAxLjkxMy4wNCAxLjk1LjE5MyAyLjkzNXoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgogICAgPHBhdGggZmlsbD0iIzk0QzBGRSIgZD0iTTYuNTMgNi4wMmgxLjQ2NWMuNjczIDAgLjY3MyAxLjAxIDAgMS4wMUg2LjUzdjEuNDY1YzAgLjI3OS0uMjI3LjUwNS0uNTA1LjUwNS0uMjggMC0uNTA1LS4yMjYtLjUwNS0uNTA1VjcuMDNINC4wMDVjLS42NzMgMC0uNjczLTEuMDEgMC0xLjAxSDUuNTJWNC41MDVjMC0uMjc5LjIyNi0uNTA1LjUwNS0uNTA1LjI3OCAwIC41MDUuMjI2LjUwNS41MDVWNi4wMnoiLz4KPC9zdmc+Cg=="><span
-														class="text-14 ml-1">슈퍼자차</span>
-												</div>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="dc-none" id="js_container_search_list_top_bar"
-							style="display: none;">
-							<div class="bg-dark text-white py-1 px-2 dc-lg-none">
-								<div class="container dc-flex justify-content-between">
-									<span id="js_txt_search_list_top_bar_car_name"></span><span
-										id="js_txt_search_list_top_bar_price_range"></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 					<!--본문 시작-->
 					<div class="container-car-list container pb-lg-4">
 						<div class="row">
@@ -1241,46 +1030,28 @@
 									</div>
 									
 <!-- 									차 카드표시  -->
-									<h3>차 리스트2</h3>
-									<!-- 차리스트 코드 위치 확인용 -->
-									<div
-										class="bg-white mb-3 js-vsl-container-search-list-item click-no-effect"
-										id="vsl_item_car_list_short_1" data="1" c_name="벤츠 E300 W213"
-										min_p="165000" max_p="165000">
+									<c:forEach var="carList" items="${carList }">
+									<div class="bg-white mb-3 js-vsl-container-search-list-item click-no-effect"
+										id="vsl_item_car_list_short_1" >
 										<div class="row car-list no-gutters">
 											<div class="col-12 col-lg-5">
 												<div class="pt-3 pb-2 px-1 p-lg-3">
-<!-- 													<div class="row no-gutters mb-2"> -->
-														<div class="col-6 col-lg-12 pb-lg-3">
-															<img
-																class="js-vsl-img-car vsl-img-car img-fluid px-2 p-lg-3 mb-2 lazy"
-																src="https://d1masd123hbmlx.cloudfront.net/202111221430568_88_CARMST/202111221430568_88_CARMST_565.png"
-																data-original="https://d1masd123hbmlx.cloudfront.net/202111221430568_88_CARMST/202111221430568_88_CARMST_565.png"
-																style="">
-															
+														<div class="col-6 col-lg-12 pb-lg-3">			
+															<img class="js-vsl-img-car vsl-img-car img-fluid px-2 p-lg-3 mb-2 lazy" src="resources/images/${carList.car_model }.png" >
 														</div>
-														db에서 이미지 불러와야함.
-<!-- 														차 밑에  정보출력장소 -->
-														
-<!-- 													</div> -->
 													<div class="js-group-include-info row no-gutters">
 														<div class="col-12 px-3 px-lg-0 text-12">
-															<div
-																class="d-flex justify-content-center align-items-center flex-wrap">
-																
+															<div class="d-flex justify-content-center align-items-center flex-wrap">
 																<div class="js-container-car-info-icon pr-4">
 																	<div class="d-flex align-items-center">
-																		<img
-																			src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE3IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM3ODhBQUMiIGQ9Ik0xMi41IDEzLjA2MXYtMS40OTVjMC0xLjg1MS0xLjE2NC0zLjQyNC0yLjc2Ni0zLjk2Ny43Ny0uNDUyIDEuMjkzLTEuMzEzIDEuMjkzLTIuMjk5IDAtMS40NTEtMS4xMzQtMi42MzQtMi41MjctMi42MzQtMS4zOTMgMC0yLjUyNyAxLjE4My0yLjUyNyAyLjYzNCAwIC45ODYuNTIzIDEuODQ3IDEuMjkzIDIuMjk5QzUuNjYyIDguMTQyIDQuNSA5LjcxNSA0LjUgMTEuNTY2djEuNDk1YzAgLjE1LjExNi4yNzIuMjYuMjcyaDcuNDg0Yy4xNC0uMDAyLjI1Ni0uMTIyLjI1Ni0uMjcyeiIvPgo8L3N2Zz4K"><span
-																			class="js-car-info-txt-passenger ml-1">${carList.car_seater }</span>
+																		<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE3IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM3ODhBQUMiIGQ9Ik0xMi41IDEzLjA2MXYtMS40OTVjMC0xLjg1MS0xLjE2NC0zLjQyNC0yLjc2Ni0zLjk2Ny43Ny0uNDUyIDEuMjkzLTEuMzEzIDEuMjkzLTIuMjk5IDAtMS40NTEtMS4xMzQtMi42MzQtMi41MjctMi42MzQtMS4zOTMgMC0yLjUyNyAxLjE4My0yLjUyNyAyLjYzNCAwIC45ODYuNTIzIDEuODQ3IDEuMjkzIDIuMjk5QzUuNjYyIDguMTQyIDQuNSA5LjcxNSA0LjUgMTEuNTY2djEuNDk1YzAgLjE1LjExNi4yNzIuMjYuMjcyaDcuNDg0Yy4xNC0uMDAyLjI1Ni0uMTIyLjI1Ni0uMjcyeiIvPgo8L3N2Zz4K">
+																		<span class="js-car-info-txt-passenger ml-1">${carList.car_seater }</span>
 																	</div>
 																</div>
-																
-															
+ 
 																<div class="js-container-car-info-icon pr-4">
 																	<div class="d-flex align-items-center">
-																		<img
-																			src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGZpbGw9IiM4NTkyQUIiIGQ9Ik0zIDEyaDEwdjJIM3pNOSA1aDJsLTEgNEg4bDEtNHpNOCA5aDJsMSAzSDUuNUw4IDl6Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMCIgY3k9IjQiIHI9IjIiIGZpbGw9IiM4NTkyQUIiLz4KPC9zdmc+Cg=="><span
+																		<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGZpbGw9IiM4NTkyQUIiIGQ9Ik0zIDEyaDEwdjJIM3pNOSA1aDJsLTEgNEg4bDEtNHpNOCA5aDJsMSAzSDUuNUw4IDl6Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMCIgY3k9IjQiIHI9IjIiIGZpbGw9IiM4NTkyQUIiLz4KPC9zdmc+Cg=="><span
 																			class="js-car-info-txt-transmission ml-1">오토</span>
 																	</div>
 																</div>
@@ -1289,38 +1060,28 @@
 													</div>
 												</div>
 												
-											</div>
-											
+											</div>							
 <!-- 										차 카드 오른쪽 -->
-											
-											<div class="js-vsl-container-car-company-list car-list-item-wrapper col-12 col-lg-7">
-												
+											<div class="js-vsl-container-car-company-list car-list-item-wrapper col-12 col-lg-7">				
 												<div class="mb-3">
-
-													<div class="dc-flex align-items-end mt-1"></div>
-													
-													
+													<div class="dc-flex align-items-end mt-1"></div>		
 												</div>
 												<div class="col-6 col-lg-12 d-flex flex-column justify-content-center">
-															<div class="pt-lg-3 border-lg-top">
-																<div class="js-vsl-badge-car-type">
-																	<div
-																		class="badge-car-type px-2 py-1 dc-flex align-items-center">
-																		<img
-																			src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS43NTQ0IDQuMDA5NzlMMTIuODIwNCA2Ljg0NzQyQzEzLjI0NyA2LjkwMzk4IDEzLjk5NzMgNy40MTcxNSAxNCA4LjM4ODMyVjExLjE3NDlDMTQgMTEuNjMyOSAxMy42NDAyIDEyLjAwMjYgMTMuMTk3NSAxMi4wMDI2SDEyLjk1OTVWMTIuNDgwOEMxMi45NTk1IDEzLjkwMyAxMS4wMDgxIDEzLjg4NjUgMTEuMDAyOCAxMi40ODA4VjEyLjAwMjZIMy45ODc4N1YxMi40ODA4QzMuOTg3ODcgMTMuODg2NSAyLjAzNjUzIDEzLjkwMyAyLjAzOTIxIDEyLjQ4MDhWMTIuMDAyNkgxLjgwMjQ4QzEuMzU5NzggMTIuMDAyNiAxIDExLjYzMTUgMSAxMS4xNzQ5VjguMzg4MzJDMC45OTg2NzEgNy40MTcxNSAxLjc0NzY0IDYuOTAzOTggMi4xNzAyNyA2Ljg0NzQyTDMuMjM2MjIgNC4wMDk3OUMzLjQzOTUxIDMuNDY2MjcgMy44NzU1MyAzLjAwNDE0IDQuNjk1MzcgM0gxMC4yOTUzQzExLjExOTEgMy4wMDQxNCAxMS41NTUxIDMuNDY2MjcgMTEuNzU0NCA0LjAwOTc5Wk0xMC44MzI5IDYuODIxMjFDMTEuMTI3MiA2LjgyMTIxIDExLjMyNjUgNi41MTIyMSAxMS4yMTE0IDYuMjMyMTZMMTAuNjQ5NyA0Ljg2MjMyTDEwLjYzNzIgNC44MzY0MUMxMC40ODA1IDQuNTA5OTkgMTAuMzg4IDQuMzE3MjggMTAuMDQ2NSA0LjMxMTlINC45NDE0N0M0LjU4NTcxIDQuMzE3NDIgNC40MjI1NSA0LjY0NTc0IDQuMzM4MjggNC44NjIzMkwzLjc3NjU1IDYuMjMyMTZDMy42NjE1MyA2LjUxMjIxIDMuODYwODEgNi44MjEyMSA0LjE1NTA0IDYuODIxMjFIMTAuODMyOVpNMTIuNjM1NiA4LjgzMTQzQzEyLjYzNTYgOS4zMjc5NyAxMi4yMzg4IDkuNzMwNDkgMTEuNzQ5MiA5LjczMDQ5QzExLjI1OTcgOS43MzA0OSAxMC44NjI5IDkuMzI3OTcgMTAuODYyOSA4LjgzMTQzQzEwLjg2MjkgOC4zMzQ5IDExLjI1OTcgNy45MzIzNyAxMS43NDkyIDcuOTMyMzdDMTIuMjM4OCA3LjkzMjM3IDEyLjYzNTYgOC4zMzQ5IDEyLjYzNTYgOC44MzE0M1pNMy4xNzM1OSA5LjczMDQ5QzMuNjYzMTIgOS43MzA0OSA0LjA1OTk1IDkuMzI3OTcgNC4wNTk5NSA4LjgzMTQzQzQuMDU5OTUgOC4zMzQ5IDMuNjYzMTIgNy45MzIzNyAzLjE3MzU5IDcuOTMyMzdDMi42ODQwNyA3LjkzMjM3IDIuMjg3MjMgOC4zMzQ5IDIuMjg3MjMgOC44MzE0M0MyLjI4NzIzIDkuMzI3OTcgMi42ODQwNyA5LjczMDQ5IDMuMTczNTkgOS43MzA0OVoiIGZpbGw9IiM4NTkyQUIiLz4KPC9zdmc+Cg=="><span
-																			class="ml-1">${carList.car_manufacturer }</span>
+													<div class="pt-lg-3 border-lg-top">
+														<div class="js-vsl-badge-car-type">
+															<div class="badge-car-type px-2 py-1 dc-flex align-items-center">
+																<img
+																	src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS43NTQ0IDQuMDA5NzlMMTIuODIwNCA2Ljg0NzQyQzEzLjI0NyA2LjkwMzk4IDEzLjk5NzMgNy40MTcxNSAxNCA4LjM4ODMyVjExLjE3NDlDMTQgMTEuNjMyOSAxMy42NDAyIDEyLjAwMjYgMTMuMTk3NSAxMi4wMDI2SDEyLjk1OTVWMTIuNDgwOEMxMi45NTk1IDEzLjkwMyAxMS4wMDgxIDEzLjg4NjUgMTEuMDAyOCAxMi40ODA4VjEyLjAwMjZIMy45ODc4N1YxMi40ODA4QzMuOTg3ODcgMTMuODg2NSAyLjAzNjUzIDEzLjkwMyAyLjAzOTIxIDEyLjQ4MDhWMTIuMDAyNkgxLjgwMjQ4QzEuMzU5NzggMTIuMDAyNiAxIDExLjYzMTUgMSAxMS4xNzQ5VjguMzg4MzJDMC45OTg2NzEgNy40MTcxNSAxLjc0NzY0IDYuOTAzOTggMi4xNzAyNyA2Ljg0NzQyTDMuMjM2MjIgNC4wMDk3OUMzLjQzOTUxIDMuNDY2MjcgMy44NzU1MyAzLjAwNDE0IDQuNjk1MzcgM0gxMC4yOTUzQzExLjExOTEgMy4wMDQxNCAxMS41NTUxIDMuNDY2MjcgMTEuNzU0NCA0LjAwOTc5Wk0xMC44MzI5IDYuODIxMjFDMTEuMTI3MiA2LjgyMTIxIDExLjMyNjUgNi41MTIyMSAxMS4yMTE0IDYuMjMyMTZMMTAuNjQ5NyA0Ljg2MjMyTDEwLjYzNzIgNC44MzY0MUMxMC40ODA1IDQuNTA5OTkgMTAuMzg4IDQuMzE3MjggMTAuMDQ2NSA0LjMxMTlINC45NDE0N0M0LjU4NTcxIDQuMzE3NDIgNC40MjI1NSA0LjY0NTc0IDQuMzM4MjggNC44NjIzMkwzLjc3NjU1IDYuMjMyMTZDMy42NjE1MyA2LjUxMjIxIDMuODYwODEgNi44MjEyMSA0LjE1NTA0IDYuODIxMjFIMTAuODMyOVpNMTIuNjM1NiA4LjgzMTQzQzEyLjYzNTYgOS4zMjc5NyAxMi4yMzg4IDkuNzMwNDkgMTEuNzQ5MiA5LjczMDQ5QzExLjI1OTcgOS43MzA0OSAxMC44NjI5IDkuMzI3OTcgMTAuODYyOSA4LjgzMTQzQzEwLjg2MjkgOC4zMzQ5IDExLjI1OTcgNy45MzIzNyAxMS43NDkyIDcuOTMyMzdDMTIuMjM4OCA3LjkzMjM3IDEyLjYzNTYgOC4zMzQ5IDEyLjYzNTYgOC44MzE0M1pNMy4xNzM1OSA5LjczMDQ5QzMuNjYzMTIgOS43MzA0OSA0LjA1OTk1IDkuMzI3OTcgNC4wNTk5NSA4LjgzMTQzQzQuMDU5OTUgOC4zMzQ5IDMuNjYzMTIgNy45MzIzNyAzLjE3MzU5IDcuOTMyMzdDMi42ODQwNyA3LjkzMjM3IDIuMjg3MjMgOC4zMzQ5IDIuMjg3MjMgOC44MzE0M0MyLjI4NzIzIDkuMzI3OTcgMi42ODQwNyA5LjczMDQ5IDMuMTczNTkgOS43MzA0OVoiIGZpbGw9IiM4NTkyQUIiLz4KPC9zdmc+Cg==">
+																	<span class="ml-1">${carList.car_manufacturer }</span>
 <!-- 																			차 제조사 -->
-																	</div>
-																</div>
-																<div
-																	class="js-vsl-txt-car-model text-20 mb-1 color-grey-1">${carList.car_model }</div>
-																<div class="js-vsl-txt-car-desc text-12 color-grey-5">벤츠
-																	E클래스 10세대</div>
-																<div
-																	class="js-vsl-txt-car-price-range text-16 text-lg-12 mb-0 mt-2 color-grey-2 font-weight-medium">2시간 : ${carList.car_price }원</div>
-
 															</div>
 														</div>
+														<div class="js-vsl-txt-car-model text-20 mb-1 color-grey-1">${carList.car_model }</div>
+														<div class="js-vsl-txt-car-desc text-12 color-grey-5">벤츠 E클래스 10세대</div>
+														<div class="js-vsl-txt-car-price-range text-16 text-lg-12 mb-0 mt-2 color-grey-2 font-weight-medium">2시간 : ${carList.car_price }원</div>
+
+													</div>
+												</div>
 												
 												<div class="js-vsl-container-car-info-list">
 													<div class="" id="vsl_container_car_info_0">
@@ -1333,8 +1094,8 @@
 																<div class="click-effect-press">
 																	<a class="js-a-href js-vsl-btn-car-list-price"
 																		data-is="7513"
-																		href="container-view-car-detail.html?mt=1&amp;rt=1&amp;srsd=2023-04-06 10:00:00&amp;sred=2023-04-07 10:00:00&amp;ssat=2&amp;ssac=I_2&amp;sls=20&amp;isOverSeas=false&amp;msac=I_2&amp;pet=0&amp;fishing=0&amp;army=0&amp;foreigner=0&amp;isul=0&amp;fda=-1&amp;rcs=59604&amp;sis=7513&amp;eat=여수엑스포역&amp;epos=2&amp;einpos=1&amp;v=230329_1"><div
-																			class="js-vsl-price-top-info dc-flex justify-content-between align-items-center">
+																		href="container-view-car-detail.html?mt=1&amp;rt=1&amp;srsd=2023-04-06 10:00:00&amp;sred=2023-04-07 10:00:00&amp;ssat=2&amp;ssac=I_2&amp;sls=20&amp;isOverSeas=false&amp;msac=I_2&amp;pet=0&amp;fishing=0&amp;army=0&amp;foreigner=0&amp;isul=0&amp;fda=-1&amp;rcs=59604&amp;sis=7513&amp;eat=여수엑스포역&amp;epos=2&amp;einpos=1&amp;v=230329_1">
+																		<div class="js-vsl-price-top-info dc-flex justify-content-between align-items-center">
 																			<div class="js-vsl-price-info-only-top">
 																				<img class="js-vsl-img-car-year-icon dc-none mr-1"
 																					src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjUwNTk0IDExLjk5OTlIMS42OTk1MUMwLjc2MDg5OCAxMS45OTk5IDAgMTEuMjY3MyAwIDEwLjM2MzVWNi41NDU0QzAgNS42NDE2NyAwLjc2MDg5OCA0LjkwOTA1IDEuNjk5NTEgNC45MDkwNUgyLjc0NzYyTDQuODY0MTEgMC4zMjM5MjJDNC45NTUwNCAwLjEyNjk0NCA1LjE1NzkyIDAgNS4zODE3OSAwQzYuNjMzMjggMCA3LjY0NzgxIDAuOTc2ODI1IDcuNjQ3ODEgMi4xODE4VjMuODE4MTVMMTAuMjgxMyAzLjgxODE4QzEwLjc3OTkgMy44MTI3NSAxMS4yNTU4IDQuMDE4NDEgMTEuNTgzIDQuMzgwNjlDMTEuOTEwMiA0Ljc0Mjk3IDEyLjA1NTYgNS4yMjUzMyAxMS45ODA3IDUuNzAwOEwxMS4xOTkxIDEwLjYwOUMxMS4wNzIgMTEuNDE1NyAxMC4zNDcgMTIuMDA5MSA5LjUwNTk0IDExLjk5OTlaTTMuNjgyMzkgMTAuOTA5NEw5LjUxMjQ2IDEwLjkwOTRDOS43OTQ5NCAxMC45MTI1IDEwLjAzNjYgMTAuNzE0NyAxMC4wNzkxIDEwLjQ0NDlMMTAuODYwOCA1LjUzNjYzQzEwLjg4NTcgNS4zNzg0MSAxMC44MzcyIDUuMjE3NjIgMTAuNzI4MSA1LjA5Njg2QzEwLjYxOTEgNC45NzYxIDEwLjQ2MDQgNC45MDc1NSAxMC4yODc4IDQuOTA5NEg3LjA4MTQyQzYuNzY4NTUgNC45MDk0IDYuNTE0OTEgNC42NjUxOSA2LjUxNDkxIDQuMzYzOTVWMi4xODIxNUM2LjUxNDkxIDEuNjk1MyA2LjE4MzY4IDEuMjgyOTQgNS43MjYzNyAxLjE0MjU4TDMuNjgyMzkgNS41NzA2VjEwLjkwOTRaTTEuNjcxMjIgNkgyLjU0OTMxVjEwLjkwOUgxLjY3MTIyQzEuMzU4MzUgMTAuOTA5IDEuMTA0NzIgMTAuNjY0OCAxLjEwNDcyIDEwLjM2MzZWNi41NDU0NUMxLjEwNDcyIDYuMjQ0MjEgMS4zNTgzNSA2IDEuNjcxMjIgNloiIGZpbGw9IiMwRDZGRkMiLz4KPC9zdmc+Cg=="
@@ -1344,8 +1105,7 @@
 																			</div>
 																			
 																		</div>
-																		<div
-																			class="dc-flex justify-content-between align-items-center">
+																		<div class="dc-flex justify-content-between align-items-center">
 																			<div class="d-flex align-items-center">
 																				<img class="mr-1"
 																					src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcikiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjEwMSAxMC4wNjRjLS44MTggMS43NzktMi4zMTIgMy4xMzYtNC40MTQgMy45MDItLjEyMy4wNDUtLjI1Ny4wNDUtLjM4IDAtMi4wOTctLjc2Ny0zLjU5LTIuMTI0LTQuNDA5LTMuOTAzLS4zMDUtLjY2Ni0uNTI0LTEuNDg2LS42NzEtMi40MjgtLjE5OS0xLjI3LS4yNS0yLjU5LS4yMTktMy43MmwuMDA4LS4yMWMuMDE0LS4yOS4yNTUtLjUxOC41NDktLjUxOCAxLjI3OCAwIDIuNDMtLjIxMiAzLjQzNC0uNTYzLjM1LS4xMjIuNjU0LS4yNTEuOTEyLS4zOC4xNS0uMDc1LjI0Ny0uMTMuMjktLjE1OC4xOC0uMTE1LjQxMi0uMTE1LjU5MyAwIC4wNDIuMDI3LjE0LjA4My4yOS4xNTcuMjU5LjEzLjU2NC4yNi45MTMuMzgxIDEuMDA4LjM1MSAyLjE2LjU2MyAzLjQzOC41NjMuMjk0IDAgLjUzNS4yMjguNTUuNTE5bC4wMDcuMjA5Yy4wMyAxLjEzLS4wMiAyLjQ1LS4yMTkgMy43Mi0uMTQ3Ljk0Mi0uMzY2IDEuNzYyLS42NzIgMi40Mjl6TTcuOTkyIDUuNGMwLS4yNzYtLjIyNS0uNS0uNTA0LS41LS4yNzggMC0uNTA0LjIyNC0uNTA0LjV2Mi4wMDJINC45NjdjLS4yNzggMC0uNTA0LjIyNC0uNTA0LjVzLjIyNi41LjUwNC41aDIuMDE3VjEwLjRjMCAuMjc3LjIyNi41LjUwNC41LjI3OSAwIC41MDQtLjIyMy41MDQtLjVWOC40MDJoMi4wMTdjLjI3OCAwIC41MDQtLjIyNC41MDQtLjVzLS4yMjYtLjUtLjUwNC0uNUg3Ljk5MlY1LjR6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjEyLjQzOSIgeDI9IjIuMTkxIiB5MT0iMiIgeTI9IjIuMTU0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMwNkI2RTYiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEQ2RkZDIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KPC9zdmc+Cg=="><span
@@ -1368,6 +1128,8 @@
 										</div>
 										
 									</div>
+									</c:forEach>
+									
 								</div>
 
 							</div>
