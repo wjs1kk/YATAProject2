@@ -69,6 +69,6 @@ public class ReviewVO {
 	public String toString() {
 		return "ReviewVO [review_idx=" + review_idx + ", review_writer=" + review_writer + ", review_title="
 				+ review_title + ", review_content=" + review_content + ", review_regdate=" + review_regdate
-				+ ", review_updateDate=" + review_updateDate + ", review_viewcnt=" + review_viewcnt;
+				+ ", review_updateDate=" + review_updateDate + ", review_viewcnt=" + review_viewcnt + "]";
 	}
 }

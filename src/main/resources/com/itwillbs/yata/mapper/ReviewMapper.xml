@@ -12,12 +12,21 @@
 	</select>
 	<insert id="insertReview">
 		insert into review(
-			review_idx, review_writer, review_title, review_content,
-			review_regdate, review_updateDate, reivew_viewcnt
+			review_idx, 
+			review_writer,
+			review_title,
+			review_content,
+			review_regdate,
+			review_updateDate,
+			reivew_viewcnt
 			)
 			values(
-			#{review_idx}, #{review_writer},
-			#{review_title}, #{review_content},
-			now(), now(), 0)
+			#{review_idx},
+			#{review_writer},
+			#{review_title},
+			#{review_content},
+			now(),
+			now(),
+			0)
 	</insert>
   </mapper>
