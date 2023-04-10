@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ReservController {
+public class ReserveController {
 	@GetMapping("rent1")
 	public String rent1() {
 		return "rent/rent";
@@ -21,4 +21,11 @@ public class ReservController {
 	public String pay_success() {
 		return "pay/pay_success";
 	}
+	@GetMapping("zoneSelect")
+	public String zoneSelect() {
+		return "zoneSelect";
+	}
+	
+	
+	
 }

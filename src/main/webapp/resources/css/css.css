@@ -35181,3 +35181,7 @@ img.object-fit.contain {
 .naver .naver-pt-0 {
     padding-top: 0 !important
 }
+
+.js-btn-modal-close{
+	cursor: pointer;
+}
