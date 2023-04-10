@@ -1,10 +1,10 @@
 //모달 창을 열기 위한 함수
 function openModal() {
 	// 모달 내용을 입력하세요.
-//	var content = '<div style="width:500px; padding:px;">' +
-//		'<h3>카카오 지도 모달</h3>' +
-//		'<p>예약할 곳을 선택해주세요.</p>' +
-//		'</div>';
+	var content = '<div style="width:500px; padding:px;">' +
+		'<h3>카카오 지도 모달</h3>' +
+		'<p>예약할 곳을 선택해주세요.</p>' +
+		'</div>';
 
 	// 모달 창 생성
 	var modal = document.createElement('div');

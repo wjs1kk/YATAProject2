@@ -643,16 +643,16 @@
 												<div class="mt-3">
 													<div class="text-16 text-left">
 														<span class="index-txt-review-highlighter">
-															<c:forEach begin="0" end="3" step="1">
-																${review}
-															</c:forEach>
+<%-- 															<c:forEach > --%>
+<%-- 																${review} --%>
+<%-- 															</c:forEach> --%>
 														</span>
 													</div>
 												</div>
 												<div class="index-box-review-bottom-box text-left">
-<!-- 													<div class="index-txt-review-bottom-box-top text-14">제주에서 -->
-<!-- 														1일 렌트하신</div> -->
-													<div class="text-16-b text-white">${review.writer }</div>
+													<div class="index-txt-review-bottom-box-top text-14">제주에서
+														1일 렌트하신</div>
+													<div class="text-16-b text-white"></div>
 												</div>
 											</div>
 										</div>

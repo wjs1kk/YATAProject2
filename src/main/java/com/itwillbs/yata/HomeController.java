@@ -1,16 +1,25 @@
 package com.itwillbs.yata;
 
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.yata.service.*;
+import com.itwillbs.yata.vo.*;
 
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	@Autowired
+	private ReviewService service;
+	
+	@GetMapping("/")
+	public String home(ReviewVO review) {
+		service.insertReview(review);
+		
 		return "index";
 	}
 	@GetMapping("event")
