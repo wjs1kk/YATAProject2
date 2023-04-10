@@ -63,27 +63,27 @@ public class MemberController {
 	}
 	
 	// 은산 0409
-	@GetMapping("/mypage")
-	public String mypage(MemberVO member, HttpSession session) {
-		String member_name = (String)session.getAttribute("member_name");
-		String member_passwd = (String)session.getAttribute("member_passwd");
-		String member_email = (String)session.getAttribute("sId");
-		String member_point = (String)session.getAttribute("member_point");
-		String member_phone = (String)session.getAttribute("member_phone");
-		String member_gender = (String)session.getAttribute("member_gender");
-		String member_date = (String)session.getAttribute("member_date");
-		
-		
-		System.out.println("member_name:" + member_name);
-		System.out.println("member_passwd:" + member_passwd);
-		System.out.println("member_email:" + member_email);
-		System.out.println("member_point:" + member_point);
-		System.out.println("member_phone:" + member_phone);
-		System.out.println("member_gender:" + member_gender);
-		System.out.println("member_date:" + member_date);
-		System.out.println(member);
-		return "member/member_mypage";
-	}
+//	@GetMapping("/mypage")
+//	public String mypage(MemberVO member, HttpSession session) {
+//		String member_name = (String)session.getAttribute("member_name");
+//		String member_passwd = (String)session.getAttribute("member_passwd");
+//		String member_email = (String)session.getAttribute("sId");
+//		String member_point = (String)session.getAttribute("member_point");
+//		String member_phone = (String)session.getAttribute("member_phone");
+//		String member_gender = (String)session.getAttribute("member_gender");
+//		String member_date = (String)session.getAttribute("member_date");
+//		
+//		
+//		System.out.println("member_name:" + member_name);
+//		System.out.println("member_passwd:" + member_passwd);
+//		System.out.println("member_email:" + member_email);
+//		System.out.println("member_point:" + member_point);
+//		System.out.println("member_phone:" + member_phone);
+//		System.out.println("member_gender:" + member_gender);
+//		System.out.println("member_date:" + member_date);
+//		System.out.println(member);
+//		return "member/member_mypage";
+//	}
 	
 	@GetMapping("history")
 	public String history() {
@@ -111,6 +111,13 @@ public class MemberController {
 		System.out.println(session.getAttribute("member_phone"));
 
 		return "member/member_modify";
+	}
+	
+	@GetMapping("mypage")
+	public String mypage(MemberVO member, HttpSession session) {
+		
+		
+		return "member/mypage";
 	}
 	
 }
