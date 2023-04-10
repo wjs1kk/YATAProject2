@@ -169,36 +169,33 @@
 													<div class="d-flex justify-content-center">
 														<input type="email" id="email_id"
 															class="justify-content-center w-50 form-control"
-															value="${sId }" readonly="readonly">
+															value="${sId}" readonly="readonly">
 													</div>
 													<label for="inputPassword" class="visually-hidden ">Password</label>
 													<div class="d-flex justify-content-center">
-														<input type="password" id="inputPassword"
+														<input type="text" id="inputPassword"
 															class="w-50 form-control" placeholder="비밀번호" value="${member_passwd }" required>
 													</div>
 													<label for="inputPassword2" class="visually-hidden" >Confirm
 														Password</label>
 													<div class="d-flex justify-content-center">
-														<input type="password" id="inputPassword2"
+														<input type="text" id="inputPassword2"
 															class="w-50 form-control" placeholder="비밀번호 확인" value="${member_passwd }" required>
 													</div>
 													<label for="name" class="visually-hidden">Name</label>
 													<div class="d-flex justify-content-center">
 														<input type="text" id="name" class="w-50 form-control"
-															placeholder="이름" value="${member_name }" required>
+															placeholder="이름" value="${member_name}" readonly="readonly" required>
 													</div>
 													<label for="date" class="visually-hidden">YYYY/MM/DD</label>
 													<div class="d-flex justify-content-center">
-														<input class="w-50 form-control" type="date"
-															name='userBirthday' value="" />
+														<input class="w-50 form-control" type="text"
+															name='userBirthday' value="${member_date}" />
 													</div>
 													<label for="gender" class="visually-hidden">Gender</label>
 													<div class="d-flex justify-content-center">
-														<select class="form-control w-50">
-															<option selected>성별</option>
-															<option value="1">남자</option>
-															<option value="2">여자</option>
-														</select>
+														<input type="text" id="gender" class="w-50 form-control"
+															placeholder="성별" value="${member_gender}" readonly="readonly" required>
 													</div>
 													<label for="phone" class="visually-hidden">Phone</label>
 													<div class="d-flex justify-content-center">

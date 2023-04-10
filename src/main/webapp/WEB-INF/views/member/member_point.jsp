@@ -150,8 +150,9 @@
 								<div class="container">
 									<h3 class="mt-0 pt-3">총 포인트</h3>
 									<div class="text-center">
-										<h4 class="color-grey-1 text-20 text-center underline-bg dc-inline-block"
-											id="vpd_total_point">${member_point} P</h4>
+										<h4
+											class="color-grey-1 text-20 text-center underline-bg dc-inline-block"
+											id="vpd_total_point">${member_point}P</h4>
 										<p class="color-grey-5 text-10">
 											포인트는 적립일로부터 1년간 유효하며,<br>유효기간 경과 시, 자동으로 소멸됨을 알려드립니다.
 										</p>
@@ -163,12 +164,12 @@
 									<h3>포인트 내역</h3>
 									<div class="text-center color-grey-4 space-2"
 										id="vpd_container_empty_point_list">
-										<span>포인트 내역이 없습니다.</span>
-									</div>									
+										<span>결제내역에서 select, 조건 point > 0일때</span>
+									</div>
 
 								</div>
 							</section>
-						</div>																															
+						</div>
 					</div>
 				</div>
 			</div>

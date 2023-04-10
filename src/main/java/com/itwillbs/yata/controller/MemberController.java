@@ -34,6 +34,7 @@ public class MemberController {
 		
 //		MemberVO member = memberService.checkUser(member_email, member_passwd);
 		member = memberService.checkUser(member.getMember_email(), member.getMember_passwd());
+		
 		if(member == null) {
 			model.addAttribute("msg","로그인 실패!");
 			return "fail_back";
@@ -44,6 +45,8 @@ public class MemberController {
 		session.setAttribute("member_point", member.getMember_point());
 		session.setAttribute("sId", member.getMember_email());
 		session.setAttribute("member_phone", member.getMember_phone());
+		session.setAttribute("member_date", member.getMember_date());
+		session.setAttribute("member_gender", member.getMember_gender());
 		
 		return "redirect:/";
 	}
@@ -67,6 +70,8 @@ public class MemberController {
 		String member_email = (String)session.getAttribute("sId");
 		String member_point = (String)session.getAttribute("member_point");
 		String member_phone = (String)session.getAttribute("member_phone");
+		String member_gender = (String)session.getAttribute("member_gender");
+		String member_date = (String)session.getAttribute("member_date");
 		
 		
 		System.out.println("member_name:" + member_name);
@@ -74,7 +79,9 @@ public class MemberController {
 		System.out.println("member_email:" + member_email);
 		System.out.println("member_point:" + member_point);
 		System.out.println("member_phone:" + member_phone);
-	
+		System.out.println("member_gender:" + member_gender);
+		System.out.println("member_date:" + member_date);
+		System.out.println(member);
 		return "member/member_mypage";
 	}
 	
