@@ -6,276 +6,328 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 
 <script type="text/javascript">
 	/* 지점선택창 누르면 #zoneSelect로 넘어가지면서 불투명도 0 ->1로 변경이 돼서 팝업창이 보임  */
 	function zoneSelect() {
 		location.href = "#zoneSelect";
 	}
-	
+
 	/* 닫기 누르면 앞페이지로 가면서 다시 팝업창이 보이지 않음 */
-	function zoneSelect_close(){
+	function zoneSelect_close() {
 		history.back();
 	}
-	
+
 	/* 카카오맵 API에서 마커에 클릭이벤트 등록후 index페이지에 request로 지점정보와 같이 포워딩할 예정 */
-	
 </script>
 
 <style type="text/css">
-	
+
 /* 	팝업창 초기에 불투명도 0 설정*/
-	.contents-modal{
+.contents-modal {
 	opacity: 0;
-	}
-	
+}
+
 /* 	 지역선택창 누르면 불투명도 0 ->1로 변경돼서 팝업창이 보임*/
-	.contents-modal:target{
-		top : 50px;
-		opacity:1;
-	}
-	
+.contents-modal:target {
+	top: 50px;
+	opacity: 1;
+}
 </style>
 
 </head>
 <body>
-
 	<main id="content" role="main">
 		<div class="main-contents">
 			<!-- 		nav -->
 			<jsp:include page="inc/top.jsp" />
-
 			<div class="pc-mobile-header-container index-page">
-			
-			
-			<!-- 지도 선택 팝업창 -->
-	<div class="contents-modal" id="zoneSelect">
-		<div class="modal fade pr-0 show" id="modal_select_area" tabindex="-1"
-			role="dialog" data-backdrop="true" data-keyboard="true"
-			data-pageview="1"
-			style="z-index: 1050; display: block; padding-right: 17px;"
-			aria-modal="true">
-			<div
-				class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable stretched-modal"
-				role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-					
-
-						<div class="modal-title-wrapper dc-flex align-items-center">
-							<h5 class="modal-title line-height-1 text-16 color-grey-3"
-								id="modal_common_popup_txt_title">국내 지역 선택</h5>
-							<div class="ml-2" id="js_modal_common_title_sub_button"
-								style="display: block;">
-								<div class="click-effect-press"
-									id="modal_header_overseas_toggle_button" style="display: flex;">
-									<img class="mr-1"
-										src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik00LjMyNyAyIDIgNC45MWg4TTcuNjczIDEwIDEwIDcuMDlIMiIgc3Ryb2tlPSIjOTk5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="><span
-										class="js-overseas-toggle js-overseas-toggle-domestic text-12 color-grey-5 dc-none"
-										data-isoverseas="0" style="display: none;">국내지역</span><span
-										class="js-overseas-toggle js-overseas-toggle-overseas text-12 color-grey-5"
-										data-isoverseas="1" style="display: block;">해외지역</span>
-								</div>
-							</div>
-						</div>
-						
-						
-						<!-- 닫기 버튼 -->
-						<button id = "modal_close"
-							class="js-btn-modal-close btn btn-xs btn-icon btn-soft-secondary right-auto"
-							type="button" data-dismiss="modal" aria-label="Close" onclick="zoneSelect_close()">
-							<svg aria-hidden="true" width="16" height="16"
-								viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-								<path fill="currentColor"
-									d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z"></path></svg>
-						</button>
-						
-					</div>
-					
-					<div class="container-address-search dc-none bg-color-bg"
-						id="js_container_view_search_address" style="display: none;">
+				<!-- 지도 선택 팝업창 -->
+				<div class="contents-modal" id="zoneSelect">
+					<div class="modal fade pr-0 show" id="modal_select_area"
+						tabindex="-1" role="dialog" data-backdrop="true"
+						data-keyboard="true" data-pageview="1"
+						style="z-index: 1050; display: block; padding-right: 17px;"
+						aria-modal="true">
 						<div
-							class="dc-none js-as-list-item as-list-item w-100 px-3 py-2 click-effect-press"
-							id="template_address_search">
-							<div class="dc-flex justify-content-between align-items-center">
-								<div class="dc-flex align-items-baseline">
-									<img
-										src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTVzNS01Ljk0NiA1LTguODEyQzEzIDMuMzIzIDEwLjc2MSAxIDggMVMzIDMuMzIzIDMgNi4xODhDMyA5LjA1NCA4IDE1IDggMTV6bTAtN2MxLjEwNSAwIDItLjg5NSAyLTJzLS44OTUtMi0yLTItMiAuODk1LTIgMiAuODk1IDIgMiAyeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=">
-									<div class="ml-2">
-										<div class="js-as-txt-title text-14 color-grey-3"></div>
-										<div class="js-as-txt-road-address text-12 color-grey-5 mt-1"></div>
-										<div class="js-as-container-old-address dc-none">
-											<div class="dc-flex align-items-center">
-												<div class="as-badge-old-address">지번</div>
-												<div class="js-as-txt-old-address text-12 color-grey-5 ml-1"></div>
+							class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable stretched-modal"
+							role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+
+
+									<div class="modal-title-wrapper dc-flex align-items-center">
+										<h5 class="modal-title line-height-1 text-16 color-grey-3"
+											id="modal_common_popup_txt_title">국내 지역 선택</h5>
+										<div class="ml-2" id="js_modal_common_title_sub_button"
+											style="display: block;">
+											<div class="click-effect-press"
+												id="modal_header_overseas_toggle_button"
+												style="display: flex;">
+												<img class="mr-1"
+													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik00LjMyNyAyIDIgNC45MWg4TTcuNjczIDEwIDEwIDcuMDlIMiIgc3Ryb2tlPSIjOTk5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="><span
+													class="js-overseas-toggle js-overseas-toggle-domestic text-12 color-grey-5 dc-none"
+													data-isoverseas="0" style="display: none;">국내지역</span><span
+													class="js-overseas-toggle js-overseas-toggle-overseas text-12 color-grey-5"
+													data-isoverseas="1" style="display: block;">해외지역</span>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="js-as-btn-delete-history click-effect-press dc-none">
-									<img
-										src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNDNEM0QzQiIGQ9Ik04IDE1YzMuODY2IDAgNy0zLjEzNCA3LTdzLTMuMTM0LTctNy03LTcgMy4xMzQtNyA3IDMuMTM0IDcgNyA3eiIvPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNy4yOTMgOGwtMi4xMjEgMi4xMjIuNzA3LjcwN0w4IDguNzA3bDIuMTIyIDIuMTIyLjcwNy0uNzA3TDguNzA3IDggMTAuODMgNS44OGwtLjcwNy0uNzA3TDggNy4yOTMgNS44OCA1LjE3MmwtLjcwNy43MDdMNy4yOTMgOHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K">
-								</div>
-							</div>
-						</div>
-						<div
-							class="dc-none js-as-popular-loc as-list-item w-100 p-3 click-effect-press"
-							id="template_as_popular_loc_list">
-							<div class="dc-flex text-14 color-grey-3">
-								<div class="js-aspol-txt-order font-weight-bold"></div>
-								<div class="js-aspol-txt-name ml-3"></div>
-							</div>
-						</div>
-					</div>
-					<div class="dc-none js-msa-tabs" style="display: block;">
-						<nav
-							class="common-nav-tabs nav nav-classic nav-borderless nav-fill bg-white">
-							<li class="nav-item text-center" style="width: 50%"><div
-									class="nav-link js-vsas-item-menu clickable active" data="0">국내</div></li>
-							<li class="nav-item text-center" style="width: 50%"><div
-									class="nav-link js-vsas-item-menu clickable" data="1">지도
-									검색</div></li>
-						</nav>
-					</div>
-					<div class="dc-none js-msa-overseas-tabs" style="display: none;">
-						<nav
-							class="common-nav-tabs nav nav-classic nav-borderless nav-fill bg-white">
-							<li class="nav-item text-center" style="width: 50%"><div
-									class="nav-link js-vsas-item-menu clickable" data="2">해외</div></li>
-							<li class="nav-item text-center" style="width: 50%"><div
-									class="nav-link js-vsas-item-menu clickable" data="3">지도
-									검색</div></li>
-						</nav>
-					</div>
-					<div class="modal-body" body-scroll-lock-ignore="">
-						<div class="container-as-contents is-exist-tab"
-							id="js_vsas_container_area">
-							<div class="" id="js_vsas_container_area_s_kor"
-								style="display: block;">
-								
-								
-								<div class="dc-flex"><!-- 지도 영역 -->
-									<div id="map" style="width:800px;height:700px; border-radius: 20px"></div>
-										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3ac7eaf0b889d2a25e8a1f59096c406a"></script>
-										<script>
-											var container = document.getElementById('map');
-											var options = {
-												center: new kakao.maps.LatLng(35.15849019679627, 129.06202404131136),
-												level: 3
-											};
-									
-											var map = new kakao.maps.Map(container, options);
-											
-											var positions = [
-											    {
-											        content: '<input type="text" id="place" value="전포지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
-											        latlng: new kakao.maps.LatLng(35.15849019679627, 129.06202404131136)
-											    },
-											    {
-											        content: '<input type="text" id="place" value="부전지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
-											        latlng: new kakao.maps.LatLng(35.15975905300518, 129.06186404315977)
-											    },
-											    {
-											        content: '<input type="text" id="place" value="사상지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
-											        latlng: new kakao.maps.LatLng(35.158690073109824, 129.06113477638084)
-											    },
-											    {
-											        content: '<input type="text" id="place" value="개금지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
-											        latlng: new kakao.maps.LatLng(35.15730753621485, 129.06294334538524)
-											    }
-											];
-					
-											for (var i = 0; i < positions.length; i ++) {
-											    // 마커를 생성합니다
-											    var marker = new kakao.maps.Marker({
-											        map: map, // 마커를 표시할 지도
-											        position: positions[i].latlng // 마커의 위치
-											    });
-											    // 마커에 표시할 인포윈도우를 생성합니다 
-											    var infowindow = new kakao.maps.InfoWindow({
-											        content: positions[i].content // 인포윈도우에 표시할 내용
-											    });
-											    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-											    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-											    (function(marker, infowindow) {
-											        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-											        kakao.maps.event.addListener(marker, 'mouseover', function() {
-											            infowindow.open(map, marker);
-											        });
-											        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-											        kakao.maps.event.addListener(marker, 'mouseout', function() {
-											            infowindow.close();
-											        });
-											        
-											        kakao.maps.event.addListener(marker, 'click', function() {
-											        	$(function() {
-															let place = $("#place").val();
-											           	 	location.href = "?place="+place;
-														})
-											        });
-											    })(marker, infowindow);
-											}
-											
-					
-											// 지도에 클릭 이벤트를 등록합니다
-											// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-											kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-											    
-											    // 클릭한 위도, 경도 정보를 가져옵니다 
-											    var latlng = mouseEvent.latLng;
-											    
-											    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-											    message += '경도는 ' + latlng.getLng() + ' 입니다';
-											    
-											    var resultDiv = document.getElementById('result'); 
-											    resultDiv.innerHTML = message;
-											    
-											});
-											
-										</script>
-									
-									<p id="result"></p> <%--위도 경도 확인용(지도에서 아무 위치 클릭하면 클릭한 위치의 위도와 경도가 나옴)  --%>
 
-								</div><!-- 지도 영역 끝 -->
-								
-							</div>
-							
-							<input type="button" value="전포지점">
-							
-							<div class="container-as-bottom-bar is-pc-modal"
-								id="js_csabb_container_bottom_info">
-								<div class="box-round-address-info px-3 pt-3"
-									id="js_csabb_card_bottom_info">
-									<div class="pb-3 click-effect-press"
- 										id="js_csabb_btn_address_search" style="display: block;">
+
+									<!-- 닫기 버튼 -->
+									<button id="modal_close"
+										class="js-btn-modal-close btn btn-xs btn-icon btn-soft-secondary right-auto"
+										type="button" data-dismiss="modal" aria-label="Close"
+										onclick="zoneSelect_close()">
+										<svg aria-hidden="true" width="16" height="16"
+											viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path fill="currentColor" d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z">
+										</path>
+										</svg>
+									</button>
+
+								</div>
+
+								<div class="container-address-search dc-none bg-color-bg"
+									id="js_container_view_search_address" style="display: none;">
+									<div
+										class="dc-none js-as-list-item as-list-item w-100 px-3 py-2 click-effect-press"
+										id="template_address_search">
 										<div
-											class="container-input-common-search in-bottom-bar box-round-gray">
-											<span class="icon mr-2 line-height-1"><img
-												src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMjE4IDExLjg0MUMzLjMzNiAxMS44NDEgMSA5LjQxNCAxIDYuNDIxIDEgMy40MjcgMy4zMzYgMSA2LjIxOCAxczUuMjE4IDIuNDI3IDUuMjE4IDUuNDJjMCAuOTc0LS4yNDcgMS44ODctLjY3OSAyLjY3Ni4wNjMuMDQuMTIyLjA5LjE3Ny4xNDZsMy43NzggMy45MjVjLjM4My4zOTguMzgzIDEuMDQzIDAgMS40NDFsLS4wODkuMDkyYy0uMzgzLjM5OC0xLjAwNC4zOTgtMS4zODcgMGwtMy43NzgtMy45MjVjLS4wMi0uMDItLjAzNy0uMDQtLjA1NC0uMDYtLjg4Mi43MDYtMS45ODcgMS4xMjYtMy4xODYgMS4xMjZ6bTAtMi4xNjhjMS43MyAwIDMuMTMxLTEuNDU2IDMuMTMxLTMuMjUyIDAtMS43OTctMS40MDItMy4yNTMtMy4xMy0zLjI1My0xLjczIDAtMy4xMzIgMS40NTYtMy4xMzIgMy4yNTMgMCAxLjc5NiAxLjQwMiAzLjI1MiAzLjEzMSAzLjI1MnoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"></span><span
-												class="span-txt text-16 color-grey-4"
-												id="js_csabb_txt_placeholder">국내 지역명, 역, 건물 이름으로 검색</span>
+											class="dc-flex justify-content-between align-items-center">
+											<div class="dc-flex align-items-baseline">
+												<img
+													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTVzNS01Ljk0NiA1LTguODEyQzEzIDMuMzIzIDEwLjc2MSAxIDggMVMzIDMuMzIzIDMgNi4xODhDMyA5LjA1NCA4IDE1IDggMTV6bTAtN2MxLjEwNSAwIDItLjg5NSAyLTJzLS44OTUtMi0yLTItMiAuODk1LTIgMiAuODk1IDIgMiAyeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=">
+												<div class="ml-2">
+													<div class="js-as-txt-title text-14 color-grey-3"></div>
+													<div
+														class="js-as-txt-road-address text-12 color-grey-5 mt-1"></div>
+													<div class="js-as-container-old-address dc-none">
+														<div class="dc-flex align-items-center">
+															<div class="as-badge-old-address">지번</div>
+															<div
+																class="js-as-txt-old-address text-12 color-grey-5 ml-1"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="js-as-btn-delete-history click-effect-press dc-none">
+												<img
+													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNDNEM0QzQiIGQ9Ik04IDE1YzMuODY2IDAgNy0zLjEzNCA3LTdzLTMuMTM0LTctNy03LTcgMy4xMzQtNyA3IDMuMTM0IDcgNyA3eiIvPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNy4yOTMgOGwtMi4xMjEgMi4xMjIuNzA3LjcwN0w4IDguNzA3bDIuMTIyIDIuMTIyLjcwNy0uNzA3TDguNzA3IDggMTAuODMgNS44OGwtLjcwNy0uNzA3TDggNy4yOTMgNS44OCA1LjE3MmwtLjcwNy43MDdMNy4yOTMgOHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K">
+											</div>
 										</div>
-										
+									</div>
+									<div
+										class="dc-none js-as-popular-loc as-list-item w-100 p-3 click-effect-press"
+										id="template_as_popular_loc_list">
+										<div class="dc-flex text-14 color-grey-3">
+											<div class="js-aspol-txt-order font-weight-bold"></div>
+											<div class="js-aspol-txt-name ml-3"></div>
+										</div>
 									</div>
 								</div>
+								<div class="dc-none js-msa-tabs" style="display: block;">
+									<nav
+										class="common-nav-tabs nav nav-classic nav-borderless nav-fill bg-white">
+										<li class="nav-item text-center" style="width: 50%"><div
+												class="nav-link js-vsas-item-menu clickable active" data="0">국내</div></li>
+										<li class="nav-item text-center" style="width: 50%"><div
+												class="nav-link js-vsas-item-menu clickable" data="1">지도
+												검색</div></li>
+									</nav>
+								</div>
+								<div class="dc-none js-msa-overseas-tabs" style="display: none;">
+									<nav
+										class="common-nav-tabs nav nav-classic nav-borderless nav-fill bg-white">
+										<li class="nav-item text-center" style="width: 50%"><div
+												class="nav-link js-vsas-item-menu clickable" data="2">해외</div></li>
+										<li class="nav-item text-center" style="width: 50%"><div
+												class="nav-link js-vsas-item-menu clickable" data="3">지도
+												검색</div></li>
+									</nav>
+								</div>
+								<div class="modal-body" body-scroll-lock-ignore="">
+									<div class="container-as-contents is-exist-tab"
+										id="js_vsas_container_area">
+										<div class="" id="js_vsas_container_area_s_kor"
+											style="display: block;">
+
+
+											<div class="dc-flex">
+												<!-- 지도 영역 -->
+												<div id="map"
+													style="width: 800px; height: 700px; border-radius: 20px"></div>
+												<script type="text/javascript"
+													src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3ac7eaf0b889d2a25e8a1f59096c406a"></script>
+												<script>
+													var container = document
+															.getElementById('map');
+													var options = {
+														center : new kakao.maps.LatLng(
+																35.15849019679627,
+																129.06202404131136),
+														level : 3
+													};
+
+													var map = new kakao.maps.Map(
+															container, options);
+
+													var positions = [
+															{
+																content : '<input type="text" id="place" value="전포지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
+																latlng : new kakao.maps.LatLng(
+																		35.15849019679627,
+																		129.06202404131136)
+															},
+															{
+																content : '<input type="text" id="place" value="부전지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
+																latlng : new kakao.maps.LatLng(
+																		35.15975905300518,
+																		129.06186404315977)
+															},
+															{
+																content : '<input type="text" id="place" value="사상지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
+																latlng : new kakao.maps.LatLng(
+																		35.158690073109824,
+																		129.06113477638084)
+															},
+															{
+																content : '<input type="text" id="place" value="개금지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
+																latlng : new kakao.maps.LatLng(
+																		35.15730753621485,
+																		129.06294334538524)
+															} ];
+
+													for (var i = 0; i < positions.length; i++) {
+														// 마커를 생성합니다
+														var marker = new kakao.maps.Marker(
+																{
+																	map : map, // 마커를 표시할 지도
+																	position : positions[i].latlng
+																// 마커의 위치
+																});
+														// 마커에 표시할 인포윈도우를 생성합니다 
+														var infowindow = new kakao.maps.InfoWindow(
+																{
+																	content : positions[i].content
+																// 인포윈도우에 표시할 내용
+																});
+														// 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+														// 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+														(function(marker,
+																infowindow) {
+															// 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+															kakao.maps.event
+																	.addListener(
+																			marker,
+																			'mouseover',
+																			function() {
+																				infowindow
+																						.open(
+																								map,
+																								marker);
+																			});
+															// 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+															kakao.maps.event
+																	.addListener(
+																			marker,
+																			'mouseout',
+																			function() {
+																				infowindow
+																						.close();
+																			});
+
+															kakao.maps.event.addListener(
+																			marker,
+																			'click',
+																			function() {
+																				$(function() {
+																					let place = $(
+																							"#place")
+																							.val();
+																					
+																					location.href = "?place="
+																							+ place;
+																				})
+																			});
+														})(marker, infowindow);
+													}
+
+													// 지도에 클릭 이벤트를 등록합니다
+													// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+													kakao.maps.event
+															.addListener(
+																	map,
+																	'click',
+																	function(
+																			mouseEvent) {
+
+																		// 클릭한 위도, 경도 정보를 가져옵니다 
+																		var latlng = mouseEvent.latLng;
+
+																		var message = '클릭한 위치의 위도는 '
+																				+ latlng
+																						.getLat()
+																				+ ' 이고, ';
+																		message += '경도는 '
+																				+ latlng
+																						.getLng()
+																				+ ' 입니다';
+
+																		var resultDiv = document
+																				.getElementById('result');
+																		resultDiv.innerHTML = message;
+
+																	});
+												</script>
+
+												<p id="result"></p>
+												<%--위도 경도 확인용(지도에서 아무 위치 클릭하면 클릭한 위치의 위도와 경도가 나옴)  --%>
+
+											</div>
+											<!-- 지도 영역 끝 -->
+
+										</div>
+
+										<input type="button" value="전포지점">
+
+										<div class="container-as-bottom-bar is-pc-modal"
+											id="js_csabb_container_bottom_info">
+											<div class="box-round-address-info px-3 pt-3"
+												id="js_csabb_card_bottom_info">
+												<div class="pb-3 click-effect-press"
+													id="js_csabb_btn_address_search" style="display: block;">
+													<div
+														class="container-input-common-search in-bottom-bar box-round-gray">
+														<span class="icon mr-2 line-height-1"><img
+															src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMjE4IDExLjg0MUMzLjMzNiAxMS44NDEgMSA5LjQxNCAxIDYuNDIxIDEgMy40MjcgMy4zMzYgMSA2LjIxOCAxczUuMjE4IDIuNDI3IDUuMjE4IDUuNDJjMCAuOTc0LS4yNDcgMS44ODctLjY3OSAyLjY3Ni4wNjMuMDQuMTIyLjA5LjE3Ny4xNDZsMy43NzggMy45MjVjLjM4My4zOTguMzgzIDEuMDQzIDAgMS40NDFsLS4wODkuMDkyYy0uMzgzLjM5OC0xLjAwNC4zOTgtMS4zODcgMGwtMy43NzgtMy45MjVjLS4wMi0uMDItLjAzNy0uMDQtLjA1NC0uMDYtLjg4Mi43MDYtMS45ODcgMS4xMjYtMy4xODYgMS4xMjZ6bTAtMi4xNjhjMS43MyAwIDMuMTMxLTEuNDU2IDMuMTMxLTMuMjUyIDAtMS43OTctMS40MDItMy4yNTMtMy4xMy0zLjI1My0xLjczIDAtMy4xMzIgMS40NTYtMy4xMzIgMy4yNTMgMCAxLjc5NiAxLjQwMiAzLjI1MiAzLjEzMSAzLjI1MnoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"></span><span
+															class="span-txt text-16 color-grey-4"
+															id="js_csabb_txt_placeholder">국내 지역명, 역, 건물 이름으로
+															검색</span>
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="modal-footer" style="display: none;">
+									<button class="btn btn-white border-0" id="modal_btn_cancel"
+										type="button" data-dismiss="modal">뒤로</button>
+									<button class="btn btn-primary btn-pill btn-lg px-6"
+										id="modal_btn_ok" type="button">진행</button>
+								</div>
 							</div>
-							
 						</div>
 					</div>
-					<div class="modal-footer" style="display: none;">
-						<button class="btn btn-white border-0" id="modal_btn_cancel"
-							type="button" data-dismiss="modal">뒤로</button>
-						<button class="btn btn-primary btn-pill btn-lg px-6"
-							id="modal_btn_ok" type="button">진행</button>
-					</div>
 				</div>
-			</div>
-		</div>
-	</div><!-- 지도 선택 팝업창 -->
-	
-	
+				<!-- 지도 선택 팝업창 -->
+
+
 				<!-- 			메인 이미지 영역 -->
 				<section
 					class="index-container-first-section bg-color-primary-blue-light loading-shimmer"
@@ -295,8 +347,7 @@
 									style="width: 1903px;">
 									<a
 										class="dc-block js-index-container-banner click-effect-press"
-										data-i="14"
-										href="page-event-detail.html?a=67&amp;b=14&amp;c=home_top_banner"
+										data-i="14" href=""
 										style="background-color: rgb(198, 219, 237);">
 										<div class="container index-container-main-banner">
 											<img
@@ -311,8 +362,8 @@
 						</div>
 					</div>
 				</section>
-				
-				
+
+
 				<!-- 				렌트 정보 구역 -->
 				<section class="index-container-search" id="js_index_section_search"
 					style="display: block;">
@@ -343,8 +394,11 @@
 
 											<div
 												class="wordbreak-keepall text-14 font-weight-bold color-grey-3 ellipsis"
-												id="js_index_txt_location"><input type="text" value="${param.place }" placeholder="지점 선택하기" readonly="readonly"
-												style="border: none; font-weight: bolder;"></div>
+												id="js_index_txt_location">
+												<input type="text" value="${param.place }"
+													placeholder="대여 위치 선택" readonly="readonly"
+													style="border: none; font-weight: bolder;">
+											</div>
 
 										</div>
 									</div>
@@ -393,14 +447,13 @@
 							</div>
 						</div>
 						<!-- 						차량 검색버튼  -->
-						<a
-							class="js-index-btn-search ml-2 dc-lg-block dc-none text-decoration-none click-effect-press"
-							href="="><div
-								class="index-btn-search border-radius-normal dc-flex flex-column justify-content-center align-items-center">
-								<img
-									src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Im0yMyAyMi41IDcgNyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTE1LjUgMjMuNWM1LjI0NyAwIDkuNS00LjAzIDkuNS05cy00LjI1My05LTkuNS05Yy01LjI0NiAwLTkuNSA0LjAzLTkuNSA5czQuMjU0IDkgOS41IDl6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4K">
+						<!-- 						창용 차량 검색버튼에 rent화면에 장소데이터 전송  -->
+						<a class="js-index-btn-search ml-2 dc-lg-block dc-none text-decoration-none click-effect-press"
+							href="rent1?place=${param.place }">
+							<div class="index-btn-search border-radius-normal dc-flex flex-column justify-content-center align-items-center">
+								<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNSAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Im0yMyAyMi41IDcgNyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTE1LjUgMjMuNWM1LjI0NyAwIDkuNS00LjAzIDkuNS05cy00LjI1My05LTkuNS05Yy01LjI0NiAwLTkuNSA0LjAzLTkuNSA5czQuMjU0IDkgOS41IDl6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4K">
 								<div class="text-16 font-weight-bold mt-2">차량 검색</div>
-							</div> </a>
+							</div></a>
 					</div>
 				</section>
 

@@ -37,6 +37,7 @@ public class MemberController {
 		session.setAttribute("member_phone", member.getMember_phone());
 		session.setAttribute("member_date", member.getMember_date());
 		session.setAttribute("member_gender", member.getMember_gender());
+		session.setAttribute("member_name", member.getMember_name());
 		return "redirect:/";
 	}
 	

@@ -2,7 +2,10 @@ package com.itwillbs.yata.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +25,16 @@ public class ReservController {
 	}
 //	예약확인 
 	@GetMapping("rent2")
-	public String car_view(Model model, int car_id) {
+	public String car_view(Model model, int car_id, String place, HttpSession session) {
 		model.addAttribute("car", carService.selectCar(car_id));
-
+		if(place.equals("") ) {
+			model.addAttribute("msg","대여 위치를 선택해주세요!");
+			return "fail_back";
+		}
+		if(session.getAttribute("member_email") == null) {
+			model.addAttribute("msg","로그인이 필요합니다.");
+			return "fail_back";
+		}
 		return "rent/rent2";
 	}
 	

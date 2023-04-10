@@ -6,6 +6,43 @@
 <head>
 <meta charset="UTF-8">
 <title>YATA</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('mypage_loading_list').style.display = 'block';
+		var pointMenu = document.getElementById("point-menu");
+		var historyMenu = document.getElementById("history-menu");
+		var couponMenu = document.getElementById("coupon-menu");
+		var reviewMenu = document.getElementById("review-menu");
+		pointMenu.onclick = clickPoint
+		historyMenu.onclick = clickHistory
+		couponMenu.onclick = clickCoupon
+		reviewMenu.onclick = clickReview
+	}
+	function clickPoint() {
+		document.getElementById('mypage_section_point').style.display = 'block';
+		document.getElementById('mypage_section_rent_history').style.display = 'none';
+		document.getElementById('mypage_section_coupon').style.display = 'none';
+		document.getElementById('mypage_section_my_review').style.display = 'none';
+	}
+	function clickHistory() {
+		document.getElementById('mypage_section_point').style.display = 'none';
+		document.getElementById('mypage_section_rent_history').style.display = 'block';
+		document.getElementById('mypage_section_coupon').style.display = 'none';
+		document.getElementById('mypage_section_my_review').style.display = 'none';
+	}
+	function clickCoupon() {
+		document.getElementById('mypage_section_point').style.display = 'none';
+		document.getElementById('mypage_section_rent_history').style.display = 'none';
+		document.getElementById('mypage_section_coupon').style.display = 'block';
+		document.getElementById('mypage_section_my_review').style.display = 'none';
+	}
+	function clickReview() {
+		document.getElementById('mypage_section_point').style.display = 'none';
+		document.getElementById('mypage_section_rent_history').style.display = 'none';
+		document.getElementById('mypage_section_coupon').style.display = 'none';
+		document.getElementById('mypage_section_my_review').style.display = 'block';
+	}
+</script>
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body style="">
@@ -73,14 +110,15 @@
 										<div
 											class="dc-flex justify-content-between px-2 mb-4 is-only-member">
 											<div
-												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press" onclick="location.href='history'">
+												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press"
+												id="history-menu">
 												<img
 													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCMxb2IzMno2c2RhKSI+CiAgICAgICAgPHBhdGggZD0iTTMgNy4yNTZhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjE1Ljc0M2EyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY3LjI1NnoiIGZpbGw9IiNDN0UwRkYiLz4KICAgICAgICA8cGF0aCBkPSJNOC4yMDMgMTAuODZoOS41OTVNOC4yMDMgMTUuMTI3aDkuNTk1TTguMjAzIDE5LjM5NWg2LjM5NiIgc3Ryb2tlPSIjRTZFRkZDIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgICAgPHBhdGggZD0iTTExLjI2OCAzLjAwNWMuNzY5LTEuMzM1IDIuNjk1LTEuMzM1IDMuNDY1IDBsMS4yOTggMi4yNTJIOS45N2wxLjI5OS0yLjI1MnoiIGZpbGw9IiM5NkM2RkYiLz4KICAgIDwvZz4KICAgIDxkZWZzPgogICAgICAgIDxjbGlwUGF0aCBpZD0iMW9iMzJ6NnNkYSI+CiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjZ2MjZIMHoiLz4KICAgICAgICA8L2NsaXBQYXRoPgogICAgPC9kZWZzPgo8L3N2Zz4K"
-													height="26px">
-													<span class="color-grey-3 text-14">예약내역</span>
+													height="26px"> <span class="color-grey-3 text-14">예약내역</span>
 											</div>
 											<div
-												class="js-mypage-btn-myreview dc-flex flex-column flex-grow-1 text-center click-effect-press" onclick="location.href='review'">
+												class="js-mypage-btn-myreview dc-flex flex-column flex-grow-1 text-center click-effect-press"
+												id="review-menu">
 												<img
 													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNyAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCN4anBrYjR1NTlhKSI+CiAgICAgICAgPHJlY3QgeD0iMi4zMzMiIHk9IjQuNTEiIHdpZHRoPSIxOS4wMTIiIGhlaWdodD0iMTkuNDkiIHJ4PSIyIiBmaWxsPSIjQzdFMEZGIi8+CiAgICAgICAgPHBhdGggZD0iTTE5Ljc3MyA2LjgzM2MtLjk3NS0uOTU4LTEuMDU3LTIuNTA2LS4xODMtMy40NGwxLjU5Ni0xLjcwNWMuODczLS45MzQgMi4zODUtLjkxNCAzLjM2LjA0My45NzQuOTU4IDEuMDU2IDIuNTA2LjE4MiAzLjQ0bC0xLjU5NiAxLjcwNmMtLjg3My45MzMtMi4zODUuOTE0LTMuMzYtLjA0NHoiIGZpbGw9IiM5NkM2RkYiLz4KICAgICAgICA8cGF0aCBkPSJtMTAuNDM4IDEzLjEyMS0yLjI0OCA1LjU4Yy0uMTMxLjMyNS4xODMuNjM2LjQ5Ni40ODhsNS4zNDgtMi41MzUtMy41OTctMy41MzZ2LjAwM3oiIGZpbGw9IiNGQkZDRkYiLz4KICAgICAgICA8cGF0aCBkPSJtOC42NDYgMTcuNTcyIDEuMTI1IDEuMTA1LTEuMjE1LjU3N2MtLjI2My4xMjUtLjUyOS0uMTM3LS40MTgtLjQxMWwuNTExLTEuMjY4LS4wMDMtLjAwM3oiIGZpbGw9IiM5NkM2RkYiLz4KICAgICAgICA8cGF0aCBkPSJtMjEuODY0IDMuMzY0LTEuMTk4LTEuMTc4LTEwLjIyOCAxMC45MzUgMS4xOTcgMS4xNzZMMjEuODY0IDMuMzY0eiIgZmlsbD0iI0I5RDVGRiIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMy4wNjQgNC41MzkgMjEuODY3IDMuMzZsLTEwLjIzIDEwLjkzNCAxLjE5OCAxLjE3OCA1LjExNC01LjQ2NyA1LjExNS01LjQ2N3pNMjQuMjYgNS43MmwtMS4xOTctMS4xNzgtNS4xMTUgNS40NjctNS4xMTQgNS40NjcgMS4xOTcgMS4xNzdMMjQuMjYxIDUuNzJ6IiBmaWxsPSIjOUFDMkZGIi8+CiAgICA8L2c+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9InhqcGtiNHU1OWEiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjZmZmIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSguMzMzKSIgZD0iTTAgMGgyNnYyNkgweiIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICA8L2RlZnM+Cjwvc3ZnPgo="
 													height="26px"><span class="color-grey-3 text-14">나의리뷰</span>
@@ -88,15 +126,20 @@
 										</div>
 										<div class="dc-flex justify-content-between pb-5">
 											<div class="js-mypage-btn-point dc-flex flex-stretch pr-1"
-												style="flex-basis: 50%" onclick="location.href='point'">
-												<div class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
-													<div class="js-mypage-txt-point text-16-b">${member_point} P</div>
+												id="point-menu" style="flex-basis: 50%">
+												<div
+													class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
+													<div class="js-mypage-txt-point text-16-b">${member_point}
+														P</div>
 													포인트
 												</div>
 											</div>
-											<div class="js-mypage-btn-coupon dc-flex flex-stretch pl-1 position-relative" 
-												style="flex-basis: 50%" onclick="location.href='coupon'">
-												<div class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
+											<div
+												class="js-mypage-btn-coupon dc-flex flex-stretch pl-1 position-relative"
+												style="flex-basis: 50%">
+												<div
+													class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press"
+													id="coupon-menu">
 													<div class="js-mypage-txt-coupon-cnt text-16-b">4 장</div>
 													쿠폰
 												</div>
@@ -117,11 +160,11 @@
 									<div>
 										<h3 class="color-grey-3 text-14 list-border-bottom">메뉴</h3>
 										<div class="list-group list-group-flush">
-											<a href="modify" 
-											class="js-mypage-btn-left-menu js-mypage-btn-profile py-2 text-decoration-none px-0 click-effect-press">
-											내 정보 관리</a>	
-											 <a class="js-mypage-btn-left-menu js-btn-go-help-for-mypage py-2 text-decoration-none px-0 click-effect-press"
-											data-type="faq">자주묻는 질문</a>
+											<a href="modify"
+												class="js-mypage-btn-left-menu js-mypage-btn-profile py-2 text-decoration-none px-0 click-effect-press">
+												내 정보 관리</a> <a
+												class="js-mypage-btn-left-menu js-btn-go-help-for-mypage py-2 text-decoration-none px-0 click-effect-press"
+												data-type="faq">자주묻는 질문</a>
 										</div>
 									</div>
 								</div>
@@ -148,12 +191,15 @@
 							</div>
 						</div>
 					</div>
+					<!-- right section 시작 -->
+					<!-- mypage_section_mypage -->
 					<div class="col-md-8 pb-6">
-						<div class="mypage-section" id="mypage_section_mypage" style="">
+						<div class="mypage-section" id="mypage_section_mypage"
+							style="display: none;">
 							<section class="carmore-section pt-md-0">
 								<div class="container">
 									<div class="container-loading-dot"
-										id="js_mypage_loading_rent_list" style="display: none;">
+										id="mypage_loading_list" style="display: 'none';">
 										<div></div>
 										<div></div>
 										<div></div>
@@ -173,6 +219,293 @@
 											<button
 												class="js-mypage-btn-none-member-search btn btn-link btn-block color-grey-3 font-weight-normal max-w-lg-40rem mx-auto py-1 tmobi-dc-none">비회원
 												예약조회</button>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+						<!-- mypage_section_rent_history -->
+						<div class="mypage-section" id="mypage_section_rent_history"
+							style="display: none">
+							<section class="carmore-section pt-0 mobile-header-container">
+								<div class="container">
+									<h3 class="mt-0 pt-3">예약내역</h3>
+									<select class="custom-select custom-select-sm"
+										id="rent_history_select_type"><option value="0"
+											selected="selected">전체</option>
+										<option value="1">예약완료</option>
+										<option value="2">대여중</option>
+										<option value="3">반납완료</option>
+										<option value="4">취소/환불</option>
+										<option value="5">조기반납 신청중</option>
+										<option value="6">조기반납 완료</option></select>
+								</div>
+							</section>
+						</div>
+						<!-- mypage_section_point -->
+						<div class="mypage-section" id="mypage_section_point"
+							style="display: none">
+							<section class="carmore-section pt-0">
+								<div class="container">
+									<h3 class="mt-0 pt-3">총 포인트</h3>
+									<div class="text-center">
+										<h4
+											class="color-grey-1 text-20 text-center underline-bg dc-inline-block"
+											id="vpd_total_point">${member_point}P</h4>
+										<p class="color-grey-5 text-10">
+											포인트는 적립일로부터 1년간 유효하며,<br>유효기간 경과 시, 자동으로 소멸됨을 알려드립니다.
+										</p>
+									</div>
+								</div>
+							</section>
+							<section class="carmore-section">
+								<div class="container">
+									<h3>포인트 내역</h3>
+									<div class="text-center color-grey-4 space-2"
+										id="vpd_container_empty_point_list">
+										<span>결제내역에서 select, 조건 point > 0일때</span>
+									</div>
+
+								</div>
+							</section>
+						</div>
+						<!-- mypage_section_my_review -->
+						<div class="mypage-section" id="mypage_section_my_review"
+							style="display: none;">
+							<section class="carmore-section pt-md-0">
+								<div class="container">
+									<div class="pt-2">
+										<div class="dc-flex align-items-center">
+											<img class="vertical-sub dc-none" id="js_rpu_user_grade_icon"
+												style="margin-right: 2px;">
+											<h4
+												class="js-rpu-nick-name color-grey-3 text-18 font-weight-bold mb-0"></h4>
+											<div class="dc-none" id="js_rpu_container_report">
+												<div class="dc-flex">
+													<div
+														class="js-btn-user-report text-10 color-grey-5 click-effect-press ml-2">신고</div>
+													<span class="ml-1 text-10 color-grey-5">|</span>
+													<div
+														class="js-btn-user-block text-10 color-grey-5 click-effect-press ml-1">차단</div>
+												</div>
+											</div>
+										</div>
+										<p class="color-grey-3 text-12 mb-0 wordbreak-keepall">
+											카모아 이용 횟수<span class="ml-1" id="rpu_use_cnt"></span> | 작성한 리뷰<span
+												class="ml-1" id="rpu_write_review_cnt"></span>
+										</p>
+									</div>
+								</div>
+							</section>
+							<section class="carmore-section dc-none"
+								id="rpu_container_review_empty">
+								<div class="container">
+									<div class="text-center">작성된 리뷰가 없습니다.</div>
+								</div>
+							</section>
+						</div>
+						<!-- mypage_section_coupon -->
+						<div class="mypage-section" id="mypage_section_coupon"
+							style="display: none">
+							<section class="carmore-section">
+								<div class="container">
+									<h3>쿠폰 등록</h3>
+									<div class="form-row align-items-center">
+										<div class="col">
+											<input class="form-control" id="vcdp_input_coupon_regist"
+												placeholder="쿠폰코드를 입력해주세요" maxlength="20">
+										</div>
+										<div class="dc-flex">
+											<button class="btn btn-primary border-radius-6"
+												id="vcdp_btn_coupon_regist" type="button">등록</button>
+										</div>
+									</div>
+									<div class="dc-none" id="js_vcd_grade_coupon_issue_container"
+										style="display: none;">
+										<div class="mt-5 text-center">
+											<div class="text-14">
+												<img class="vertical-sub" id="js_vcd_user_grade_icon"
+													style="width: 1rem; height: 1rem;"> <span
+													class="font-weight-bold" id="js_vcd_user_nickname"></span>님의
+												회원등급은 <span class="font-weight-bold"
+													id="js_vcd_user_grade_name"></span>입니다.
+											</div>
+											<div class="text-14">
+												등급 전용 쿠폰이 아직 <span class="font-weight-bold"
+													id="js_vcd_user_remain_grade_coupon_cnt"></span><span
+													class="font-weight-bold">개</span>나 남았으니 발급받고
+											</div>
+											<div class="text-14">저렴하게 이용해보세요 :)</div>
+										</div>
+										<div class="mt-4">
+											<button class="btn btn-primary btn-block border-radius-6"
+												id="js_vcd_btn_issue_grade_coupon" type="button">쿠폰발급</button>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="carmore-section">
+								<div class="container">
+									<h3 class="color-grey-5 text-16">쿠폰 목록</h3>
+									<div class="text-14 color-grey-4 py-3">
+										보유쿠폰&nbsp;<span class="font-weight-bold"
+											id="js_vdcp_coupon_cnt">4</span>장
+									</div>
+									<div id="vcdp_container_coupon_list">
+										<div
+											class="coupon-item-container cm-rounded px-4 py-3 click-effect-press vcdp-coupon-list-item"
+											data="8935808">
+											<div
+												class="dc-flex justify-content-between align-items-start">
+												<div class="pb-2">
+													<span
+														class="badge badge-primary text-white font-weight-bold"
+														id="cbc_grade"></span>
+													<div class="pr-2">
+														<div
+															class="cbc-txt-coupon-title text-12 font-weight-bold color-grey-3 dc-inline">신규가입
+															월구독 15,000원 할인쿠폰</div>
+														<div
+															class="js-cbc-txt-coupon-dday ml-1 text-12 font-weight-bold color-red dc-inline">D-82</div>
+													</div>
+												</div>
+												<button
+													class="btn btn-sm btn-grey-7 my-1 js-cbc-btn-coupon-condition js-show-cbc-btn-coupon-condition">조건보기</button>
+											</div>
+											<div class="dc-flex align-items-baseline">
+												<div
+													class="cbc-txt-coupon-price text-32 font-weight-bold color-grey-2">15,000</div>
+												<div
+													class="cbc-txt-coupon-unit text-16 font-weight-bold color-grey-2 ml-1">원</div>
+											</div>
+											<div
+												class="cbc-txt-coupon-rent-condition text-10 color-grey-5">350,000원
+												이상 렌트 시</div>
+											<div
+												class="cbc-txt-coupon-expiration-date text-10 color-grey-5">~2023.06.26까지
+												사용</div>
+											<div class="cbc-btn-direct-reservation dc-none"
+												style="display: none;">
+												<hr>
+												<div
+													class="dc-flex justify-content-center align-items-center">
+													<div
+														class="ml-1 text-16 font-weight-bold js-direct-reservation-btnv js-move-direct-reservation">바로
+														사용하기</div>
+													<img class="m-0"
+														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE3IDE2Ij4KICAgIDxwYXRoIHN0cm9rZT0iIzBENkZGQyIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNOS41IDNsNSA1LTUgNU0xLjUgOGgxMyIvPgo8L3N2Zz4K">
+												</div>
+											</div>
+										</div>
+										<div
+											class="coupon-item-container cm-rounded px-4 py-3 click-effect-press vcdp-coupon-list-item"
+											data="8935807">
+											<div
+												class="dc-flex justify-content-between align-items-start">
+												<div class="pb-2">
+													<span
+														class="badge badge-primary text-white font-weight-bold"
+														id="cbc_grade"></span>
+													<div class="pr-2">
+														<div
+															class="cbc-txt-coupon-title text-12 font-weight-bold color-grey-3 dc-inline">신규가입
+															월구독 20,000원 할인쿠폰</div>
+														<div
+															class="js-cbc-txt-coupon-dday ml-1 text-12 font-weight-bold color-red dc-inline">D-82</div>
+													</div>
+												</div>
+												<button
+													class="btn btn-sm btn-grey-7 my-1 js-cbc-btn-coupon-condition js-show-cbc-btn-coupon-condition">조건보기</button>
+											</div>
+											<div class="dc-flex align-items-baseline">
+												<div
+													class="cbc-txt-coupon-price text-32 font-weight-bold color-grey-2">20,000</div>
+												<div
+													class="cbc-txt-coupon-unit text-16 font-weight-bold color-grey-2 ml-1">원</div>
+											</div>
+											<div
+												class="cbc-txt-coupon-rent-condition text-10 color-grey-5">350,000원
+												이상 렌트 시</div>
+											<div
+												class="cbc-txt-coupon-expiration-date text-10 color-grey-5">~2023.06.26까지
+												사용</div>
+											<div class="cbc-btn-direct-reservation dc-none"
+												style="display: none;">
+												<hr>
+												<div
+													class="dc-flex justify-content-center align-items-center">
+													<div
+														class="ml-1 text-16 font-weight-bold js-direct-reservation-btnv js-move-direct-reservation">바로
+														사용하기</div>
+													<img class="m-0"
+														src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE3IDE2Ij4KICAgIDxwYXRoIHN0cm9rZT0iIzBENkZGQyIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNOS41IDNsNSA1LTUgNU0xLjUgOGgxMyIvPgo8L3N2Zz4K">
+												</div>
+											</div>
+										</div>
+										<div
+											class="coupon-item-container cm-rounded px-4 py-3 click-effect-press vcdp-coupon-list-item"
+											data="8935806">
+											<div
+												class="dc-flex justify-content-between align-items-start">
+												<div class="pb-2">
+													<span
+														class="badge badge-primary text-white font-weight-bold"
+														id="cbc_grade"></span>
+													<div class="pr-2">
+														<div
+															class="cbc-txt-coupon-title text-12 font-weight-bold color-grey-3 dc-inline">신규가입
+															해외 10,000원 할인쿠폰</div>
+														<div
+															class="js-cbc-txt-coupon-dday ml-1 text-12 font-weight-bold color-red dc-inline">D-82</div>
+													</div>
+												</div>
+												<button
+													class="btn btn-sm btn-grey-7 my-1 js-cbc-btn-coupon-condition js-show-cbc-btn-coupon-condition">조건보기</button>
+											</div>
+											<div class="dc-flex align-items-baseline">
+												<div
+													class="cbc-txt-coupon-price text-32 font-weight-bold color-grey-2">10,000</div>
+												<div
+													class="cbc-txt-coupon-unit text-16 font-weight-bold color-grey-2 ml-1">원</div>
+											</div>
+											<div
+												class="cbc-txt-coupon-rent-condition text-10 color-grey-5 dc-none"></div>
+											<div
+												class="cbc-txt-coupon-expiration-date text-10 color-grey-5">~2023.06.26까지
+												사용</div>
+
+										</div>
+										<div
+											class="coupon-item-container cm-rounded px-4 py-3 click-effect-press vcdp-coupon-list-item"
+											data="8935805">
+											<div
+												class="dc-flex justify-content-between align-items-start">
+												<div class="pb-2">
+													<span
+														class="badge badge-primary text-white font-weight-bold"
+														id="cbc_grade"></span>
+													<div class="pr-2">
+														<div
+															class="cbc-txt-coupon-title text-12 font-weight-bold color-grey-3 dc-inline">신규가입
+															국내 5,000원 할인쿠폰</div>
+														<div
+															class="js-cbc-txt-coupon-dday ml-1 text-12 font-weight-bold color-red dc-inline">D-82</div>
+													</div>
+												</div>
+												<button
+													class="btn btn-sm btn-grey-7 my-1 js-cbc-btn-coupon-condition js-show-cbc-btn-coupon-condition">조건보기</button>
+											</div>
+											<div class="dc-flex align-items-baseline">
+												<div
+													class="cbc-txt-coupon-price text-32 font-weight-bold color-grey-2">5,000</div>
+												<div
+													class="cbc-txt-coupon-unit text-16 font-weight-bold color-grey-2 ml-1">원</div>
+											</div>
+											<div
+												class="cbc-txt-coupon-rent-condition text-10 color-grey-5 dc-none"></div>
+											<div
+												class="cbc-txt-coupon-expiration-date text-10 color-grey-5">~2023.06.26까지
+												사용</div>
 										</div>
 									</div>
 								</div>

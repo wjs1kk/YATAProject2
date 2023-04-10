@@ -8,9 +8,25 @@
 <title>YATA</title>
 
 <script type="text/javascript">
-	function showMenu() {
-		
-	}
+	
+window.onload = function () {
+	var pointMenu = document.getElementById("point-menu");
+	var historyMenu = document.getElementById("history-menu");
+	pointMenu.onclick = changeMenu1
+	historyMenu.onclick = changeMenu2
+	
+}
+function changeMenu1() {
+	document.getElementById('mypage_section_point').style.display = 'block';
+	document.getElementById('mypage_section_rent_history').style.display = 'none';
+	
+}
+function changeMenu2() {
+	document.getElementById('mypage_section_point').style.display = 'none';
+	document.getElementById('mypage_section_rent_history').style.display = 'block';
+}
+	
+	
 </script>
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
@@ -77,7 +93,7 @@
 										<div
 											class="dc-flex justify-content-between px-2 mb-4 is-only-member">
 											<div
-												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press"
+												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press" id="history-menu"
 												>
 												<img
 													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCMxb2IzMno2c2RhKSI+CiAgICAgICAgPHBhdGggZD0iTTMgNy4yNTZhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjE1Ljc0M2EyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY3LjI1NnoiIGZpbGw9IiNDN0UwRkYiLz4KICAgICAgICA8cGF0aCBkPSJNOC4yMDMgMTAuODZoOS41OTVNOC4yMDMgMTUuMTI3aDkuNTk1TTguMjAzIDE5LjM5NWg2LjM5NiIgc3Ryb2tlPSIjRTZFRkZDIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgICAgPHBhdGggZD0iTTExLjI2OCAzLjAwNWMuNzY5LTEuMzM1IDIuNjk1LTEuMzM1IDMuNDY1IDBsMS4yOTggMi4yNTJIOS45N2wxLjI5OS0yLjI1MnoiIGZpbGw9IiM5NkM2RkYiLz4KICAgIDwvZz4KICAgIDxkZWZzPgogICAgICAgIDxjbGlwUGF0aCBpZD0iMW9iMzJ6NnNkYSI+CiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjZ2MjZIMHoiLz4KICAgICAgICA8L2NsaXBQYXRoPgogICAgPC9kZWZzPgo8L3N2Zz4K"
@@ -91,8 +107,8 @@
 													height="26px"><span class="color-grey-3 text-14">나의리뷰</span>
 											</div>
 										</div>
-										<div class="dc-flex justify-content-between pb-5">
-											<div class="js-mypage-btn-point dc-flex flex-stretch pr-1"
+										<div class="dc-flex justify-content-between pb-5" id="">
+											<div class="js-mypage-btn-point dc-flex flex-stretch pr-1" id="point-menu"
 												style="flex-basis: 50%" >
 												<div
 													class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
@@ -157,47 +173,10 @@
 						</div>
 					</div>
 					<div class="col-md-8 pb-6">
-						<div class="mypage-section" id="mypage_section_my_review"
-							style="display: none;">
-							<section class="carmore-section pt-md-0">
-								<div class="container">
-									<div class="pt-2">
-										<div class="dc-flex align-items-center">
-											<img class="vertical-sub dc-none" id="js_rpu_user_grade_icon"
-												style="margin-right: 2px;">
-											<h4
-												class="js-rpu-nick-name color-grey-3 text-18 font-weight-bold mb-0"></h4>
-											<div class="dc-none" id="js_rpu_container_report">
-												<div class="dc-flex">
-													<div
-														class="js-btn-user-report text-10 color-grey-5 click-effect-press ml-2">신고</div>
-													<span class="ml-1 text-10 color-grey-5">|</span>
-													<div
-														class="js-btn-user-block text-10 color-grey-5 click-effect-press ml-1">차단</div>
-												</div>
-											</div>
-										</div>
-										<p class="color-grey-3 text-12 mb-0 wordbreak-keepall">
-											카모아 이용 횟수<span class="ml-1" id="rpu_use_cnt"></span> | 작성한 리뷰<span
-												class="ml-1" id="rpu_write_review_cnt"></span>
-										</p>
-									</div>
-								</div>
-							</section>
-							<div class="container-loading-dot" id="js_rpu_review_loading">
-								<div></div>
-								<div></div>
-								<div></div>
-							</div>
-							<section class="carmore-section dc-none"
-								id="rpu_container_review_empty">
-								<div class="container">
-									<div class="text-center">작성된 리뷰가 없습니다.</div>
-								</div>
-							</section>
-						</div>
-						<div class="mypage-section" id="mypage_section_rent_history"
-							style="display: none">
+						
+						
+						
+						<div class="mypage-section" id="mypage_section_rent_history" style="display: none">
 							<section class="carmore-section pt-0 mobile-header-container">
 								<div class="container">
 									<h3 class="mt-0 pt-3">예약내역</h3>

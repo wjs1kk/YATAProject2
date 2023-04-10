@@ -25,7 +25,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav">
 					<li class="nav-item js-container-pc-header-menu active">
-						<a href="rent1" class="nav-link js-pc-header-menu click-effect-press" data-mt="1">
+						<a href="rent1?place=${param.place }" class="nav-link js-pc-header-menu click-effect-press" data-mt="1">
 							<div class="dc-flex justify-content-center align-items-center">
 								<img class="mr-1" src="${pageContext.request.contextPath }/resources/images/car.png">예약하기
 							</div>
