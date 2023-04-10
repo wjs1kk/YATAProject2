@@ -2,31 +2,37 @@
  <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.itwillbs.yata.mapper.ReviewMapper">
-  	<select id="selectReview" resultType="com.itwillbs.yata.vo.ReviewVO">
-		SELECT *
-			FROM review
-			ORDER BY review_regdate DESC
-			LIMIT 3;
+
+<mapper namespace="com.itwillbs.yata.mapper.ReviewMapper">
+	<select id="selectReview"
+		resultType="com.itwillbs.yata.vo.ReviewVO">
+		SELECT review_regdate
+		FROM review
+		ORDER BY review_regdate DESC
+		LIMIT 3;
 	</select>
-	<insert id="insertReview">
-		insert into review(
-			review_idx, 
+	
+	<insert id="insertReview" useGeneratedKeys="true"
+		keyProperty="review_idx">
+		insert into review (
+			review_idx,
 			review_writer,
 			review_title,
 			review_content,
 			review_regdate,
 			review_updateDate,
-			reivew_viewcnt
-			)
-			values(
+			review_star,
+			review_viewcnt
+		)
+		value (
 			#{review_idx},
 			#{review_writer},
 			#{review_title},
 			#{review_content},
-			now(),
-			now(),
-			0)
+			CURRENT_TIMESTAMP(),
+			CURRENT_TIMESTAMP(),
+			#{review_star},
+			0
+		)
 	</insert>
-  </mapper>
+</mapper>

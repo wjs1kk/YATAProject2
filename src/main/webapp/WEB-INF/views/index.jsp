@@ -643,9 +643,9 @@
 												<div class="mt-3">
 													<div class="text-16 text-left">
 														<span class="index-txt-review-highlighter">
-<%-- 															<c:forEach > --%>
-<%-- 																${review} --%>
-<%-- 															</c:forEach> --%>
+															<c:forEach var="review" items="${ArrayList }">
+																<c:out value="${review.writer }"/>
+															</c:forEach>
 														</span>
 													</div>
 												</div>

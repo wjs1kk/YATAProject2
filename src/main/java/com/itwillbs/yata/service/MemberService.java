@@ -14,7 +14,6 @@ public class MemberService {
 	private MemberMapper mapper;
 	
 	public MemberVO checkUser(String member_email, String member_passwd) {
-		
 		return mapper.selectUser(member_email, member_passwd) != null ? mapper.selectUser(member_email, member_passwd) :null ;
 	}
 	

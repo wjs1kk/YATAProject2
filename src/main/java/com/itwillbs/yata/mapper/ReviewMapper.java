@@ -1,12 +1,12 @@
 package com.itwillbs.yata.mapper;
 
-import java.sql.*;
+import java.util.*;
 
-import org.apache.ibatis.annotations.*;
 
 import com.itwillbs.yata.vo.*;
 
 public interface ReviewMapper {
-	public ReviewVO selectReview(@Param("review_regdate") Timestamp review_regdate);
+//	public List<ReviewVO> selectReview(ReviewVO review);
 	public int insertReview(ReviewVO review);
+	public ReviewVO selectReview(ReviewVO review);
 }
