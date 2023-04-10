@@ -56,7 +56,7 @@
 				</ul>
 				<!-- 					로그인 하기전이랑 하고난후 바꿔야함 -->
 				<c:choose>
-					<c:when test="${empty sessionScope.sId }">
+					<c:when test="${empty sessionScope.member_email }">
 						<a href = "join" class="js-btn-custom-cs-tel my-2 pl-2 pr-3 my-sm-0 " id="js_btn_customer_cs_for_normal" href="javascript:void(0)"
 							style="display: flex;">
 							<div class="dc-flex align-items-center color-primary-blue">

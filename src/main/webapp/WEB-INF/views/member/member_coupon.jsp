@@ -75,10 +75,10 @@
 												<div>
 													<div class="is-only-member pr-2">
 														<div class="text-20">
-															<span class="js-mypage-txt-nickname wordbreak-breakword">틀림없는별사탕</span>님
+															<span class="js-mypage-txt-nickname wordbreak-breakword">${member_name}</span>님
 														</div>
 														<div
-															class="js-mypage-txt-user-id color-grey-5 text-12 mb-0 wordbreak-breakall">dmstks04@naver.com</div>
+															class="js-mypage-txt-user-id color-grey-5 text-12 mb-0 wordbreak-breakall">${sId}</div>
 													</div>
 													<div
 														class="js-mypage-btn-login is-only-none-member dc-none click-effect-press"
@@ -104,16 +104,18 @@
 													/ 로그인 하기</button>
 											</div>
 										</div>
+										
 										<div
 											class="dc-flex justify-content-between px-2 mb-4 is-only-member">
 											<div
-												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press">
+												class="js-mypage-btn-rent-history dc-flex flex-column flex-grow-1 text-center click-effect-press" onclick="location.href='history'">
 												<img
 													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCMxb2IzMno2c2RhKSI+CiAgICAgICAgPHBhdGggZD0iTTMgNy4yNTZhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjE1Ljc0M2EyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY3LjI1NnoiIGZpbGw9IiNDN0UwRkYiLz4KICAgICAgICA8cGF0aCBkPSJNOC4yMDMgMTAuODZoOS41OTVNOC4yMDMgMTUuMTI3aDkuNTk1TTguMjAzIDE5LjM5NWg2LjM5NiIgc3Ryb2tlPSIjRTZFRkZDIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgICAgPHBhdGggZD0iTTExLjI2OCAzLjAwNWMuNzY5LTEuMzM1IDIuNjk1LTEuMzM1IDMuNDY1IDBsMS4yOTggMi4yNTJIOS45N2wxLjI5OS0yLjI1MnoiIGZpbGw9IiM5NkM2RkYiLz4KICAgIDwvZz4KICAgIDxkZWZzPgogICAgICAgIDxjbGlwUGF0aCBpZD0iMW9iMzJ6NnNkYSI+CiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjZ2MjZIMHoiLz4KICAgICAgICA8L2NsaXBQYXRoPgogICAgPC9kZWZzPgo8L3N2Zz4K"
-													height="26px"><span class="color-grey-3 text-14">예약내역</span>
+													height="26px">
+													<span class="color-grey-3 text-14">예약내역</span>
 											</div>
 											<div
-												class="js-mypage-btn-myreview dc-flex flex-column flex-grow-1 text-center click-effect-press">
+												class="js-mypage-btn-myreview dc-flex flex-column flex-grow-1 text-center click-effect-press" onclick="location.href='review'">
 												<img
 													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNyAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGNsaXAtcGF0aD0idXJsKCN4anBrYjR1NTlhKSI+CiAgICAgICAgPHJlY3QgeD0iMi4zMzMiIHk9IjQuNTEiIHdpZHRoPSIxOS4wMTIiIGhlaWdodD0iMTkuNDkiIHJ4PSIyIiBmaWxsPSIjQzdFMEZGIi8+CiAgICAgICAgPHBhdGggZD0iTTE5Ljc3MyA2LjgzM2MtLjk3NS0uOTU4LTEuMDU3LTIuNTA2LS4xODMtMy40NGwxLjU5Ni0xLjcwNWMuODczLS45MzQgMi4zODUtLjkxNCAzLjM2LjA0My45NzQuOTU4IDEuMDU2IDIuNTA2LjE4MiAzLjQ0bC0xLjU5NiAxLjcwNmMtLjg3My45MzMtMi4zODUuOTE0LTMuMzYtLjA0NHoiIGZpbGw9IiM5NkM2RkYiLz4KICAgICAgICA8cGF0aCBkPSJtMTAuNDM4IDEzLjEyMS0yLjI0OCA1LjU4Yy0uMTMxLjMyNS4xODMuNjM2LjQ5Ni40ODhsNS4zNDgtMi41MzUtMy41OTctMy41MzZ2LjAwM3oiIGZpbGw9IiNGQkZDRkYiLz4KICAgICAgICA8cGF0aCBkPSJtOC42NDYgMTcuNTcyIDEuMTI1IDEuMTA1LTEuMjE1LjU3N2MtLjI2My4xMjUtLjUyOS0uMTM3LS40MTgtLjQxMWwuNTExLTEuMjY4LS4wMDMtLjAwM3oiIGZpbGw9IiM5NkM2RkYiLz4KICAgICAgICA8cGF0aCBkPSJtMjEuODY0IDMuMzY0LTEuMTk4LTEuMTc4LTEwLjIyOCAxMC45MzUgMS4xOTcgMS4xNzZMMjEuODY0IDMuMzY0eiIgZmlsbD0iI0I5RDVGRiIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMy4wNjQgNC41MzkgMjEuODY3IDMuMzZsLTEwLjIzIDEwLjkzNCAxLjE5OCAxLjE3OCA1LjExNC01LjQ2NyA1LjExNS01LjQ2N3pNMjQuMjYgNS43MmwtMS4xOTctMS4xNzgtNS4xMTUgNS40NjctNS4xMTQgNS40NjcgMS4xOTcgMS4xNzdMMjQuMjYxIDUuNzJ6IiBmaWxsPSIjOUFDMkZGIi8+CiAgICA8L2c+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9InhqcGtiNHU1OWEiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjZmZmIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSguMzMzKSIgZD0iTTAgMGgyNnYyNkgweiIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICA8L2RlZnM+Cjwvc3ZnPgo="
 													height="26px"><span class="color-grey-3 text-14">나의리뷰</span>
@@ -121,18 +123,15 @@
 										</div>
 										<div class="dc-flex justify-content-between pb-5">
 											<div class="js-mypage-btn-point dc-flex flex-stretch pr-1"
-												style="flex-basis: 50%">
-												<div
-													class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
-													<div class="js-mypage-txt-point text-16-b">0 P</div>
+												style="flex-basis: 50%" onclick="location.href='point'">
+												<div class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
+													<div class="js-mypage-txt-point text-16-b">${member_point} P</div>
 													포인트
 												</div>
 											</div>
-											<div
-												class="js-mypage-btn-coupon dc-flex flex-stretch pl-1 position-relative"
-												style="flex-basis: 50%">
-												<div
-													class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
+											<div class="js-mypage-btn-coupon dc-flex flex-stretch pl-1 position-relative" 
+												style="flex-basis: 50%" onclick="location.href='coupon'">
+												<div class="bg-color-grey-7 border-radius-6 text-14 color-grey-3 text-center w-100 py-1 click-effect-press">
 													<div class="js-mypage-txt-coupon-cnt text-16-b">4 장</div>
 													쿠폰
 												</div>

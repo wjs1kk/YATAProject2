@@ -12,8 +12,8 @@
 <body style="">
 	<main id="content" role="main">
 		<div class="main-contents">
-		<jsp:include page="../inc/top.jsp"></jsp:include>
-			
+			<jsp:include page="../inc/top.jsp"></jsp:include>
+
 			<div class="pc-mobile-header-container">
 				<div class="pc-header space-2 text-center dc-none dc-lg-block">
 					<div class="container">
@@ -115,8 +115,10 @@
 									<div>
 										<h3 class="color-grey-3 text-14 list-border-bottom">메뉴</h3>
 										<div class="list-group list-group-flush">
-											<a class="js-mypage-btn-left-menu js-mypage-btn-profile py-2 text-decoration-none px-0 click-effect-press">내 정보 관리</a>
-											<a class="js-mypage-btn-left-menu js-btn-go-help-for-mypage py-2 text-decoration-none px-0 click-effect-press"
+											<a
+												class="js-mypage-btn-left-menu js-mypage-btn-profile py-2 text-decoration-none px-0 click-effect-press">내
+												정보 관리</a> <a
+												class="js-mypage-btn-left-menu js-btn-go-help-for-mypage py-2 text-decoration-none px-0 click-effect-press"
 												data-type="faq">자주묻는 질문</a>
 										</div>
 									</div>
@@ -136,7 +138,7 @@
 												class="js-btn-channel-talk btn btn-outline-dark btn-sm">문의하기</button>
 										</div>
 									</div>
-								
+
 									<div class="text-14 color-grey-5 mt-5">
 										매일(공휴일 포함) 오전 9시 ~ 오후 6시<br>점심시간 오후 12시30분 ~ 1시30분 (1시간)
 									</div>
@@ -145,37 +147,78 @@
 						</div>
 					</div>
 					<div class="col-md-8 pb-6">
-						<div class="mypage-section" id="mypage_section_point" style="">
-							<section class="carmore-section pt-0">
-								<div class="container">
-									<h3 class="mt-0 pt-3">총 포인트</h3>
-									<div class="text-center">
-										<h4
-											class="color-grey-1 text-20 text-center underline-bg dc-inline-block"
-											id="vpd_total_point">${member_point}P</h4>
-										<p class="color-grey-5 text-10">
-											포인트는 적립일로부터 1년간 유효하며,<br>유효기간 경과 시, 자동으로 소멸됨을 알려드립니다.
-										</p>
+						<%-- 						<jsp:include page="member_join.jsp"></jsp:include> --%>
+						<div>
+							<div class="overlay"></div>
+							<div class="container">
+								<div
+									class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+									<div class="col-lg-8 ftco-animate">
+										<div class="text w-100 text-center mb-md-5 pb-md-5">
+											<form action="joinPro.me" method="post">
+												<div>
+													<br>
+													<h1 class="h3 mb-3 fw-normal text-dark">내 정보 수정</h1>
+													<label for="inputEmail" class="visually-hidden">Email</label>
+<!-- 													<div class="d-flex justify-content-center"> -->
+<!-- 														<input type="email" id="email_id" -->
+<!-- 															class="justify-content-center w-50 form-control" -->
+<!-- 															placeholder="이메일" required autofocus> -->
+<!-- 														<button class="btn btn-lg btn-primary" type="submit">중복확인</button> -->
+<!-- 													</div> -->
+													<div class="d-flex justify-content-center">
+														<input type="email" id="email_id"
+															class="justify-content-center w-50 form-control"
+															value="${sId}" readonly="readonly">
+													</div>
+													<label for="inputPassword" class="visually-hidden ">Password</label>
+													<div class="d-flex justify-content-center">
+														<input type="text" id="inputPassword"
+															class="w-50 form-control" placeholder="비밀번호" value="${member_passwd }" required>
+													</div>
+													<label for="inputPassword2" class="visually-hidden" >Confirm
+														Password</label>
+													<div class="d-flex justify-content-center">
+														<input type="text" id="inputPassword2"
+															class="w-50 form-control" placeholder="비밀번호 확인" value="${member_passwd }" required>
+													</div>
+													<label for="name" class="visually-hidden">Name</label>
+													<div class="d-flex justify-content-center">
+														<input type="text" id="name" class="w-50 form-control"
+															placeholder="이름" value="${member_name}" readonly="readonly" required>
+													</div>
+													<label for="date" class="visually-hidden">YYYY/MM/DD</label>
+													<div class="d-flex justify-content-center">
+														<input class="w-50 form-control" type="text"
+															name='userBirthday' value="${member_date}" />
+													</div>
+													<label for="gender" class="visually-hidden">Gender</label>
+													<div class="d-flex justify-content-center">
+														<input type="text" id="gender" class="w-50 form-control"
+															placeholder="성별" value="${member_gender}" readonly="readonly" required>
+													</div>
+													<label for="phone" class="visually-hidden">Phone</label>
+													<div class="d-flex justify-content-center">
+														<input type="text" id="phone" class="w-50 form-control"
+															placeholder="01X-0000-0000" value="${member_phone}" required>
+													</div>
+													<br>
+													
+													<button class="w-50 btn btn-lg btn-primary" style="width: 350px;" type="submit">수정</button>
+													<button class="w-50 btn btn-lg btn-primary" style="width: 350px;" type="reset">취소</button>
+												</div>
+											</form>
+										</div>
 									</div>
 								</div>
-							</section>
-							<section class="carmore-section">
-								<div class="container">
-									<h3>포인트 내역</h3>
-									<div class="text-center color-grey-4 space-2"
-										id="vpd_container_empty_point_list">
-										<span>결제내역에서 select, 조건 point > 0일때</span>
-									</div>
-
-								</div>
-							</section>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-	<jsp:include page="../inc/footer.jsp"/>
-	
+	<jsp:include page="../inc/footer.jsp" />
+
 </body>
 </html>

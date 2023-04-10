@@ -3,6 +3,7 @@ package com.itwillbs.yata.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,11 @@ public class MemberController {
 			model.addAttribute("msg","로그인 실패!");
 			return "fail_back";
 		}	
-		session.setAttribute("sId", member.getMember_email());
+		session.setAttribute("member_email", member.getMember_email());
+		session.setAttribute("member_point", member.getMember_point());
+		session.setAttribute("member_phone", member.getMember_phone());
+		session.setAttribute("member_date", member.getMember_date());
+		session.setAttribute("member_gender", member.getMember_gender());
 		return "redirect:/";
 	}
 	
@@ -47,7 +52,11 @@ public class MemberController {
 	}
 	@PostMapping("joinPro")
 	public String joinPro(MemberVO member) {
-		
+
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String securePasswd = passwordEncoder.encode(member.getMember_passwd());
+
+		member.setMember_passwd(securePasswd);
 		if(memberService.insertUser(member) == 0) {
 			return "join";
 		}
