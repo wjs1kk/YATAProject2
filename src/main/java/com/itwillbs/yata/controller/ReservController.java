@@ -1,6 +1,7 @@
 package com.itwillbs.yata.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -21,4 +22,5 @@ public class ReservController {
 	public String pay_success() {
 		return "pay/pay_success";
 	}
+	
 }

@@ -5,7 +5,333 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="resources/css/rent.css">
+<head>
+<meta name="robots" content="index,nofollow">
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/plugins/ua/ec.js"></script>
+<script type="text/javascript" async=""
+	src="https://cdn.channel.io/plugin/ch-plugin-web.js" charset="UTF-8"></script>
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/analytics.js"></script>
+<script
+	src="https://cr.acecounter.com/Web/AceCounter_AW.js?gc=BS4A43851178693&amp;py=0&amp;gd=gtc14&amp;gp=8080&amp;up=NaPm_Ncisy&amp;rd=1681104613038"></script>
+<script async="" src="https://websdk.appsflyer.com?st=banners,pba&amp;"></script>
+<script async=""
+	src="https://www.googletagmanager.com/gtm.js?id=GTM-NL2ZTQM"></script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      originalLocation: `${document.location.protocol}//${document.location.hostname}${document.location.pathname}${document.location.search}`,
+    }, {
+        'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-NL2ZTQM');</script>
+
+<script>document.documentElement.className = 'no-fouc';</script>
+<script>var isNativeAppFlag = localStorage.getItem('is_native_app');
+var isNativeAppBool = isNativeAppFlag != undefined && isNativeAppFlag != null && isNativeAppFlag == '1';
+
+function isGroundK() {
+  try {
+    var hasGroundKSession = sessionStorage.getItem('isGroundK');
+    if (hasGroundKSession)
+      return true;
+
+    var params = new URLSearchParams(location.search);
+    if (params.has('tak') && params.get('tak')) {
+      if (params.get('tak') == 'sevntloy' || params.get('tak') == 'begrkad')
+        return true;
+    }
+
+    return false;
+  } catch (e) {
+    return false;
+  }
+}
+
+try {
+  if (isNativeAppBool == false && isGroundK() == false) {
+    // 스마트배너
+    !function(t, e, n, s, a, c, i, o, p) {
+      t.AppsFlyerSdkObject = a, t.AF = t.AF || function() {
+        (t.AF.q = t.AF.q || []).push([Date.now()].concat(Array.prototype.slice.call(arguments)))
+      },
+        t.AF.id = t.AF.id || i, t.AF.plugins = {}, o = e.createElement(n), p = e.getElementsByTagName(n)[0], o.async = 1,
+        o.src = "https://websdk.appsflyer.com?" + (c.length > 0
+                                                   ? "st=" + c.split(",").sort().join(",") + "&"
+                                                   : "") + (i.length > 0 ? "af_id=" + i : ""),
+        p.parentNode.insertBefore(o, p)
+    }(window, document, "script", 0, "AF", "pba,banners", {
+      pba: { webAppId: "9e7a7368-6101-42f3-9bea-6a988cd3b33b" },
+      banners: { key: "beaf4362-e534-4af0-a17f-b93d3d0d7835" }
+    });
+  }
+} catch (e) {
+  console.error(e);
+}</script>
+<script>class OneLinkUrlGenerator {
+constructor({ oneLinkURL, pidKeysList = [], pidStaticValue = null, campaignKeysList = [], campaignStaticValue = null, pidOverrideList = [], gclIdParam = 'af_sub5', skipList = ['facebook'] } = {}) {
+    console.debug('Constructing OneLink URL generator');
+    if (oneLinkURL === undefined || typeof oneLinkURL !== 'string' || oneLinkURL === '') {
+    console.error('OneLinkUrlGenerator: oneLinkURL arg invalid');
+    return null;
+    }
+
+    this.oneLinkURL = oneLinkURL;
+    this.pidOverrideList = pidOverrideList;
+    this.gclIdParam = gclIdParam;
+    this.pidKeysList = pidKeysList;
+    this.pidStaticValue = pidStaticValue;
+    this.campaignKeysList = campaignKeysList;
+    this.campaignStaticValue = campaignStaticValue;
+    this.skipList = skipList;
+
+    // OneLink parameters
+    this.campaign = getCampaignValue(this.campaignKeysList, this.campaignStaticValue);
+    this.mediaSource = getMediaSourceValue(this.pidKeysList, this.pidStaticValue, this.pidOverrideList);
+
+    // af_js_web=true will be added to every URL that was generated through this script
+    this.afParams = { af_js_web: 'true' };
+}
+
+generateUrl() {
+    if (this.mediaSource == null) {
+    console.debug('No valid pid value was found. URL will no be changed');
+    return null;
+    }
+
+    // User was redirected using af_r parameter on an AppsFlyer attribution link
+    if (getParameterFromURL('af_redirect')) {
+    console.debug('This user comes from AppsFlyer by redirection and is ready to be attributed. \nKeep direct app store links.');
+    return null; // in this case, the original store links in the install buttons stay the same
+    }
+
+    if (this.isSkipped()) {
+    console.debug('This URL is marked for skipping. The script will return null');
+    // the caller should make sure a return value of null will leave the original link
+    return null;
+    }
+
+    // Google Ads
+    let pidValue = this.mediaSource;
+    const gclIdValue = getParameterFromURL('gclid');
+
+    if (gclIdValue) {
+    this.afParams[this.gclIdParam] = gclIdValue;
+    console.debug('This user comes from Google AdWords');
+
+    const kwValue = getParameterFromURL('keyword');
+    if (!!kwValue) {
+        this.afParams['af_keywords'] = kwValue;
+        console.debug('There is a keyword associated with the ad');
+    }
+    // Other SRNs, custom networks and organic installs
+    } else {
+    console.debug('This user comes from SRN or custom network ');
+    }
+    const finalURL = this.oneLinkURL + '?pid=' + pidValue + '&c=' + this.campaign + stringifyAfParameters(this.afParams);
+    console.debug(`Generated OneLink URL ${finalURL}`);
+    return finalURL;
+}
+
+// Should this URL be skipped base on the HTTP referrer and the skipList[]
+isSkipped() {
+    if (document.referrer && document.referrer != '') {
+    for (var i = 0; i < this.skipList.length; i++) {
+        const skipStr = this.skipList[i];
+        if (document.referrer.toLowerCase().includes(skipStr.toLowerCase())) {
+        console.debug('Skipping the script. HTTP referrer has: ' + skipStr);
+        return true;
+        }
+    }
+    }
+    return false;
+}
+
+// Setters for AF params
+setDeepLinkValue(deepLinkValueParam, deepLinkValue = null) {
+    setGenericParameter(this.afParams, 'deep_link_value', deepLinkValueParam, deepLinkValue);
+}
+
+setChannel(channelParam, channelValue = null) {
+    setGenericParameter(this.afParams, 'af_channel', channelParam, channelValue);
+}
+
+setAdset(adsetParam, adsetValue = null) {
+    setGenericParameter(this.afParams, 'af_adset', adsetParam, adsetValue);
+}
+
+setAd(adParam, adValue = null) {
+    setGenericParameter(this.afParams, 'af_ad', adParam, adValue);
+}
+
+setAfSub1(afSub1Param, afSub1Value = null) {
+    setGenericParameter(this.afParams, 'af_sub1', afSub1Param, afSub1Value);
+}
+
+setAfSub2(afSub2Param, afSub2Value = null) {
+    setGenericParameter(this.afParams, 'this.afParams, af_sub2', afSub2Param, afSub2Value);
+}
+
+setAfSub3(afSub3Param, afSub3Value = null) {
+    setGenericParameter(this.afParams, 'af_sub3', afSub3Param, afSub3Value);
+}
+
+setAfSub4(afSub4Param, afSub4Value = null) {
+    setGenericParameter(this.afParams, 'af_sub4', afSub4Param, afSub4Value);
+}
+
+setAfSub5(afSub5Param, afSub5Value = null) {
+    setGenericParameter(this.afParams, 'af_sub5', afSub5Param, afSub5Value);
+}
+
+setCustomParameter(searchKey, customKey, customValue = null) {
+    setGenericParameter(this.afParams, customKey, searchKey, customValue);
+}
+}
+
+// Statis state-less functions
+function getParameterFromURL(name) {
+const url = window.location.href;
+name = name.replace(/[\[\]]/g, '\\$&');
+var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+if (!results) return null;
+if (!results[2]) return '';
+return decodeURIComponent(results[2].replace(/\+/g, ''));
+}
+
+function getMediaSourceValue(pidKeysList, pidStaticValue, pidOverrideList) {
+let pidValue = null;
+
+for (let pidKey of pidKeysList) {
+    if (pidKey != null && getParameterFromURL(pidKey)) {
+    pidValue = getParameterFromURL(pidKey);
+    }
+}
+
+if (pidValue != null) {
+    if (pidOverrideList.hasOwnProperty(pidValue)) pidValue = pidOverrideList[pidValue];
+} else {
+    pidValue = pidStaticValue;
+}
+return pidValue;
+}
+
+function getCampaignValue(campaignKeysList, campaignStaticValue) {
+for (let campaignKey of campaignKeysList) {
+    if (getParameterFromURL(campaignKey)) {
+    return getParameterFromURL(campaignKey);
+    }
+}
+
+if (campaignStaticValue != null) {
+    return campaignStaticValue;
+}
+
+if (!!document.getElementsByTagName('title')[0]) {
+    return document.getElementsByTagName('title')[0].innerText;
+}
+return 'unknown';
+}
+
+// Create a string of param and value from
+function stringifyAfParameters(afParams) {
+let finalStr = '';
+
+for (var key of Object.keys(afParams)) {
+    console.debug(key + '->' + afParams[key]);
+    if (afParams[key] != null) {
+    finalStr += `&${key}=${afParams[key]}`;
+    }
+}
+return finalStr;
+}
+
+function setGenericParameter(afParams, oneLinkParam, searchKey, newParamValue = null) {
+const searchKeyResult = getParameterFromURL(searchKey);
+if (searchKeyResult) {
+    afParams[oneLinkParam] = searchKeyResult;
+    console.debug(`${searchKey} found. ${oneLinkParam} = ${searchKeyResult}`);
+} else {
+    if (newParamValue != null) {
+    afParams[oneLinkParam] = newParamValue;
+    console.debug(`${searchKey} not found. ${oneLinkParam} = ${newParamValue}`);
+    } else {
+    console.debug(`${searchKey} not found and newParamValue is null. Skipping.`);
+    }
+}
+}
+(function(){
+    window.AFO = Object.assign((window.AFO || {}),{OneLinkUrlGenerator: OneLinkUrlGenerator});
+})();</script>
+<script defer="defer" src="/home/js/5033.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/4279.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/5153.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/3442.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/2717.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/1304.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/8119.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/2439.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/6281.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/4711.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/1465.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/9275.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/8902.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/5015.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/2292.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/3301.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/3691.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer" src="/home/js/997.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script defer="defer"
+	src="/home/js/container-main-view.bundle.js?6d056e84dc9e5cc570aa"></script>
+<script src="//rum.beusable.net/script/b191017e152759u783/c6e2964733"
+	async="" type="text/javascript"></script>
+<script
+	src="//rum.beusable.net/script/checker/b191017e152759u783/c6e2964733?url=https%3A%2F%2Fcarmore.kr%2Fhome%2Fcontainer-main-view.html%3Fpet%3D0%26fishing%3D0%26army%3D0%26foreigner%3D0%26rt%3D1%26mt%3D1%26ssat%3D1%26isOverSeas%3Dfalse%26msat%3D1%26msac%3DO_11%26srsd%3D2023-04-11%252010%3A00%3A00%26sred%3D2023-04-12%252010%3A00%3A00%26ssac%3DO_11%26v%3D230406%26age%3D30%26sls%3D"
+	async="" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+
+	//폼열기
+	function daySelect() {
+		location.href = "#daySelect";
+	}
+
+	function daySelect_close() {
+		daySelect.remove();
+	}
+	function zoneSelect() {
+		location.href = "#zoneSelect";
+	}
+	function zoneSelect_close() {
+		history.back();
+	}
+
+</script>
+
+<style type="text/css">
+.contents-modal {
+	opacity: 0;
+}
+
+.contents-modal:target {
+	top: 50px;
+	opacity: 1;
+}
+</style>
+
 </head>
 <body>
 
@@ -13,9 +339,1047 @@
 		<div class="main-contents">
 			<div class="container-main-view">
 
-
 				<jsp:include page="../inc/top.jsp"></jsp:include>
 
+				<!-- 날짜 선택 폼 -->
+				<div class="contents-modal" id="daySelect">
+					<div class="modal fade pr-0 show" id="modal_rent_date_select"
+						tabindex="-1" role="dialog" data-backdrop="true"
+						data-keyboard="true" data-pageview="1"
+						style="padding-right: 17px; z-index: 1050; display: block;"
+						aria-modal="true">
+						<div
+							class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+							role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title-wrapper dc-flex align-items-center">
+										<h5 class="modal-title line-height-1 text-16 color-grey-3"
+											id="modal_common_popup_txt_title">날짜 및 시간 선택</h5>
+										<div class="ml-2 dc-none"
+											id="js_modal_common_title_sub_button">
+											<div class="click-effect-press dc-none"
+												id="modal_header_overseas_toggle_button">
+												<img class="mr-1"
+													src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik00LjMyNyAyIDIgNC45MWg4TTcuNjczIDEwIDEwIDcuMDlIMiIgc3Ryb2tlPSIjOTk5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="><span
+													class="js-overseas-toggle js-overseas-toggle-domestic text-12 color-grey-5 dc-none"
+													data-isoverseas="0">국내지역</span><span
+													class="js-overseas-toggle js-overseas-toggle-overseas text-12 color-grey-5 dc-none"
+													data-isoverseas="1">해외지역</span>
+											</div>
+										</div>
+									</div>
+									<!-- 닫기 버튼 -->
+									<button id="modal_close"
+										class="js-btn-modal-close btn btn-xs btn-icon btn-soft-secondary right-auto"
+										type="button" data-dismiss="modal" aria-label="Close"
+										onclick="daySelect_close()">
+										<svg aria-hidden="true" width="16" height="16"
+											viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+												<path fill="currentColor"
+												d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z"></path></svg>
+									</button>
+
+								</div>
+								<div class="scroll-elmt">
+									<div class="py-2">
+										<div class="js-vsl-btn-rent-date container px-0 mb-4"
+											id="vsrd_container_rent_period">
+											<div class="mx-3">
+												<div
+													class="table-rent-info-group dc-flex justify-content-between box-round-gray box-round-8-no-shadow">
+													<div class="td-left flex-grow-1 dc-flex align-items-center">
+														<div class="dc-flex flex-grow-1 justify-content-start">
+															<div class="date-wrapper">
+																<img class="js-time-icon mr-1"
+																	src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE3Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTQuNzc4YzMuNjgyIDAgNi42NjctMi45ODUgNi42NjctNi42NjdTMTEuNjgyIDEuNDQ0IDggMS40NDQgMS4zMzMgNC40MyAxLjMzMyA4LjExMSA0LjMxOCAxNC43NzggOCAxNC43Nzh6bS44NjYtOS40NDhjMC0uMzY4LS4yOTktLjY2Ny0uNjY3LS42NjctLjM2OCAwLS42NjcuMjk5LS42NjcuNjY3djIuODY2bC0xLjY3NS0uOTMzYy0uMzIyLS4xOC0uNzI4LS4wNjQtLjkwNy4yNTgtLjE4LjMyMi0uMDY0LjcyOC4yNTguOTA3bDIuNjY3IDEuNDg0Yy4yMDYuMTE1LjQ1OC4xMTIuNjYyLS4wMDcuMjAzLS4xMi4zMjktLjMzOS4zMjktLjU3NXYtNHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"><img
+																	class="js-start-date-error-icon mr-1 dc-none"
+																	src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="
+																	style="display: none;"><span
+																	class="txt-rent-start-date text-14 font-weight-bold color-grey-3 mr-1"
+																	style="display: block;">4.11(화)</span><span
+																	class="txt-rent-start-time text-14 color-grey-3"
+																	style="display: block;">10:00</span>
+															</div>
+															<div class="date-wrapper dc-flex align-items-center">
+																<img class="mx-2"
+																	src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEwIDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM0OTQ5NDkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMTI0IDQuNjdjLjE4Mi0uMjA3LjQ5Ny0uMjI4LjcwNS0uMDQ2bDQgMy41Yy4xMDkuMDk1LjE3MS4yMzIuMTcxLjM3NnMtLjA2Mi4yODEtLjE3LjM3NmwtNCAzLjVjLS4yMDkuMTgyLS41MjQuMTYxLS43MDYtLjA0Ny0uMTgyLS4yMDgtLjE2MS0uNTIzLjA0Ny0uNzA1TDYuNzQgOC41IDMuMTcgNS4zNzZjLS4yMDgtLjE4Mi0uMjMtLjQ5Ny0uMDQ3LS43MDV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==">
+															</div>
+															<div class="date-wrapper">
+																<img class="js-end-date-error-icon mr-1 dc-none"
+																	src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="
+																	style="display: none;"><span
+																	class="txt-rent-end-date text-14 font-weight-bold color-grey-3 mr-1"
+																	style="display: block;">4.12(수)</span><span
+																	class="txt-rent-end-time text-14 color-grey-3"
+																	style="display: block;">10:00</span>
+															</div>
+														</div>
+													</div>
+													<div class="td-right dc-flex align-items-center">
+														<p class="mb-0 text-12 color-grey-3">
+															<span class="txt-rent-period" style="display: block;">24시간</span><span
+																class="txt-select-time dc-none" style="display: none;">날짜와
+																시간을 선택해주세요!</span>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="container mt-3">
+												<div class="row">
+													<div class="col">
+														<div class="form-group mb-0">
+															<label><span
+																class="badge badge-primary badge-date-time text-12-absolute">시작</span>
+																대여시간</label><select class="custom-select border-radius-none"
+																id="vsrd_select_rs_time"><option value="08:00">08:00</option>
+																<option value="08:30">08:30</option>
+																<option value="09:00">09:00</option>
+																<option value="09:30">09:30</option>
+																<option value="10:00">10:00</option>
+																<option value="10:30">10:30</option>
+																<option value="11:00">11:00</option>
+																<option value="11:30">11:30</option>
+																<option value="12:00">12:00</option>
+																<option value="12:30">12:30</option>
+																<option value="13:00">13:00</option>
+																<option value="13:30">13:30</option>
+																<option value="14:00">14:00</option>
+																<option value="14:30">14:30</option>
+																<option value="15:00">15:00</option>
+																<option value="15:30">15:30</option>
+																<option value="16:00">16:00</option>
+																<option value="16:30">16:30</option>
+																<option value="17:00">17:00</option>
+																<option value="17:30">17:30</option>
+																<option value="18:00">18:00</option>
+																<option value="18:30">18:30</option>
+																<option value="19:00">19:00</option>
+																<option value="19:30">19:30</option>
+																<option value="20:00">20:00</option>
+																<option value="20:30">20:30</option>
+																<option value="21:00">21:00</option>
+																<option value="21:30">21:30</option>
+																<option value="22:00">22:00</option></select>
+															<div
+																class="need-change-time need-change-start-time dc-none"
+																style="display: none;"></div>
+														</div>
+													</div>
+													<div class="col">
+														<div class="form-group mb-0">
+															<label><span
+																class="badge badge-primary badge-date-time text-12-absolute">끝</span>
+																반납시간</label><select class="custom-select border-radius-none"
+																id="vsrd_select_re_time"><option value="10:00">10:00</option>
+																<option value="10:30">10:30</option>
+																<option value="11:00">11:00</option>
+																<option value="11:30">11:30</option>
+																<option value="12:00">12:00</option>
+																<option value="12:30">12:30</option>
+																<option value="13:00">13:00</option>
+																<option value="13:30">13:30</option>
+																<option value="14:00">14:00</option>
+																<option value="14:30">14:30</option>
+																<option value="15:00">15:00</option>
+																<option value="15:30">15:30</option>
+																<option value="16:00">16:00</option>
+																<option value="16:30">16:30</option>
+																<option value="17:00">17:00</option>
+																<option value="17:30">17:30</option>
+																<option value="18:00">18:00</option>
+																<option value="18:30">18:30</option>
+																<option value="19:00">19:00</option>
+																<option value="19:30">19:30</option>
+																<option value="20:00">20:00</option>
+																<option value="20:30">20:30</option>
+																<option value="21:00">21:00</option>
+																<option value="21:30">21:30</option>
+																<option value="22:00">22:00</option></select>
+															<div
+																class="need-change-time need-change-end-time dc-none"
+																style="display: none;"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="dc-none container pt-2 px-3 pb-3"
+											id="subscribe_date_container" style="display: none;">
+											<div class="subscribe-select-section w-100">
+												<p class="text-left mb-2 color-grey-4 text-16">대여 기간</p>
+												<select class="custom-select"
+													id="subscribe_select_rent_period"><option
+														value="30">1개월(30일)</option>
+													<option value="60">2개월(60일)</option>
+													<option value="90">3개월(90일)</option>
+													<option value="120">4개월(120일)</option>
+													<option value="150">5개월(150일)</option>
+													<option value="180">6개월(180일)</option>
+													<option value="210">7개월(210일)</option>
+													<option value="240">8개월(240일)</option>
+													<option value="270">9개월(270일)</option>
+													<option value="300">10개월(300일)</option>
+													<option value="330">11개월(330일)</option>
+													<option value="360">12개월(360일)</option></select>
+											</div>
+											<div class="subscribe-select-rent-start-date-container mt-3">
+												<p class="color-grey-4 text-16 mb-2">대여 시작 날짜 및 시간</p>
+												<div class="dc-flex">
+													<p
+														class="color-grey-3 text-16 ml-0 my-0 mr-2 w-60 form-control">
+														<span class="txt-rent-start-date" data-full-year="1">0000.00.00(월)</span>
+													</p>
+													<div class="subscribe-select-section w-40">
+														<select class="custom-select"
+															id="subscribe_select_rs_time"></select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="sel-date-calendar-table-day dc-flex justify-content-around">
+											<div class="dow-txt-td color-red">일</div>
+											<div class="dow-txt-td">월</div>
+											<div class="dow-txt-td">화</div>
+											<div class="dow-txt-td">수</div>
+											<div class="dow-txt-td">목</div>
+											<div class="dow-txt-td">금</div>
+											<div class="dow-txt-td color-blue">토</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-body" body-scroll-lock-ignore="">
+									<div class="margin-top-70 h-100" body-scroll-lock-ignore="">
+										<div class="txt-l" id="early_return_txt_container"
+											style="display: none; text-align: center; padding: 10px;">반납
+											할 일시를 선택해주세요.</div>
+										<div class="h-100 pb-5 position-relative"
+											id="sel_date_calendar_table_container"
+											style="overflow-x: hidden;">
+											<table class="sel-date-calendar-table"
+												id="sel_date_calendar_table">
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-04">2023.4</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week color-grey-6 deactive">26</td>
+													<td class="date-td-first-week color-grey-6 deactive">27</td>
+													<td class="date-td-first-week color-grey-6 deactive">28</td>
+													<td class="date-td-first-week color-grey-6 deactive">29</td>
+													<td class="date-td-first-week color-grey-6 deactive">30</td>
+													<td class="date-td-first-week color-grey-6 deactive">31</td>
+													<td class="date-td-first-week color-grey-6 deactive">1</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">2</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">3</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">4</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">5</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">6</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">7</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">8</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">9</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press today-td"
+														id="2023-04-10">10
+														<div class="active-child today-circle"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press active"
+														id="2023-04-11">11
+														<div
+															class="active-child rent-possible-bg half-circle-start"></div>
+														<div class="active-child select half-circle-start"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press active"
+														id="2023-04-12">12
+														<div class="active-child rent-possible-bg"></div>
+														<div class="active-child select half-circle-end"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-13">13
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-14">14
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-15">15
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-04-16">16
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-17">17
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-18">18
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-19">19
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-20">20
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-21">21
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-22">22
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-04-23">23
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-24">24
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-25">25
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-26">26
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-27">27
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-28">28
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-04-29">29
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-04-30">30
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-05">2023.5</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-05-01">1
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-05-02">2
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-05-03">3
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-05-04">4
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-first-week date-td color-red click-effect-press"
+														id="2023-05-05">5
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-05-06">6
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-07">7
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-08">8
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-09">9
+														<div class="active-child rent-possible-bg"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-10">10
+														<div class="active-child rent-possible-bg half-circle-end"></div>
+													</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-11">11</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-12">12</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-13">13</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-14">14</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-15">15</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-16">16</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-17">17</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-18">18</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-19">19</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-20">20</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-21">21</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-22">22</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-23">23</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-24">24</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-25">25</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-26">26</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-27">27</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-28">28</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-05-29">29</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-30">30</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-05-31">31</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-06">2023.6</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-06-01">1</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-06-02">2</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-06-03">3</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-06-04">4</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-05">5</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-06-06">6</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-07">7</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-08">8</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-09">9</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-10">10</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-06-11">11</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-12">12</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-13">13</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-14">14</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-15">15</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-16">16</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-17">17</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-06-18">18</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-19">19</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-20">20</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-21">21</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-22">22</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-23">23</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-24">24</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-06-25">25</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-26">26</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-27">27</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-28">28</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-29">29</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-06-30">30</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-07">2023.7</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-07-01">1</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-07-02">2</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-03">3</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-04">4</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-05">5</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-06">6</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-07">7</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-08">8</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-07-09">9</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-10">10</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-11">11</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-12">12</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-13">13</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-14">14</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-15">15</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-07-16">16</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-17">17</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-18">18</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-19">19</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-20">20</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-21">21</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-22">22</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-07-23">23</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-24">24</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-25">25</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-26">26</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-27">27</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-28">28</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-29">29</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-07-30">30</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-07-31">31</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-08">2023.8</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-08-01">1</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-08-02">2</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-08-03">3</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-08-04">4</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-08-05">5</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-08-06">6</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-07">7</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-08">8</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-09">9</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-10">10</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-11">11</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-12">12</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-08-13">13</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-14">14</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-08-15">15</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-16">16</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-17">17</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-18">18</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-19">19</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-08-20">20</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-21">21</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-22">22</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-23">23</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-24">24</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-25">25</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-26">26</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-08-27">27</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-28">28</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-29">29</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-30">30</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-08-31">31</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-09">2023.9</td>
+												</tr>
+												<tr>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week"></td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-09-01">1</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-09-02">2</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-03">3</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-04">4</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-05">5</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-06">6</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-07">7</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-08">8</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-09">9</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-10">10</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-11">11</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-12">12</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-13">13</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-14">14</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-15">15</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-16">16</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-17">17</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-18">18</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-19">19</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-20">20</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-21">21</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-22">22</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-23">23</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-24">24</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-25">25</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-26">26</td>
+													<td
+														class="date-td-not-first-week date-td click-effect-press"
+														id="2023-09-27">27</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-28">28</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-29">29</td>
+													<td
+														class="date-td-not-first-week date-td color-red click-effect-press"
+														id="2023-09-30">30</td>
+												</tr>
+												<tr>
+													<td colspan="7" class="month-txt-td" id="2023-10">2023.10</td>
+												</tr>
+												<tr>
+													<td
+														class="date-td-first-week date-td color-red click-effect-press"
+														id="2023-10-01">1</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-10-02">2</td>
+													<td
+														class="date-td-first-week date-td color-red click-effect-press"
+														id="2023-10-03">3</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-10-04">4</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-10-05">5</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-10-06">6</td>
+													<td class="date-td-first-week date-td click-effect-press"
+														id="2023-10-07">7</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">8</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">9</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">10</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">11</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">12</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">13</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">14</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">15</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">16</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">17</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">18</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">19</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">20</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">21</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">22</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">23</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">24</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">25</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">26</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">27</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">28</td>
+												</tr>
+												<tr>
+													<td class="date-td-not-first-week color-grey-6 deactive">29</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">30</td>
+													<td class="date-td-not-first-week color-grey-6 deactive">31</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<div
+										class="container-as-bottom-bar is-toast-scroll-view left-0"
+										id="js_date_calendar_info">
+										<div
+											class="date-calendar-info-alert px-4 dc-none position-absolute bottom-0 w-100"
+											id="js_date_calendar_info_alert" style="display: none;">
+											<div class="box-as-bottom-bar-alert py-2"
+												id="js_as_box_date_calendar_bottom_info_alert">
+												<span class="js-date-calendar-info-alert-txt"></span>
+											</div>
+										</div>
+										<div
+											class="date-calendar-info-alert px-4 dc-none position-absolute bottom-0 w-100"
+											id="js_date_calendar_info_toast">
+											<div class="box-as-bottom-bar-alert py-2"
+												id="js_as_box_date_calendar_bottom_info_toast">
+												<span class="js-date-calendar-info-toast-txt"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sel-date-bottom-container is-only-page"
+									id="sel_date_calendar_desc" style="">
+									<div class="dc-none bg-color-white pt-3 px-3 pb-2"
+										id="subscribe_container_rent_date_view" style="display: none;">
+										<div
+											class="table-rent-info-group dc-flex justify-content-between box-round-gray box-round-8-no-shadow">
+											<div class="td-left flex-grow-1 dc-flex align-items-center">
+												<div class="dc-flex flex-grow-1 justify-content-start">
+													<div class="date-wrapper">
+														<img class="js-time-icon mr-1"
+															src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNyIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE3Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTQuNzc4YzMuNjgyIDAgNi42NjctMi45ODUgNi42NjctNi42NjdTMTEuNjgyIDEuNDQ0IDggMS40NDQgMS4zMzMgNC40MyAxLjMzMyA4LjExMSA0LjMxOCAxNC43NzggOCAxNC43Nzh6bS44NjYtOS40NDhjMC0uMzY4LS4yOTktLjY2Ny0uNjY3LS42NjctLjM2OCAwLS42NjcuMjk5LS42NjcuNjY3djIuODY2bC0xLjY3NS0uOTMzYy0uMzIyLS4xOC0uNzI4LS4wNjQtLjkwNy4yNTgtLjE4LjMyMi0uMDY0LjcyOC4yNTguOTA3bDIuNjY3IDEuNDg0Yy4yMDYuMTE1LjQ1OC4xMTIuNjYyLS4wMDcuMjAzLS4xMi4zMjktLjMzOS4zMjktLjU3NXYtNHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"><img
+															class="js-start-date-error-icon mr-1 dc-none"
+															src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="><span
+															class="txt-rent-start-date text-14 font-weight-bold color-grey-3 mr-1">0/0/0</span><span
+															class="txt-rent-start-time text-14 color-grey-3">00:00</span>
+													</div>
+													<div class="date-wrapper dc-flex align-items-center">
+														<img class="mx-2"
+															src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEwIDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM0OTQ5NDkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMTI0IDQuNjdjLjE4Mi0uMjA3LjQ5Ny0uMjI4LjcwNS0uMDQ2bDQgMy41Yy4xMDkuMDk1LjE3MS4yMzIuMTcxLjM3NnMtLjA2Mi4yODEtLjE3LjM3NmwtNCAzLjVjLS4yMDkuMTgyLS41MjQuMTYxLS43MDYtLjA0Ny0uMTgyLS4yMDgtLjE2MS0uNTIzLjA0Ny0uNzA1TDYuNzQgOC41IDMuMTcgNS4zNzZjLS4yMDgtLjE4Mi0uMjMtLjQ5Ny0uMDQ3LS43MDV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==">
+													</div>
+													<div class="date-wrapper">
+														<img class="js-end-date-error-icon mr-1 dc-none"
+															src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="><span
+															class="txt-rent-end-date text-14 font-weight-bold color-grey-3 mr-1">0/0/0</span><span
+															class="txt-rent-end-time text-14 color-grey-3">00:00</span>
+													</div>
+												</div>
+											</div>
+											<div class="td-right dc-flex align-items-center">
+												<p class="mb-0 text-12 color-grey-3">
+													<span class="txt-rent-period">0일</span><span
+														class="txt-select-time dc-none">날짜와 시간을 선택해주세요!</span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="dc-flex bg-color-white pt-2 px-3 pb-3">
+										<button
+											class="sel-date-btn-reset btn px-3 py-0 dc-flex flex-column">
+											<img
+												src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyNiIgdmlld0JveD0iMCAwIDI2IDI2Ij4KICA8cGF0aCBmaWxsPSIjRDRENEQ0IiBkPSJNNS42MzUwMzM5Miw2Ljc4OTMxNzMgQzUuNjcxNDc3OTcsNi43Mjk4NzYzNSA1LjcxNDczMTA5LDYuNjczMzY0MTUgNS43NjQ4MTg5Niw2LjYyMDg4MDQgQzcuNjM5MjYxNzMsNC42NTY3NzYxMyAxMC4yMzA0Nzk5LDMuNTIzOTU2ODYgMTMsMy41MjM5NTY4NiBDMTguNTIyODQ3NSwzLjUyMzk1Njg2IDIzLDguMDAxMTA5MzcgMjMsMTMuNTIzOTU2OSBDMjMsMTkuMDQ2ODA0NCAxOC41MjI4NDc1LDIzLjUyMzk1NjkgMTMsMjMuNTIzOTU2OSBDNy40NzcxNTI1LDIzLjUyMzk1NjkgMywxOS4wNDY4MDQ0IDMsMTMuNTIzOTU2OSBDMywxMi45NzE2NzIxIDMuNDQ3NzE1MjUsMTIuNTIzOTU2OSA0LDEyLjUyMzk1NjkgQzQuNTUyMjg0NzUsMTIuNTIzOTU2OSA1LDEyLjk3MTY3MjEgNSwxMy41MjM5NTY5IEM1LDE3Ljk0MjIzNDkgOC41ODE3MjIsMjEuNTIzOTU2OSAxMywyMS41MjM5NTY5IEMxNy40MTgyNzgsMjEuNTIzOTU2OSAyMSwxNy45NDIyMzQ5IDIxLDEzLjUyMzk1NjkgQzIxLDkuMTA1Njc4ODYgMTcuNDE4Mjc4LDUuNTIzOTU2ODYgMTMsNS41MjM5NTY4NiBDMTAuNzgyODI4LDUuNTIzOTU2ODYgOC43MTI1MTU5OSw2LjQyOTA0ODI3IDcuMjExNjcxMzMsOC4wMDE2ODM4NiBDNy4xODExNDA2NCw4LjAzMzY3NDk0IDcuMTQ4OTk2MjcsOC4wNjMxOTkyOSA3LjExNTQ4NzI4LDguMDkwMjUxMDcgTDEwLjY2MDc1NTcsOC4wOTE2ODkyOSBDMTEuMjI2MDc3OCw4LjA5MTg4Mjg2IDExLjY4NDUxODksOC41NTAzMjM5NCAxMS42ODQ3MTI1LDkuMTE1NjQ2MDkgQzExLjY4NDkwNjEsOS42ODA5NjgyNCAxMS4yMjY3Nzg4LDEwLjEzOTA5NTUgMTAuNjYxNDU2NywxMC4xMzg5MDE5IEw0LjUxOTgxODgyLDEwLjEzNjc5ODkgQzMuOTU0NDk2NjcsMTAuMTM2NjA1NCAzLjQ5NjA1NTU5LDkuNjc4MTY0MjkgMy40OTU4NjIwMiw5LjExMjg0MjE0IEwzLjQ5Mzc1OTA2LDMuNTIzMjU1ODggQzMuNDkzNTY1NDgsMi45NTc5MzM3MiAzLjk1MTY5MjcyLDIuNDk5ODA2NDkgNC41MTcwMTQ4NywyLjUwMDAwMDA2IEM1LjA4MjMzNzAyLDIuNTAwMTkzNjMgNS41NDA3NzgxLDIuOTU4NjM0NzEgNS41NDA5NzE2NywzLjUyMzk1Njg2IEw1LjYzMzIzOTI3LDYuNzg3NzQwMjggTDUuNjM1MDMzOTIsNi43ODkzMTczIFoiLz4KPC9zdmc+Cg=="><span
+												class="text-10 color-grey-6">초기화</span>
+										</button>
+										<button
+											class="sel-date-btn-ok btn btn-primary btn-ok btn-block py-2"
+											id="sel_date_btn_ok">
+											<span
+												class="js-txt-rent-available justify-content-center dc-flex"
+												style="display: flex;"><span class="mr-1">총</span><span
+												class="txt-rent-period mr-1" style="display: block;">24시간</span><span>대여하기</span></span><span
+												class="js-txt-rent-disable dc-none" style="display: none;"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 				<!-- 대여장소 대여날짜 선택하는 상단 바 -->
@@ -27,7 +1391,8 @@
 								<div class="col-lg-4">
 									<div class="js-container-search-list-area-all h-100">
 										<div
-											class="js-vsl-btn-select-area click-effect-press dc-flex box-round-gray px-25 py-1 align-items-center h-100">
+											class="js-vsl-btn-select-area click-effect-press dc-flex box-round-gray px-25 py-1 align-items-center h-100"
+											data-type="location" onclick="zoneSelect()">
 											<img class="mr-1"
 												src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiNBQUI0QzYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMTVzNS01Ljk0NiA1LTguODEyQzEzIDMuMzIzIDEwLjc2MSAxIDggMVMzIDMuMzIzIDMgNi4xODhDMyA5LjA1NCA4IDE1IDggMTV6bTAtN2MxLjEwNSAwIDItLjg5NSAyLTJzLS44OTUtMi0yLTItMiAuODk1LTIgMiAuODk1IDIgMiAyeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=">
 											<div
@@ -68,7 +1433,8 @@
 									<div class="form-group mb-0 h-100"
 										id="js_container_search_list_rent_date_view_pc">
 										<div
-											class="js-vsl-btn-rent-date dc-flex justify-content-between align-items-center click-effect-press box-border-grey-7 box-round-gray px-25 py-1 h-100">
+											class="js-vsl-btn-rent-date dc-flex justify-content-between align-items-center click-effect-press box-border-grey-7 box-round-gray px-25 py-1 h-100"
+											data-type="location" onclick="daySelect()">
 											<div class="dc-flex align-items-center">
 												<div class="dc-flex align-items-center text-16 color-grey-3">
 													<img class="js-time-icon mr-1"
@@ -296,6 +1662,9 @@
 											<option value="99">만 99세</option></select>
 									</div>
 								</div>
+
+
+
 								<div class="position-relative js-no-data-hide-elmt"
 									id="js_container_search_list_filter"
 									style="z-index: 0; display: block;">
