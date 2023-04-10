@@ -20,12 +20,12 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@GetMapping("write.bo")
+	@GetMapping("write.no")
 	public String writeForm() {
-		return "write_form";
+		return "notice/write_form";
 	}
 	
-	@PostMapping("writePro.bo")
+	@PostMapping("writePro.no")
 	public String writePro(NoticeVO board) {
 		int insertCount = noticeService.registNotice(board);
 		return "redirect:/notice.no";
