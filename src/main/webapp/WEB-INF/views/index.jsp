@@ -27,7 +27,7 @@
 									id="js_index_main_banner_swiper_pc_14"
 									data-swiper-slide-index="14" role="group" aria-label="15 / 15"
 									style="width: 1903px;">
-									<a class="dc-block js-index-container-banner click-effect-press" data-i="14" href="page-event-detail.html?a=67&amp;b=14&amp;c=home_top_banner"
+									<a class="dc-block js-index-container-banner" data-i="14" href=""
 										style="background-color: rgb(198, 219, 237);">
 										<div class="container index-container-main-banner">
 											<img class="js-index-img-banner index-img-main-banner swiper-lazy swiper-lazy-loaded" draggable="false"

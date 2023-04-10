@@ -14,8 +14,11 @@ public class CarService {
 	@Autowired
 	private CarMapper mapper;
 	
-	public List<CarVO> selectCar() {	
-		return mapper.selectCar() != null ? mapper.selectCar() :null ;
+	public List<CarVO> selectCars() {	
+		return mapper.selectCars() != null ? mapper.selectCars() :null ;
+	}
+	public CarVO selectCar(int car_id) {
+		return mapper.selectCar(car_id) != null ? mapper.selectCar(car_id) :null ;
 	}
 
 }

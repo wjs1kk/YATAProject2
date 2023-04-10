@@ -6,5 +6,6 @@ import java.util.Map;
 import com.itwillbs.yata.vo.CarVO;
 
 public interface CarMapper {
-	public List<CarVO> selectCar();
+	public List<CarVO> selectCars();
+	public CarVO selectCar(int car_id);
 }

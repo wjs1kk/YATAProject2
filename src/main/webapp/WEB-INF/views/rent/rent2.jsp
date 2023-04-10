@@ -40,7 +40,7 @@
 												class="js-cpi-txt-car-type ml-1">경형</span></a>
 											<div
 												class="js-cpi-txt-car-model text-20 font-weight-bold color-grey-3 mb-0">
-												모닝 2세대 F/L</div>
+												${car.car_model }</div>
 											<div class="js-cpi-container-branch-info pt-1 dc-none"
 												style="display: none;">
 												<div class="dc-flex align-items-center">
@@ -179,9 +179,9 @@
 														<span class="text-12 color-grey-4 mr-1"
 															id="vcd_txt_include_insu_price" style="display: block;"><b>완전자차</b>
 															포함가</span><span
-															class="js-vcd-txt-expected-price js-vcd-welcome-coupon-applied-expected-price text-20 font-weight-bold color-red-brown mb-0 line-height-1">7,300원</span><span
+															class="js-vcd-txt-expected-price js-vcd-welcome-coupon-applied-expected-price text-20 font-weight-bold color-red-brown mb-0 line-height-1">${car.car_price }원</span><span
 															class="js-vcd-txt-expected-poa-price js-vcd-welcome-coupon-applied-expected-price text-20 font-weight-bold color-red-brown mb-0 line-height-1 dc-none"
-															style="display: none;">7,300원</span>
+															style="display: none;">원</span>
 													</div>
 												</div>
 											</div>
@@ -1274,7 +1274,7 @@
 															<div
 																class="dc-flex justify-content-between align-items-center text-14 font-weight-bold">
 																<span class="text-primary">예상 결제액</span><span
-																	class="js-vcd-txt-expected-price text-right text-primary">12,300원</span>
+																	class="js-vcd-txt-expected-price text-right text-primary">원</span>
 															</div>
 														</li>
 													</ul>

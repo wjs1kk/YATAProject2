@@ -5,8 +5,13 @@
 
 <mapper namespace="com.itwillbs.yata.mapper.CarMapper">
 
-	<select id="selectCar" resultType="com.itwillbs.yata.vo.CarVO">
+	<select id="selectCars" resultType="com.itwillbs.yata.vo.CarVO">
 		select * from car
 	</select>
-
+	
+	<select id="selectCar" resultType="com.itwillbs.yata.vo.CarVO">
+		select * 
+			from car 
+			where car_id = #{car_id}
+	</select>
 </mapper>
