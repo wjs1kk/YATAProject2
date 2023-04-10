@@ -9,6 +9,9 @@
 .ke_mg_pd {
 	padding-top: 50px;
 }
+#tr_top {
+	background: #87b8ff;
+}
 </style>
 </head>
 <body style="">
