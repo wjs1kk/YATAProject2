@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/main.css">
 
@@ -171,19 +171,19 @@
 											
 											var positions = [
 											    {
-											        content: '<div style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">YATA 전포지점</div>', 
+											        content: '<input type="text" id="place" value="전포지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
 											        latlng: new kakao.maps.LatLng(35.15849019679627, 129.06202404131136)
 											    },
 											    {
-											        content: '<div style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">YATA 부전지점</div>', 
+											        content: '<input type="text" id="place" value="부전지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
 											        latlng: new kakao.maps.LatLng(35.15975905300518, 129.06186404315977)
 											    },
 											    {
-											        content: '<div style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">YATA 부산지점</div>', 
+											        content: '<input type="text" id="place" value="사상지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">', 
 											        latlng: new kakao.maps.LatLng(35.158690073109824, 129.06113477638084)
 											    },
 											    {
-											        content: '<div style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">YATA 부산지점</div>',
+											        content: '<input type="text" id="place" value="개금지점" style="padding:5px; background: #20c997; color: white; border-radius: 10px; font-weight: bold;">',
 											        latlng: new kakao.maps.LatLng(35.15730753621485, 129.06294334538524)
 											    }
 											];
@@ -200,25 +200,26 @@
 											        content: positions[i].content // 인포윈도우에 표시할 내용
 											    });
 
-											    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-											    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-											    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-											    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-											    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-											}
+											    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+											    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+											    (function(marker, infowindow) {
+											        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+											        kakao.maps.event.addListener(marker, 'mouseover', function() {
+											            infowindow.open(map, marker);
+											        });
 
-											// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-											function makeOverListener(map, marker, infowindow) {
-											    return function() {
-											        infowindow.open(map, marker);
-											    };
-											}
-
-											// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-											function makeOutListener(infowindow) {
-											    return function() {
-											        infowindow.close();
-											    };
+											        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+											        kakao.maps.event.addListener(marker, 'mouseout', function() {
+											            infowindow.close();
+											        });
+											        
+											        kakao.maps.event.addListener(marker, 'click', function() {
+											        	$(function() {
+															let place = $("#place").val();
+											           	 	location.href = "?place="+place;
+														})
+											        });
+											    })(marker, infowindow);
 											}
 											
 					
@@ -245,12 +246,14 @@
 								
 							</div>
 							
+							<input type="button" value="전포지점">
+							
 							<div class="container-as-bottom-bar is-pc-modal"
 								id="js_csabb_container_bottom_info">
 								<div class="box-round-address-info px-3 pt-3"
 									id="js_csabb_card_bottom_info">
 									<div class="pb-3 click-effect-press"
-										id="js_csabb_btn_address_search" style="display: block;">
+ 										id="js_csabb_btn_address_search" style="display: block;">
 										<div
 											class="container-input-common-search in-bottom-bar box-round-gray">
 											<span class="icon mr-2 line-height-1"><img
@@ -258,10 +261,10 @@
 												class="span-txt text-16 color-grey-4"
 												id="js_csabb_txt_placeholder">국내 지역명, 역, 건물 이름으로 검색</span>
 										</div>
+										
 									</div>
 								</div>
 							</div>
-							
 							
 						</div>
 					</div>
@@ -344,7 +347,8 @@
 
 											<div
 												class="wordbreak-keepall text-14 font-weight-bold color-grey-3 ellipsis"
-												id="js_index_txt_location">지점 선택하기</div>
+												id="js_index_txt_location"><input type="text" value="${param.place }" placeholder="지점 선택하기" readonly="readonly"
+												style="border: none; font-weight: bolder;"></div>
 
 										</div>
 									</div>
