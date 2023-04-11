@@ -20,7 +20,7 @@
 <script type="text/javascript">
 	//폼열기
 	function daySelect() {
-		location.href = "#demo";
+		location.href = "#daySelect";
 	}
 
 	function daySelect_close() {
@@ -59,6 +59,94 @@
 			<div class="container-main-view">
 
 				<jsp:include page="../inc/top.jsp"></jsp:include>
+
+				<!-- 날짜 선택 폼 -->
+				<div class="contents-modal" id="daySelect">
+					<div class="modal fade pr-0 show" id="modal_rent_date_select"
+						tabindex="-1" role="dialog" data-backdrop="true"
+						data-keyboard="true" data-pageview="1"
+						style="padding-right: 17px; z-index: 1050; display: block;"
+						aria-modal="true">
+						<div
+							class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+							role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="modal-title-wrapper dc-flex align-items-center">
+										<h5 class="modal-title line-height-1 text-16 color-grey-3"
+											id="modal_common_popup_txt_title">날짜 및 시간 선택</h5>
+
+
+										<!--달력 -->
+										<input type="text" id="demo" name="demo" value="" />
+										
+										<script>
+										$(function () {
+										    $('#demo').daterangepicker({
+										        "locale": {
+										            "format": "YYYY-MM-DD",
+										            "separator": " ~ ",
+										            "applyLabel": "확인",
+										            "cancelLabel": "취소",
+										            "fromLabel": "From",
+										            "autoclose": "true",
+										            "toLabel": "To",
+										            "todayHighlight" : "true",
+										            "customRangeLabel": "Custom",
+										            "weekLabel": "W",
+										            "daysOfWeek": ["월", "화", "수", "목", "금", "토", "일"],
+										            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+										            "firstDay": 1
+										        },
+										        "startDate": new Date(),
+										        "endDate": new Date(),
+										        "drops": "down"
+										        
+										    }, function (start, end, label) {
+										    	var startData = start.format('YYYY-MM-DD');
+										    	var endData = end.format('YYYY-MM-DD');
+										    	
+										        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+										    	console.log(startData);
+										    	console.log(endData);
+										    	
+										    });
+										});
+										</script>
+
+										<!-- 닫기 버튼 -->
+										<button id="modal_close"
+											class="js-btn-modal-close btn btn-xs btn-icon btn-soft-secondary right-auto"
+											type="button" data-dismiss="modal" aria-label="Close"
+											onclick="daySelect_close()">
+											<svg aria-hidden="true" width="16" height="16"
+												viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+												<path fill="currentColor"
+													d="M11.5,9.5l5-5c0.2-0.2,0.2-0.6-0.1-0.9l-1-1c-0.3-0.3-0.7-0.3-0.9-0.1l-5,5l-5-5C4.3,2.3,3.9,2.4,3.6,2.6l-1,1 C2.4,3.9,2.3,4.3,2.5,4.5l5,5l-5,5c-0.2,0.2-0.2,0.6,0.1,0.9l1,1c0.3,0.3,0.7,0.3,0.9,0.1l5-5l5,5c0.2,0.2,0.6,0.2,0.9-0.1l1-1 c0.3-0.3,0.3-0.7,0.1-0.9L11.5,9.5z"></path></svg>
+										</button>
+
+										<button
+											class="sel-date-btn-reset btn px-3 py-0 dc-flex flex-column">
+											<img
+												src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyNiIgdmlld0JveD0iMCAwIDI2IDI2Ij4KICA8cGF0aCBmaWxsPSIjRDRENEQ0IiBkPSJNNS42MzUwMzM5Miw2Ljc4OTMxNzMgQzUuNjcxNDc3OTcsNi43Mjk4NzYzNSA1LjcxNDczMTA5LDYuNjczMzY0MTUgNS43NjQ4MTg5Niw2LjYyMDg4MDQgQzcuNjM5MjYxNzMsNC42NTY3NzYxMyAxMC4yMzA0Nzk5LDMuNTIzOTU2ODYgMTMsMy41MjM5NTY4NiBDMTguNTIyODQ3NSwzLjUyMzk1Njg2IDIzLDguMDAxMTA5MzcgMjMsMTMuNTIzOTU2OSBDMjMsMTkuMDQ2ODA0NCAxOC41MjI4NDc1LDIzLjUyMzk1NjkgMTMsMjMuNTIzOTU2OSBDNy40NzcxNTI1LDIzLjUyMzk1NjkgMywxOS4wNDY4MDQ0IDMsMTMuNTIzOTU2OSBDMywxMi45NzE2NzIxIDMuNDQ3NzE1MjUsMTIuNTIzOTU2OSA0LDEyLjUyMzk1NjkgQzQuNTUyMjg0NzUsMTIuNTIzOTU2OSA1LDEyLjk3MTY3MjEgNSwxMy41MjM5NTY5IEM1LDE3Ljk0MjIzNDkgOC41ODE3MjIsMjEuNTIzOTU2OSAxMywyMS41MjM5NTY5IEMxNy40MTgyNzgsMjEuNTIzOTU2OSAyMSwxNy45NDIyMzQ5IDIxLDEzLjUyMzk1NjkgQzIxLDkuMTA1Njc4ODYgMTcuNDE4Mjc4LDUuNTIzOTU2ODYgMTMsNS41MjM5NTY4NiBDMTAuNzgyODI4LDUuNTIzOTU2ODYgOC43MTI1MTU5OSw2LjQyOTA0ODI3IDcuMjExNjcxMzMsOC4wMDE2ODM4NiBDNy4xODExNDA2NCw4LjAzMzY3NDk0IDcuMTQ4OTk2MjcsOC4wNjMxOTkyOSA3LjExNTQ4NzI4LDguMDkwMjUxMDcgTDEwLjY2MDc1NTcsOC4wOTE2ODkyOSBDMTEuMjI2MDc3OCw4LjA5MTg4Mjg2IDExLjY4NDUxODksOC41NTAzMjM5NCAxMS42ODQ3MTI1LDkuMTE1NjQ2MDkgQzExLjY4NDkwNjEsOS42ODA5NjgyNCAxMS4yMjY3Nzg4LDEwLjEzOTA5NTUgMTAuNjYxNDU2NywxMC4xMzg5MDE5IEw0LjUxOTgxODgyLDEwLjEzNjc5ODkgQzMuOTU0NDk2NjcsMTAuMTM2NjA1NCAzLjQ5NjA1NTU5LDkuNjc4MTY0MjkgMy40OTU4NjIwMiw5LjExMjg0MjE0IEwzLjQ5Mzc1OTA2LDMuNTIzMjU1ODggQzMuNDkzNTY1NDgsMi45NTc5MzM3MiAzLjk1MTY5MjcyLDIuNDk5ODA2NDkgNC41MTcwMTQ4NywyLjUwMDAwMDA2IEM1LjA4MjMzNzAyLDIuNTAwMTkzNjMgNS41NDA3NzgxLDIuOTU4NjM0NzEgNS41NDA5NzE2NywzLjUyMzk1Njg2IEw1LjYzMzIzOTI3LDYuNzg3NzQwMjggTDUuNjM1MDMzOTIsNi43ODkzMTczIFoiLz4KPC9zdmc+Cg=="><span
+												class="text-10 color-grey-6">초기화</span>
+										</button>
+										<button
+											class="sel-date-btn-ok btn btn-primary btn-ok btn-block py-2"
+											id="sel_date_btn_ok"
+											onclick="submit()">
+											<span
+												class="js-txt-rent-available justify-content-center dc-flex"
+												style="display: flex;"><span>대여하기</span></span><span
+												class="js-txt-rent-disable dc-none" style="display: none;"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 				<!-- 대여장소 대여날짜 선택하는 상단 바 -->
 				<div class="" id="container_search_list_view">
@@ -107,50 +195,23 @@
 										</div>
 									</div>
 								</div>
-								
-								
 								<div class="col-lg-5">
 									<div class="form-group mb-0 h-100"
 										id="js_container_search_list_rent_date_view_pc">
-										<!--달력 -->
 										<div
 											class="js-vsl-btn-rent-date dc-flex justify-content-between align-items-center click-effect-press box-border-grey-7 box-round-gray px-25 py-1 h-100"
 											data-type="location" onclick="daySelect()">
-										<input type="text" id="demo" name="demo" value="" style="border:0 solid black; background-color:transparent;" />
-										<script>
-										$(function () {
-										    $('#demo').daterangepicker({
-										        "locale": {
-										            "format": "MM.DD HH:00",
-										            "separator": " ~ ",
-										            "applyLabel": "확인",
-										            "cancelLabel": "취소",
-										            "fromLabel": "From",
-										            "autoclose": "true",
-										            "toLabel": "To",
-										            "todayHighlight" : "true",
-										            "customRangeLabel": "Custom",
-										            "weekLabel": "W",
-										            "daysOfWeek": ["월", "화", "수", "목", "금", "토", "일"],
-										            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-										            "firstDay": 1
-										        },
-										        "startDate": new Date(),
-										        "endDate": new Date(),
-										        "drops": "down",
-										        timePicker: true,
-										        timePicker24Hour: true
-										        
-										    }, function (start, end) {
-										    	var startDate = start.format('MM-DD HH');
-										    	var endDate = end.format('MM-DD HH');
-										    	var time = (end - start) / (1000*60*60);
-										    	$('#time').text(time + " 시간");
-										    	debugger;
-										    });
-										});
-										</script>
-										<p id="time" style="border:0 solid black; background-color:transparent;"></p>
+											<div class="dc-flex align-items-center">
+												<img class="mx-2"
+													src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDEwIDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM5OTkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMTI0IDQuNjdjLjE4Mi0uMjA3LjQ5Ny0uMjI4LjcwNS0uMDQ2bDQgMy41Yy4xMDkuMDk1LjE3MS4yMzIuMTcxLjM3NnMtLjA2Mi4yODEtLjE3LjM3NmwtNCAzLjVjLS4yMDkuMTgyLS41MjQuMTYxLS43MDYtLjA0Ny0uMTgyLS4yMDgtLjE2MS0uNTIzLjA0Ny0uNzA1TDYuNzQgOC41IDMuMTcgNS4zNzZjLS4yMDgtLjE4Mi0uMjMtLjQ5Ny0uMDQ3LS43MDV6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==">
+												<div class="dc-flex align-items-center text-16 color-grey-3">
+													<img class="js-end-date-error-icon mr-1 dc-none"
+														src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNSA4LjExYTcgNyAwIDEgMS0xNCAwIDcgNyAwIDAgMSAxNCAweiIgZmlsbD0iI0IxMkMyQyIvPgogICAgPHJlY3QgeD0iNyIgeT0iNC4xMDkiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZmZmIi8+CiAgICA8cGF0aCBkPSJNNyAxMi4xMWExIDEgMCAxIDEgMiAwIDEgMSAwIDAgMS0yIDB6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo="
+														style="display: none;"><span
+														class="txt-rent-end-date font-weight-bold"
+														style="display: block;">날짜 및 시간</span>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
