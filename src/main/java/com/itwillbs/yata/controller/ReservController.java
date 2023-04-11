@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ReservController {
 	@GetMapping("rent1")
 	public String rent1() {
-		return "rent/rent3";
+		return "rent/rent";
 	}
 	@GetMapping("rent2")
 	public String car_view() {
