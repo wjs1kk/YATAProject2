@@ -19,7 +19,7 @@
 									<div class="col-8 offset-2 col-xl-6 offset-xl-3 px-5">
 										<div class="mt-3 mb-xl-0">
 											<img class="img-fluid" id="vcd_img_car"
-												src="resources/images/${car.car_model }.png" height="289" width="140">
+												src="resources/images/${car.car_model }.png" style="width:289px; height:140px;">
 											
 										</div>
 									</div>
@@ -166,15 +166,13 @@
 														style="display: none;"></span>
 													<div class="js-vcd-overseas-poa-badge dc-none"></div>
 													<div class="js-vcd-txt-none-member-price text-right">
-														<span class="text-12 color-grey-4 mr-1">비회원가</span><span
-															class="js-vcd-none-member-price text-12 color-grey-3 font-weight-bold">12,300원</span>
+														<span class="text-12 color-grey-4 mr-1">보험금액</span><span
+															class="js-vcd-none-member-price text-12 color-grey-3 font-weight-bold">+12,300원(보험금액 rent페이지에서 받아와야함.)</span>
 													</div>
 													<div class="dc-flex justify-content-end align-items-center">
-														<div
-															class="js-vcd-txt-first-discount text-12 color-grey-4 font-weight-bold">
-															첫 구매 할인,&nbsp;</div>
+														
 														<span class="text-12 color-grey-4 mr-1"
-															id="vcd_txt_include_insu_price" style="display: block;"><b>완전자차</b>
+															id="vcd_txt_include_insu_price" style="display: block;"><b>(앞에서 받아온 보험명)</b>
 															포함가</span><span
 															class="js-vcd-txt-expected-price js-vcd-welcome-coupon-applied-expected-price text-20 font-weight-bold color-red-brown mb-0 line-height-1">${car.car_price }원</span><span
 															class="js-vcd-txt-expected-poa-price js-vcd-welcome-coupon-applied-expected-price text-20 font-weight-bold color-red-brown mb-0 line-height-1 dc-none"

@@ -38,7 +38,19 @@ public class ReservController {
 		return "rent/rent2";
 	}
 	
-	
+	@GetMapping("/search")
+	public String search(@RequestParam String car_model, Model model) {
+		System.out.println("search");
+		
+	    List<CarVO> cars = carService.searchByName(car_model);
+	    
+	    
+	    System.out.println(cars);
+	    
+	    model.addAttribute("carList", cars);
+	    
+	    return "rent/rent";
+	}
 	
 	@GetMapping("pay")
 	public String pay() {
