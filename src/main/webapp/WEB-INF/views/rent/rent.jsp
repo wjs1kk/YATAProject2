@@ -17,41 +17,6 @@
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <head>
 
-<script type="text/javascript">
-	//폼열기
-	function daySelect() {
-		location.href = "#demo";
-	}
-
-	function daySelect_close() {
-		location.href = "rent1";
-	}
-
-	function zoneSelect() {
-		location.href = "#zoneSelect";
-	}
-	function zoneSelect_close() {
-		location.href = "rent1";
-	}
-	
-	//대여하기 버튼 클릭 시 날짜 표시
-	function submit() {
-		
-		location.href = "rent1";
-	}
-</script>
-
-<style type="text/css">
-.contents-modal {
-	opacity: 0;
-}
-
-.contents-modal:target {
-	top: 50px;
-	opacity: 1;
-}
-</style>
-
 </head>
 <body>
 	<main id="content" role="main">
@@ -112,6 +77,7 @@
 								<div class="col-lg-5">
 									<div class="form-group mb-0 h-100"
 										id="js_container_search_list_rent_date_view_pc">
+										
 										<!--달력 -->
 										<div
 											class="js-vsl-btn-rent-date dc-flex justify-content-between align-items-center click-effect-press box-border-grey-7 box-round-gray px-25 py-1 h-100"
@@ -150,6 +116,7 @@
 										    });
 										});
 										</script>
+										<!-- 	시간표시 -->
 										<p id="time" style="border:0 solid black; background-color:transparent;"></p>
 										</div>
 									</div>
