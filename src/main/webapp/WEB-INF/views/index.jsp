@@ -610,9 +610,8 @@
 					id="js_section_main_reviews">
 					<div class="container">
 						<div class="text-center">
-							<div class="text-32 font-weight-bold color-grey-2">카모아 고객
-								리뷰</div>
-							<div class="text-16 color-grey-4">카모아는 이미 전국의 고객들로부터 사랑받고
+							<div class="text-32 font-weight-bold color-grey-2">YATA 고객 리뷰</div>
+							<div class="text-16 color-grey-4">YATA는 이미 전국의 고객들로부터 사랑받고
 								있습니다.</div>
 						</div>
 						<div class="row mt-5">
@@ -626,7 +625,7 @@
 										<div class="index-box-review swiper-slide swiper-slide-active"
 											role="group" aria-label="1 / 12" style="margin-right: 20px;">
 											<div class="text-center">
-												<div class="text-40 font-weight-bold text-primary">5.0</div>
+												<div class="text-40 font-weight-bold text-primary">${review[0].review_star }</div>
 												<div
 													class="index-box-review-container-rate d-flex justify-content-center">
 													<img class="index-box-review-img-rate-star"
@@ -642,24 +641,21 @@
 												</div>
 												<div class="mt-3">
 													<div class="text-16 text-left">
-														<span class="index-txt-review-highlighter">
-															<c:forEach var="review" items="${ArrayList }">
-																<c:out value="${review.writer }"/>
-															</c:forEach>
-														</span>
+															<!-- 리뷰 내용 -->
+															${review[0].review_content }
 													</div>
 												</div>
 												<div class="index-box-review-bottom-box text-left">
 													<div class="index-txt-review-bottom-box-top text-14">제주에서
 														1일 렌트하신</div>
-													<div class="text-16-b text-white"></div>
+													<div class="text-16-b text-white">${review[0].member_name }님</div>
 												</div>
 											</div>
 										</div>
 										<div class="index-box-review swiper-slide swiper-slide-next"
 											role="group" aria-label="2 / 12" style="margin-right: 20px;">
 											<div class="text-center">
-												<div class="text-40 font-weight-bold text-primary">4.9</div>
+												<div class="text-40 font-weight-bold text-primary">${review[1].review_star }</div>
 												<div
 													class="index-box-review-container-rate d-flex justify-content-center">
 													<img class="index-box-review-img-rate-star"
@@ -675,23 +671,20 @@
 												</div>
 												<div class="mt-3">
 													<div class="text-16 text-left">
-														<span>카쉐어링만 하다가 일반 렌터카 이용해봤는데요.<br>직원분들도&nbsp;
-														</span><span class="index-txt-review-highlighter">친절하고
-															차상태도 괜찮고</span><span>&nbsp;시외 첫 장거리운전 해봤는데 사고없이 안전운전
-															했습니다.</span>
+														${review[1].review_content }
 													</div>
 												</div>
 												<div class="index-box-review-bottom-box text-left">
 													<div class="index-txt-review-bottom-box-top text-14">부산에서
 														1일 렌트하신</div>
-													<div class="text-16-b text-white">유** 고객님</div>
+													<div class="text-16-b text-white">${review[1].member_name }님</div>
 												</div>
 											</div>
 										</div>
 										<div class="index-box-review swiper-slide" role="group"
 											aria-label="3 / 12" style="margin-right: 20px;">
 											<div class="text-center">
-												<div class="text-40 font-weight-bold text-primary">5.0</div>
+												<div class="text-40 font-weight-bold text-primary">${review[2].review_star }</div>
 												<div
 													class="index-box-review-container-rate d-flex justify-content-center">
 													<img class="index-box-review-img-rate-star"
@@ -707,18 +700,13 @@
 												</div>
 												<div class="mt-3">
 													<div class="text-16 text-left">
-														<span class="index-txt-review-highlighter">픽업 서비스</span><span>도
-															좋았고요! 차량 상태에 대해 잘 이야기해주시고 계약하면서 어려운 부분도 잘 알려주셔서 감사했습니다.</span><span
-															class="index-txt-review-highlighter">업체도 친절</span><span>&nbsp;하고
-															대응 잘해주셔서 편하게 렌트했습니다.<br>크게 불편한 점도 없었구요. 앞으로도 사업
-															번창하세요. :)!
-														</span>
+														${review[2].review_content }
 													</div>
 												</div>
 												<div class="index-box-review-bottom-box text-left">
 													<div class="index-txt-review-bottom-box-top text-14">제주에서
 														1일 렌트하신</div>
-													<div class="text-16-b text-white">김** 고객님</div>
+													<div class="text-16-b text-white">${review[2].member_name }님</div>
 												</div>
 											</div>
 										</div>
@@ -727,6 +715,15 @@
 							</div>
 						</div>
 					</div>
+				</section>
+			</div>
+			<div id="is-only-none-member">
+				<section class="bg-white index-section-padding is-only-none-member opacity-0 animated-fadein"
+					id="js_section_main_reviews">
+					<div class="container">
+						<div class="text-center text-32 font-weight-bold color-grey-2">자주 묻는 질문</div>
+						
+					</div>					
 				</section>
 			</div>
 		</div>

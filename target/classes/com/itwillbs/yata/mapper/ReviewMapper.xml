@@ -4,19 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.yata.mapper.ReviewMapper">
-	<select id="selectReview"
-		resultType="com.itwillbs.yata.vo.ReviewVO">
-		SELECT review_regdate
-		FROM review
-		ORDER BY review_regdate DESC
-		LIMIT 3;
+	<select id="selectReview" resultType="com.itwillbs.yata.vo.ReviewVO">
+		SELECT member_name -- 작성자
+			 , review_content -- 내용
+			 , review_star -- 별점
+		  FROM review
+		 ORDER BY review_regdate DESC
+		 LIMIT 3;
 	</select>
 	
 	<insert id="insertReview" useGeneratedKeys="true"
 		keyProperty="review_idx">
 		insert into review (
 			review_idx,
-			review_writer,
+			member_email,
+			member_name,
 			review_title,
 			review_content,
 			review_regdate,
@@ -26,7 +28,8 @@
 		)
 		value (
 			#{review_idx},
-			#{review_writer},
+			#{member_email},
+			#{member_name},
 			#{review_title},
 			#{review_content},
 			CURRENT_TIMESTAMP(),

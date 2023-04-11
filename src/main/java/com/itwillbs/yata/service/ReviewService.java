@@ -1,5 +1,7 @@
 package com.itwillbs.yata.service;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -11,11 +13,12 @@ public class ReviewService {
 	@Autowired
 	private ReviewMapper mapper;
 	
-	public ReviewVO selectUser(ReviewVO review) {
-		return mapper.selectReview(review);
+	public List<ReviewVO> getReview() {
+		return mapper.selectReview();
 	}
 	
 	public int insertReview(ReviewVO review) {
 		return mapper.insertReview(review);
 	}
+
 }

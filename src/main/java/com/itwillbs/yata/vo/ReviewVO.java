@@ -5,7 +5,8 @@ import java.sql.*;
 
 public class ReviewVO {
 	private int review_idx;
-	private String review_writer;
+	private String member_email;
+	private String member_name;
 	private String review_title;
 	private String review_content;
 	private Timestamp review_regdate;
@@ -15,10 +16,11 @@ public class ReviewVO {
 	
 	public ReviewVO() {}
 	
-	public ReviewVO(int review_idx, String review_writer, String review_title, String review_content,
+	public ReviewVO(int review_idx, String member_email, String member_name, String review_title, String review_content,
 			Timestamp review_regdate, Timestamp review_updateDate, String review_star, int review_viewcnt) {
 		this.review_idx = review_idx;
-		this.review_writer = review_writer;
+		this.member_email = member_email;
+		this.member_name = member_name;
 		this.review_title = review_title;
 		this.review_content = review_content;
 		this.review_regdate = review_regdate;
@@ -35,12 +37,22 @@ public class ReviewVO {
 		this.review_idx = review_idx;
 	}
 	
-	public String getReview_writer() {
-		return review_writer;
+	public String getMember_email() {
+		return member_email;
 	}
-	public void setReview_writer(String review_writer) {
-		this.review_writer = review_writer;
+
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
+
+	public String getMember_name() {
+		return member_name;
+	}
+
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
 	public String getReview_title() {
 		return review_title;
 	}
@@ -77,11 +89,14 @@ public class ReviewVO {
 	public void setReview_viewcnt(int review_viewcnt) {
 		this.review_viewcnt = review_viewcnt;
 	}
+
 	@Override
 	public String toString() {
-		return "ReviewVO [review_idx=" + review_idx + ", review_writer=" + review_writer + ", review_title="
-				+ review_title + ", review_content=" + review_content + ", review_regdate=" + review_regdate
-				+ ", review_updateDate=" + review_updateDate + ", review_star=" + review_star + ", review_viewcnt="
-				+ review_viewcnt + "]";
+		return "ReviewVO [review_idx=" + review_idx + ", member_email=" + member_email + ", member_name=" + member_name
+				+ ", review_title=" + review_title + ", review_content=" + review_content + ", review_regdate="
+				+ review_regdate + ", review_updateDate=" + review_updateDate + ", review_star=" + review_star
+				+ ", review_viewcnt=" + review_viewcnt + "]";
 	}
+	
+	
 }
